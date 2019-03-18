@@ -1,0 +1,195 @@
+<!-- START DETAIL VIEW -->
+<div class=background>
+  <form (ngSubmit)="onSubmit()" #detailForm="ngForm">
+    <div class="detail-view-container">
+
+      <!--
+      <div class="detail-view-top-container">
+        <div class="detail-order-number">
+          <h1 class="order-number-p">Order #{{selectedOrder._id}}</h1>
+        </div>
+      </div>
+      -->
+
+
+      <div class="order-container">
+        <h3 class="title">Order #{{selectedOrder._id}}</h3>
+        <div class="products">
+
+          <div class="product-headers">
+            <p class='ph-one'>Product</p>
+            <p class='ph-two'>SKU</p>
+            <p class='ph-three'>Unit Price</p>
+            <p class='ph-four'>Qty</p>
+            <p class='ph-five'>Total</p>
+          </div>
+
+          <div class="product-container" *ngFor="let cartProduct of selectedOrder.products; index as i">
+            <div class=product>
+              <div class=image>
+                <img src={{cartProduct.product.images[0]}}>
+              </div>
+              <div class=info>
+                <p>{{cartProduct.product.name}}</p>
+                <p>Size: {{cartProduct.selectedSize}}</p>
+                <p>Color: {{cartProduct.product.color}}</p>
+              </div>
+            </div>
+
+            <div class=sku>
+              <p>SKU</p>
+            </div>
+            <div class=unit-price>
+              <p>${{cartProduct.product.price}}</p>
+            </div>
+            <div class=qty>
+              <p>{{cartProduct.quantity - cartProduct.quantity_refunded}}</p>
+            </div>
+
+            <div class=total>
+              <p>${{(cartProduct.product.price * (cartProduct.quantity - cartProduct.quantity_refunded)).toFixed(2)}}</p>
+            </div>
+          </div>
+
+          <div class=fulfillment-container>
+            <mat-slide-toggle name="status" color=primary [(ngModel)]="selectedOrder.shipped">Fulfilled</mat-slide-toggle>
+          </div>
+
+          <div class="total-container">
+            <div class="detail-subtotal-header">
+              <p>Subtotal:</p>
+            </div>
+            <div class="detail-subtotal">
+              <p>${{displaySubtotal.toFixed(2)}}</p>
+            </div>
+            <div class="detail-tax-header">
+              <p>Tax: </p>
+            </div>
+            <div class="detail-tax">
+              <p>${{displayTax.toFixed(2)}}</p>
+            </div>
+            <div class="detail-shipping-header">
+              <p>Shipping: </p>
+            </div>
+            <div class="detail-shipping">
+              <p>${{displayShipping.toFixed(2)}}</p>
+            </div>
+            <div class="detail-total-header">
+              <p>Total: </p>
+            </div>
+            <div class="detail-total">
+              <p>${{displayTotal.toFixed(2)}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class=shipping-container>
+        <h3 class="title">Shipping Info</h3>
+        <div class="detail-view-shipping-info">
+          <div class="shipping-carrier-header">
+            <p>Carrier</p>
+          </div>
+          <div class="shipping-method-header">
+            <p>Service</p>
+          </div>
+          <div class="shipping-tracking-header">
+            <p>Tracking Number</p>
+          </div>
+          <div class="label-header">
+            <p>Shipping Label</p>
+          </div>
+
+          <div class="shipping-carrier">
+            <p>{{selectedOrder.shippingCarrier}}</p>
+          </div>
+          <div class="shipping-method">
+            <p>{{selectedOrder.shippingMethod}}</p>
+          </div>
+          <div class="shipping-tracking">
+            <a href="{{selectedOrder.trackingUrl}}" target="_blank">{{selectedOrder.trackingNumber}}</a>
+          </div>
+          <div class="shipping-label-div">
+            <a href="{{selectedOrder.shippingLabel}}" target="_blank">Print</a>
+          </div>
+        </div>
+
+
+      </div>
+
+
+        
+      <div class=shipping-address>
+          <h3 class="title">Shipping Address</h3>
+        <!-- Street 1 -->
+        <mat-form-field appearance=standard>
+          <mat-label>Street 1</mat-label>
+          <input matInput required [(ngModel)]=selectedOrder.address.street1 type=text name=street1>
+        </mat-form-field>
+
+        <!-- Street 2 -->
+        <mat-form-field appearance=standard>
+          <mat-label>Street 2</mat-label>
+          <input matInput [(ngModel)]=selectedOrder.address.street2 type=text name=street2>
+        </mat-form-field>
+
+        <!-- City -->
+        <mat-form-field appearance=standard>
+          <mat-label>City</mat-label>
+          <input matInput required [(ngModel)]=selectedOrder.address.city type=text name=city>
+        </mat-form-field>
+
+        <!-- State -->
+        <mat-form-field appearance=standard>
+          <mat-label>State</mat-label>
+          <input matInput required [(ngModel)]=selectedOrder.address.state type=text name=state>
+        </mat-form-field>
+
+        <!-- Zip -->
+        <mat-form-field appearance=standard>
+          <mat-label>Zipcode</mat-label>
+          <input matInput required [(ngModel)]=selectedOrder.address.zip type=text name=zip>
+        </mat-form-field>
+        <!-- Country -->
+        <mat-form-field appearance=standard>
+          <mat-label>Country</mat-label>
+          <input matInput required [(ngModel)]=selectedOrder.address.country type=text name=country>
+        </mat-form-field>
+
+
+      </div>
+
+        
+        <div class="customer-info">
+            <h3 class="title">Customer Info</h3>
+          <!-- Name  -->
+          <mat-form-field appearance=standard>
+            <mat-label>Name</mat-label>
+            <input matInput required [(ngModel)]=selectedOrder.address.name type=text name=name>
+          </mat-form-field>
+
+          <!-- Email -->
+          <mat-form-field appearance=standard>
+            <mat-label>Email</mat-label>
+            <input matInput required [(ngModel)]=selectedOrder.address.email type=text name=email>
+          </mat-form-field>
+
+          <!-- Phone -->
+          <mat-form-field appearance=standard>
+            <mat-label>Phone</mat-label>
+            <input matInput required [(ngModel)]=selectedOrder.address.phone type=text name=phone>
+          </mat-form-field>
+        </div>
+
+
+
+      <div class="submit-div">
+        <!-- Submit -->
+        <input type="submit" value="Save Changes" class="submit-button dark-blue-button">
+      </div>
+
+    </div>
+  </form>
+</div>
+<!-- END DETAIL VIEW-->

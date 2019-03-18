@@ -1,0 +1,241 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+button:focus {
+  outline: 0;
+}
+
+form {
+  
+  width: 100%;
+  margin: 0;
+  
+}
+
+.center-div {
+  background: white;
+  width: 100%;
+ 
+  min-height: 300px;
+
+  
+  font-family: "Montserrat";
+
+  padding: 0px;
+  padding-bottom: 10px;
+
+  .title {
+    margin: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-decoration: none;
+    text-align: center;
+     
+    color: $color-dark-blue;
+  }
+}
+
+/********************************************
+          Main Orders Grid Headers
+*********************************************/
+
+p {
+  margin: 0px;
+  padding: 0px;
+  height: 60px;
+  width: inherit;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: black;
+}
+
+.headers-container {
+  width: 100%;
+  margin: 0px;
+  display: grid;
+
+  grid-template-columns: 3fr 1fr 2.5fr 1.5fr 2.5fr;
+  grid-template-rows: 60px;
+  grid-template-areas: "order-number total date status actions";
+
+  border-bottom: 1px inset;
+  font-size: 14px;
+}
+
+.order-number-header {
+  grid-area: order-number;
+  display: table;
+}
+
+.total-header {
+  grid-area: total;
+  display: table;
+}
+
+.date-header {
+  grid-area: date;
+  display: table;
+}
+
+.shipped-header {
+  grid-area: status;
+  display: table;
+}
+
+.actions-header {
+  grid-area: actions;
+  display: table;
+}
+
+/********************************************
+            Main Orders Grid
+*********************************************/
+
+.order-container {
+  font-size: 12px;
+  display: grid;
+  width: 100%;
+
+  grid-template-columns: 3fr 1fr 2.5fr 1.5fr 2.5fr;
+  grid-template-rows: 60px;
+  grid-template-areas: "order-number total date status actions";
+
+  border-bottom: 1px inset;
+ 
+  &:hover {
+    //background: hsl(262, 73%, 97%);
+    background: hsl(240, 73%, 97%);
+  }
+
+  &:hover .actions-container {
+    visibility: visible;
+  }
+}
+
+
+.order-number {
+  grid-area: order-number;
+  display: table;
+}
+
+.total {
+  grid-area: total;
+  display: table;
+}
+
+.date {
+  grid-area: date;
+  display: table;
+}
+
+.status-container {
+  grid-area: status;
+  text-align: center;
+  display: table;
+}
+
+.status-button {
+  display: inline-block;
+  margin-top: 17.5px;
+
+  padding: 0px 10px 0px 10px;
+  font-size: 12px;
+  height: 25px;
+
+  text-align: center;
+
+  background: hsl(0, 70%, 95%);
+  color: hsl(0, 96%, 31%);
+
+  text-decoration: none;
+
+  font-family: "Montserrat";
+  letter-spacing: 0.7px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 0px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.18);
+}
+
+.actions-container {
+  grid-area: actions;
+  visibility: hidden;
+}
+
+.shipping-label {
+  display: inline-block;
+  margin-top: 22.5px;
+
+  padding: 0px 10px 0px 10px;
+  font-size: 12px;
+  width: 30px;
+
+  text-align: center;
+
+  //color: hsl(263, 76%, 40%);
+  color: hsl(239, 76%, 40%);
+  text-decoration: none;
+
+  font-family: "Montserrat";
+  letter-spacing: 0.7px;
+  font-weight: bold;
+  border: 0px;
+  border-right: 1px solid;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.18);
+}
+
+.return-button {
+  padding: 0px 10px 0px 10px;
+  font-size: 12px;
+
+  text-align: center;
+
+  //color: hsl(263, 76%, 40%);
+  color: hsl(239, 76%, 40%);
+  text-decoration: none;
+  background: transparent;
+
+  font-family: "Montserrat";
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border: 0px;
+  border-right: 1px solid;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.18);
+}
+
+.details-button {
+  padding: 0px 10px 0px 10px;
+  font-size: 12px;
+  background: transparent;
+
+  text-align: center;
+
+  //color: hsl(263, 76%, 40%);
+  color: hsl(239, 76%, 40%);
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-weight: bold;
+
+  letter-spacing: 0.5px;
+  border: 0px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.18);
+}
+
+/********************************************************************
+                         REFUND VIEW
+*********************************************************************/
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (min-width: 992px) {
+}

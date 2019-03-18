@@ -1,0 +1,153 @@
+button:focus {
+  outline: 0;
+}
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+$color-primary: #263238;
+$color-primary-dark: #000a12;
+$color-primary-light: #4f5b62;
+$color-primary-text: #e0e0e0;
+$color-secondary: #1a237e;
+$color-secondary-dark: #000051;
+$color-secondary-light: #534bae;
+
+button {
+  text-decoration: solid;
+  text-align: left;
+  font-size: 18px;
+  line-height: 50px;
+  color: $color-dark-blue;
+  letter-spacing: 0.5px;
+  font-family: "Montserrat";
+  background: none;
+  border: none;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+//$color-dark-blue: hsl(261, 100%, 9%); //DARK
+//$color-white-blue: hsl(260, 43%, 99%); //LIGHT
+
+//$color-white-blue: rgb(158, 158, 158);
+
+.admin-navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+
+  font-family: "Montserrat";
+  font-weight: 100;
+
+  background: $color-white-blue;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+
+  .title {
+    height: 66px;
+    background: $color-silver;
+
+    .icon-container {
+      display: inline-block;
+      vertical-align: top;
+      width: 40px;
+      height: 40px;
+      padding: 13px;
+      margin-left: 20px;
+    }
+
+    .title-text {
+      display: inline-block;
+      width: 150px;
+      text-align: left;
+      font-size: 24px;
+      line-height: 66px;
+      margin: 0px;
+      text-decoration: none;
+      color: $color-dark-blue;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+  }
+
+  .list {
+    display: inline-block;
+    padding-left: 25px;
+    .list-item {
+      margin: 0px;
+      display: inline-block;
+      width: 225px;
+      height: 50px;
+      margin-top: 10px;
+      .icon-container {
+        display: inline-block;
+        vertical-align: top;
+        width: 25px;
+        height: 25px;
+        padding: 12.5px;
+      }
+
+      .drop-btn {
+        display: inline-block;
+        vertical-align: top;
+        width: 175px;
+        height: inherit;
+      }
+
+      .drop-content {
+        display: none;
+
+        .router-link {
+          display: none;
+        }
+      }
+
+      .links-container {
+        padding-bottom: 10px;
+      .router-link {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 50px;
+        width: 100px;
+        height: 30px;
+        text-decoration: none;
+        text-align: left;
+        font-size: 14px;
+        line-height: 30px;
+        color: $color-dark-blue;
+        letter-spacing: .5px;
+      }
+    }
+    }
+  }
+}
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100vw - 250px);
+  height: 66px;
+
+  font-family: "Montserrat";
+  font-weight: 100;
+
+  background: $color-dark-blue;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+}

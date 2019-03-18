@@ -1,0 +1,75 @@
+<!-- Product Form -->
+<div class="container">
+
+  <div class="top-div">
+    <h1 class="title">Remove Product</h1>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Collection</mat-label>
+      <mat-select required [(ngModel)]="model.shop" name="collection" (selectionChange)=getCategories()  (selectionChange)=getProducts(model.shop,model.category,model.subcategory)
+        (selectionChange)=clearCat()>
+        <mat-option *ngFor="let col of collections" [value]="col.name">{{col.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-template [ngIf]="model.shop!==undefined && model.shop!==''">
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select required [(ngModel)]="model.category" name="category" (selectionChange)=getSubcategories()  (selectionChange)=getProducts(model.shop,model.category,model.subcategory)
+          (selectionChange)=clearSub()>
+          <mat-option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+
+    <ng-template [ngIf]="model.category!==undefined && model.category!==''">
+      <mat-form-field appearance="outline">
+        <mat-label>Subcategory</mat-label>
+        <mat-select required [(ngModel)]="model.subcategory" name="subcategory" (selectionChange)=getProducts(model.shop,model.category,model.subcategory)>
+          <mat-option *ngFor="let sub of subcategories" [value]="sub.name">{{sub.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+
+  </div>
+
+
+  <ng-template [ngIf]="model.shop">
+  <!--<ng-template [ngIf]="products.length">-->
+
+    <div class="product-grid">
+      <div class=headers>
+        <div class=image-container>
+        </div>
+        
+        <p class=name>Name</p>
+        
+        <p class=sku>SKU</p>
+        <p class=color>Color</p>
+        <p class=price>Unit Price</p>
+        <div class=remove-container>
+        </div>
+      </div>
+
+      <div *ngFor="let prod of products; index as i" class=product-box id=product-{{i}}>
+        <div class=image-container>
+            <img src={{prod.images[0]}}>
+        </div>
+        
+        <p class=name>{{prod.name}}</p>
+        
+        <p class=sku>SKU</p>
+        <p class=color>{{prod.color}}</p>
+        <p class=price>${{prod.price}}</p>
+        <div class=remove-container>
+            <button class="remove-button red-button" (click)=removeProduct(i)>Deactivate</button>
+        
+            <button class="delete-button red-button" (click)=deleteProduct(i)>Delete</button>
+
+          </div>
+      </div>
+    </div>
+
+  </ng-template>
+
+</div>

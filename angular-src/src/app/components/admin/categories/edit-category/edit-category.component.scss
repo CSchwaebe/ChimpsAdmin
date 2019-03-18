@@ -1,0 +1,373 @@
+button:focus {
+  outline: 0;
+}
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+.background {
+  display: inline-block;
+  background: white;
+  min-height: 100vh;
+  width: 100%;
+  margin-top: 0px;
+
+  .container {
+    min-height: 100vh;
+    background: white;
+    width: 90%;
+    margin-left: 5%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    border-radius: 5px;
+    padding-bottom: 30px;
+
+    .title {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+      color: $color-dark-blue;
+      font-family: "Montserrat";
+    }
+
+    .top-div {
+      padding-bottom: 50px;
+      display: inline-block;
+      width: 80%;
+     
+      margin-left: 10%;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+      text-align: center;
+
+      .top-button {
+        width: 300px;
+        font-size: 14px;
+        border-radius: 5px;
+        height: 50px;
+        margin: 20px;
+      }
+      
+
+      .collection-container {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px inset;
+        
+        height: 72px;
+        display: inline-block;
+        line-height: 72px;
+        text-align: left;
+        background: white;
+        color: $color-dark-blue;
+
+        &:hover {
+          background: hsl(240, 73%, 97%);
+
+          .select-button {
+            visibility: visible;
+          }
+          .image-container{
+            .select-button {
+              visibility: visible;
+            }
+          }
+          
+        }
+
+        .image-container {
+          display: inline-block;
+         vertical-align: top;
+          position: relative;
+          width: 270px;
+          height: 72px;
+          text-align: center;
+          .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: black;
+            height: inherit;
+            width: inherit;
+          }
+          .name {
+            display: inline-block;
+            vertical-align: top;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0px;
+            padding: 0px;
+            line-height: inherit;
+            width: inherit;
+            color: white;
+            font-size: 16px;
+            letter-spacing: 1px;
+            
+          }
+
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: inherit;
+            width: inherit;
+            opacity: .7;
+          }
+          .select-button {
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: inherit;
+            width: inherit;
+            display: inline-block;
+            vertical-align: top;
+            
+           
+            margin: 0px;
+            padding: 0px;
+            line-height: inherit;
+            
+            background: transparent;
+            color: hsl(239, 76%, 40%);
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            visibility: hidden;
+          }
+
+          
+
+        }
+
+        .select-button {
+          /*
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: inherit;
+          width: inherit;
+          display: inline-block;
+          vertical-align: top;
+          */
+          display: block;
+          float: right;
+          margin: 0px;
+          margin-right: 50px;
+          padding: 0px;
+          line-height: inherit;
+          
+          background: transparent;
+          color: hsl(239, 76%, 40%);
+          cursor: pointer;
+          border: none;
+          font-size: 14px;
+          visibility: hidden;
+        }
+
+        
+
+        
+        
+        
+      }
+
+      .Collection {
+        
+        
+      }
+
+      .Category {
+        width: 95%;
+        padding-left: 5%;
+        
+      }
+
+      .Subcategory {
+        width: 85%;
+        padding-left: 15%;
+      }
+    }
+  }
+}
+
+
+/*
+FOR THE TEMPLATE FORM
+*/
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (min-width: 992px) {
+}
+
+
+.dropdown-content {
+  display: none;
+  width: 100%;
+}
+
+.display-categories {
+  display: inline-block;
+}
+
+.subcategory {
+  display: none;
+  width: 100%;
+}
+.display-subcategories {
+  display: inline-block;
+}
+
+
+.collection-container {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px inset;
+  
+  height: 72px;
+  display: inline-block;
+  line-height: 72px;
+  text-align: left;
+  background: white;
+  color: $color-dark-blue;
+
+  .icon-container {
+    display: inline-block;
+    vertical-align: top;
+    height: inherit;
+    width: 5%;
+
+    mat-icon {
+      display: inline-block;
+      vertical-align: middle;
+      
+    }
+  }
+  &:hover {
+    background: hsl(240, 73%, 97%);
+
+    .image-container{
+      .select-button {
+        visibility: visible;
+      }
+
+    }
+    
+  }
+
+  .image-container {
+    display: inline-block;
+   vertical-align: top;
+    position: relative;
+    width: 270px;
+    height: inherit;
+    text-align: center;
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: black;
+      height: inherit;
+      width: inherit;
+    }
+    .name {
+      display: inline-block;
+      vertical-align: top;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0px;
+      padding: 0px;
+      line-height: inherit;
+      width: inherit;
+      color: white;
+      font-size: 16px;
+      letter-spacing: 1px;
+      
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: inherit;
+      width: inherit;
+      opacity: .7;
+    }
+
+    .select-button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: inherit;
+      width: inherit;
+
+      display: inline-block;
+      vertical-align: top;
+      margin: 0px;
+      padding: 0px;
+      line-height: inherit;
+      
+      background: transparent;
+      color: hsl(239, 76%, 40%);
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+      visibility: hidden;
+    }
+
+  }
+
+  
+
+  
+  
+  
+}
+
+.Collection {
+        
+        
+}
+
+.Category {
+  width: 95%;
+  padding-left: 5%;
+  
+}
+
+.Subcategory {
+  width: 85%;
+  padding-left: 15%;
+  
+}
+
+.button-container {
+  display: inline-block;
+  .expand-button {
+    cursor: pointer;
+    width: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    background: transparent;
+    border: none;
+    mat-icon {
+      display: inline-block;
+      vertical-align: middle;
+  
+    }
+  }
+
+}
+
+
+.button-blank-space {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  background: transparent;
+
+}

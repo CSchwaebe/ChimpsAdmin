@@ -1,0 +1,116 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+div.container {
+  padding-bottom: 30px;
+  background: white;
+  width: 90%;
+  margin-left: 5%;
+  align-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+
+  .title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: $color-dark-blue;
+    font-family: "Montserrat";
+  }
+
+
+
+  .products-div {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    min-height: 300px;
+    text-align: center;
+    font-family: "Montserrat";
+    .product-title {
+      
+      width: 100%;
+
+      
+    }
+
+    .filter-container {
+      display: inline-block;
+      width: 80%;
+      background: $color-white-blue;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+        margin-bottom: 20px;
+      .title {
+        margin: 0px;
+      }
+
+      mat-form-field {
+        display: inline-block;
+        vertical-align: top;
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+
+      }
+    }
+
+    .grid {
+      display: inline-block;
+      vertical-align: top;
+      width: 90%;
+      margin-bottom: 50px;
+
+      .product-box {
+        display: inline-block;
+        vertical-align: top;
+
+        width: 200px;
+       
+        margin: 10px;
+        padding: 10px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+        text-align: center;
+       
+
+          img {
+           
+            display: inline-block;
+            vertical-align: top;
+            
+            height: 200px;
+            width: 200px;
+           
+          }
+         
+          .product-name {  
+            display: inline-block;
+            vertical-align: top;         
+            margin: 0px;
+            padding: 0px;
+            width: inherit;
+            height: auto;
+           
+            line-height: 20px;
+            font-size: 14px;
+            color: black;
+            font-size: 14px;
+            letter-spacing: 1px;
+          }
+        
+
+        .toggle-container {
+          width: inherit;
+          display: inline-block;
+          vertical-align: top;
+          
+          mat-slide-toggle {
+            height: 50px;
+            font-family: 'Montserrat';
+          }
+        }
+      }
+    }
+  }
+
+}

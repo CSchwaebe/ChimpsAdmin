@@ -1,0 +1,668 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-dark-blue-hover: hsl(239, 100%, 17%);
+$color-dark-blue-active: hsl(238, 16%, 44%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+$color-white-blue-active: hsl(239, 43%, 91%);
+
+button:focus {
+  outline: 0;
+}
+
+form {
+  width: 100%;
+}
+
+.buttons-div {
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+  .view-other-button {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 5% 0px 5%;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
+}
+
+.main-title {
+  display: inline-block;
+  margin-bottom: -30px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  height: 60px;
+  line-height: 60px;
+  font-family: "Montserrat";
+  font-size: 20px;
+  color: $color-dark-blue;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.order-container {
+  margin-top: 30px;
+  width: 90%;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+
+  //box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.1), 4px -4px 20px rgba(0, 0, 0, 0.1);
+
+  font-size: 14px;
+  font-family: "Montserrat";
+  background: white;
+  .title {
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-weight: 100;
+
+    //color: $color-dark-blue;
+
+    background: $color-dark-blue;
+    color: $color-white-blue;
+    //box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    letter-spacing: 1px;
+  }
+
+  .products {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 20px;
+
+    /*************************
+        Product Header Grid
+      **************************/
+    .product-headers {
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid $color-silver;
+      p {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        font-family: "Montserrat";
+      }
+      .ph-one {
+        width: 25%;
+        text-align: left;
+      }
+      .ph-two {
+        width: 15%;
+      }
+      .ph-three {
+        width: 15%;
+      }
+      .ph-four {
+        width: 17.5%;
+      }
+      .ph-five {
+        width: 17.5%;
+      }
+      .ph-six {
+        width: 10%;
+        text-align: right;
+      }
+    }
+
+    /*************************
+             Product Grid
+      **************************/
+    .product-container {
+      display: inline-block;
+      width: 100%;
+      height: 60px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $color-silver;
+
+      .product {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 25%;
+        .image {
+          display: inline-block;
+          vertical-align: top;
+          height: 60px;
+          width: 60px;
+          img {
+            height: inherit;
+            width: inherit;
+          }
+        }
+        .info {
+          display: inline-block;
+          vertical-align: top;
+          height: 60px;
+          padding-left: 5px;
+          width: calc(100% - 65px);
+          p {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0px;
+            padding: 0px;
+            height: 20px;
+            line-height: 20px;
+            width: 100%;
+            font-size: 12px;
+
+            text-align: left;
+          }
+        }
+      }
+
+      .sku {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 15%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .unit-price {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 15%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .qty {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 17.5%;
+        mat-form-field {
+          padding-left: 25%;
+          width: 40px;
+        }
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 20%;
+          font-size: 16px;
+          font-family: sans-serif;
+          font-weight: 300;
+          text-align: center;
+        }
+      }
+
+      .prev-qty {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 17.5%;
+        mat-form-field {
+          padding-left: 25%;
+          width: 40px;
+        }
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+          font-size: 16px;
+          font-family: sans-serif;
+          font-weight: 300;
+          text-align: center;
+        }
+      }
+
+      .total {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 10%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.refund-shipping-div {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  mat-form-field {
+    padding-left: 20%;
+    margin-top: 50px;
+  }
+}
+
+.original-order-container {
+  margin-top: 30px;
+  width: 90%;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  font-size: 14px;
+  font-family: "Montserrat";
+  background: white;
+  .title {
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-weight: 100;
+
+    background: $color-dark-blue;
+    color: $color-white-blue;
+    letter-spacing: 1px;
+  }
+
+  .products {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 20px;
+
+    /*************************
+          Product Header Grid
+        **************************/
+    .product-headers {
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid $color-silver;
+      p {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        font-family: "Montserrat";
+      }
+      .ph-one {
+        width: 30%;
+        text-align: left;
+      }
+      .ph-two {
+        width: 20%;
+      }
+      .ph-three {
+        width: 20%;
+      }
+      .ph-four {
+        width: 15%;
+      }
+      .ph-five {
+        width: 15%;
+        text-align: right;
+      }
+    }
+
+    /*************************
+               Product Grid
+        **************************/
+    .product-container {
+      display: inline-block;
+      width: 100%;
+      height: 60px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $color-silver;
+
+      .product {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 30%;
+        .image {
+          display: inline-block;
+          vertical-align: top;
+          height: 60px;
+          width: 60px;
+          img {
+            height: inherit;
+            width: inherit;
+          }
+        }
+        .info {
+          display: inline-block;
+          vertical-align: top;
+          height: 60px;
+          padding-left: 5px;
+          width: calc(100% - 65px);
+          p {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0px;
+            padding: 0px;
+            height: 20px;
+            line-height: 20px;
+            width: 100%;
+            font-size: 12px;
+
+            text-align: left;
+          }
+        }
+      }
+
+      .sku {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 20%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .unit-price {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 20%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .qty {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 15%;
+
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+          font-size: 16px;
+          font-family: sans-serif;
+          font-weight: 300;
+          text-align: center;
+        }
+      }
+
+      .total {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 15%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+/*************************
+       Totals Grid
+  **************************/
+
+.total-container {
+  display: inline-grid;
+  vertical-align: top;
+  width: 50%;
+  font-family: "Montserrat";
+  font-size: 14px;
+
+  padding-top: 30px;
+
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: 30px 30px 30px 30px;
+  grid-template-areas:
+    "subtotal-header subtotal"
+    "tax-header tax"
+    "shipping-header shipping"
+    "total-header total";
+
+  /* box-shadow: 0px 1px 2px rgba(0,0,0,0.18);*/
+  color: $color-dark-blue;
+
+  .detail-subtotal-header {
+    grid-area: subtotal-header;
+    display: table;
+  }
+
+  .detail-subtotal {
+    grid-area: subtotal;
+    display: table;
+  }
+
+  .detail-tax-header {
+    grid-area: tax-header;
+    display: table;
+  }
+
+  .detail-tax {
+    grid-area: tax;
+    display: table;
+  }
+
+  .detail-shipping-header {
+    grid-area: shipping-header;
+    display: table;
+  }
+
+  .detail-shipping {
+    grid-area: shipping;
+    display: table;
+  }
+
+  .detail-total-header {
+    grid-area: total-header;
+    display: table;
+  }
+  .detail-total {
+    grid-area: total;
+    display: table;
+  }
+  * p {
+    margin: 0px;
+    padding: 0px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 10px;
+  }
+}
+
+.full-width-total-container {
+  display: inline-grid;
+  vertical-align: top;
+  width: 100%;
+  font-family: "Montserrat";
+  font-size: 14px;
+
+  padding-top: 30px;
+
+  grid-template-columns: 5fr 1fr;
+  grid-template-rows: 30px 30px 30px 30px;
+  grid-template-areas:
+    "subtotal-header subtotal"
+    "tax-header tax"
+    "shipping-header shipping"
+    "total-header total";
+
+  /* box-shadow: 0px 1px 2px rgba(0,0,0,0.18);*/
+  color: $color-dark-blue;
+
+  .detail-subtotal-header {
+    grid-area: subtotal-header;
+    display: table;
+  }
+
+  .detail-subtotal {
+    grid-area: subtotal;
+    display: table;
+  }
+
+  .detail-tax-header {
+    grid-area: tax-header;
+    display: table;
+  }
+
+  .detail-tax {
+    grid-area: tax;
+    display: table;
+  }
+
+  .detail-shipping-header {
+    grid-area: shipping-header;
+    display: table;
+  }
+
+  .detail-shipping {
+    grid-area: shipping;
+    display: table;
+  }
+
+  .detail-total-header {
+    grid-area: total-header;
+    display: table;
+  }
+  .detail-total {
+    grid-area: total;
+    display: table;
+  }
+  * p {
+    margin: 0px;
+    padding: 0px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 10px;
+  }
+}
+
+.submit-div {
+  display: inline-block;
+  width: 100%;
+  margin-top: 50px;
+  padding-bottom: 50px;
+
+  .submit-button {
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    width: 30%;
+    height: 60px;
+    margin-left: 35%;
+    text-decoration: none;
+    
+    font-size: 16px;
+    text-align: center;
+   
+
+   
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+
+  
+
+  }
+}
+
+
+/* Button style 
+button {
+  border: none;
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  background-color: #2196f3;
+  box-shadow: 0 0 4px #999;
+  outline: none;
+}
+*/
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (min-width: 992px) {
+}

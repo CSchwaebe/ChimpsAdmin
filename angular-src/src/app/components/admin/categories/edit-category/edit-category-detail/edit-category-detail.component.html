@@ -1,0 +1,107 @@
+<div class=background>  
+      <form (ngSubmit)="saveChanges()">
+        <h1 class=title>Edit {{selectedType}}</h1>
+  
+        <div class="left-div">
+          <!-- Collection -->
+          <ng-template [ngIf]="selectedType==='Collection' && this.model !== undefined">
+            <h3 class="group-title">Edit Collection Name</h3>
+          </ng-template>
+  
+          <!-- Category -->
+          <ng-template [ngIf]="selectedType==='Category' && this.model !== undefined">
+            <h3 class="group-title">Name and Location</h3>
+            <mat-form-field appearance=outline>
+              <mat-label>Collection</mat-label>
+              <mat-select required placeholder=Collection [(ngModel)]=model.shop name=collection>
+                <mat-option *ngFor="let col of collections" [value]="col.name">{{col.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-template>
+  
+          <!-- Subcategory -->
+          <ng-template [ngIf]="selectedType==='Subcategory' && this.model !== undefined">
+            <h3 class="group-title">Name and Location</h3>
+  
+            <mat-form-field appearance=outline>
+              <mat-label>Collection</mat-label>
+              <mat-select required placeholder=Collection [(ngModel)]=model.shop name=collection (selectionChange)=getCategories(model.shop)>
+                <mat-option *ngFor="let col of collections" [value]="col.name">{{col.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field appearance=outline>
+              <mat-label>Category</mat-label>
+              <mat-select required placeholder=Category [(ngModel)]=model.category name=category>
+                <mat-option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-template>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>{{selectedType}} Name</mat-label>
+            <input matInput type="text" name="name" [(ngModel)]="model.name">
+          </mat-form-field>
+        </div>
+  
+        <div class="right-div">
+          <h3 class="group-title">Header Image</h3>
+          <!--REMOVE
+          <span class="product-field">Header Image:
+            <input [(ngModel)]="CloudinaryService.imageUrls[0]" class="image-input" type="text" name="header-image">
+          </span>
+          -->
+  
+          <div class=image-div>
+            
+              <ng-template [ngIf]="image !== ''">
+                  <div class=thumbnail>
+                      <div class=thumbnail-container>
+                        <img src={{image}}>
+                      </div>
+                    </div>
+                </ng-template>
+  
+              <ng-template [ngIf]='model.image && !isCloudinaryLoaded'>
+                <div class=image-button>
+                  <button class="upload-button white-button" (click)=removeImage() (click)=loadCloudinary()>Change Image</button>
+                </div>
+              </ng-template>
+           
+  
+            <ng-template [ngIf]='!model.image && !isCloudinaryLoaded'>
+              <div class=image-button>
+                <button class="upload-button white-button" (click)=loadCloudinary()>Add Image</button>
+              </div>
+            </ng-template>
+  
+            <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'" [style.height]="(image === '') ? 'auto' : 'auto'">
+              <div id=image1 class=image-button>
+                <button id="0" class="upload-button white-button" [style.display]="(image === '') ? 'inline-block' : 'none'"
+                  type=button>Upload</button>
+              </div>
+  
+              <p class=image-div-footer [style.display]="(image === '') ? 'inline-block' : 'none'">* Max Images - 1</p>
+              <p class=image-div-footer [style.display]="(image === '') ? 'inline-block' : 'none'">* Max File Size - 10MB</p>
+            </div>
+          </div>
+  
+          <div class=toggle-container>
+              <h3 class="group-title">Status</h3>
+              <mat-slide-toggle name="activate" color=primary [(ngModel)]="model.active">Active</mat-slide-toggle>
+          </div>
+        </div>
+  
+        <!-- Submit -->
+        <div class="submit-div">
+          <span>
+            <input type="submit" value="Save Changes" class="submit-button dark-blue-button">
+            <br>
+          </span>
+        </div>
+  
+      </form>
+  
+  </div>
+
+  

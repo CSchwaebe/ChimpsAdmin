@@ -1,0 +1,273 @@
+<form (ngSubmit)="onSubmit()" #detailForm="ngForm">
+  <div class="detail-view-container">
+    
+   
+     
+       
+     
+    
+      <div class=buttons-div>
+        <button class="view-other-button white-button" (click)="viewOriginalOrder()" type="button">
+        {{originalButtonText}} Original Order</button>
+        <ng-template [ngIf]="previousRefund.length">
+          <button class="view-other-button white-button" (click)="viewPreviousRefunds()" type="button">
+          {{previousButtonText}} Previous Refunds</button>
+        </ng-template>
+      </div>
+      <h1 class="main-title">Order #{{selectedOrder._id}}</h1>
+
+        <ng-template [ngIf]="showOriginalOrder">
+          <div class="original-order-container">
+            <h3 class="title">Original Order</h3>
+            <div class="products">
+
+              <div class="product-headers">
+                <p class='ph-one'>Product</p>
+                <p class='ph-two'>SKU</p>
+                <p class='ph-three'>Unit Price</p>
+                <p class='ph-four'>Qty</p>
+                <p class='ph-five'>Total</p>
+              </div>
+
+              <div class="product-container" *ngFor="let cartProduct of selectedOrder.products; index as i">
+                <div class=product>
+                  
+                    <div class=image>
+                      <img src={{cartProduct.product.images[0]}}>
+                    </div>
+                  
+                  <div class=info>
+                    <p>{{cartProduct.product.name}}</p>
+                    <p>Size: {{cartProduct.selectedSize}}</p>
+                    <p>Color: {{cartProduct.product.color}}</p>
+                  </div>
+                </div>
+
+                <div class=sku>
+                  <p>SKU</p>
+                </div>
+                <div class=unit-price>
+                  <p>${{cartProduct.product.price}}</p>
+                </div>
+                <div class=qty>
+                  <p>{{cartProduct.quantity}}</p>
+                </div>
+
+                <div class=total>
+                  <p>${{(cartProduct.product.price * cartProduct.quantity).toFixed(2)}}</p>
+                </div>
+              </div>
+
+              <div class="full-width-total-container">
+                <div class="detail-subtotal-header">
+                  <p>Subtotal:</p>
+                </div>
+                <div class="detail-subtotal">
+                  <p>${{selectedOrder.subtotal}}</p>
+                </div>
+                <div class="detail-tax-header">
+                  <p>Tax: </p>
+                </div>
+                <div class="detail-tax">
+                  <p>${{selectedOrder.tax}}</p>
+                </div>
+                <div class="detail-shipping-header">
+                  <p>Shipping: </p>
+                </div>
+                <div class="detail-shipping">
+                  <p>${{selectedOrder.shipping}}</p>
+                </div>
+                <div class="detail-total-header">
+                  <p>Total Refund: </p>
+                </div>
+                <div class="detail-total">
+                  <p>${{selectedOrder.total}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="this.showPreviousRefunds">
+          <div class="order-container">
+            <h3 class="title">Previous Refunds</h3>
+
+            <div class="products">
+              <div class="product-headers">
+                <p class='ph-one'>Product</p>
+                <p class='ph-two'>SKU</p>
+                <p class='ph-three'>Unit Price</p>
+                <p class='ph-four'>Refunded</p>
+                <p class='ph-five'>Restocked</p>
+                <p class='ph-six'>Total</p>
+              </div>
+
+              <div class="product-container" *ngFor="let cartProduct of previousRefund; index as i">
+                <div class=product>
+                  <div class=image>
+                    <img src={{cartProduct.product.images[0]}}>
+                  </div>
+                  <div class=info>
+                    <p>{{cartProduct.product.name}}</p>
+                    <p>Size: {{cartProduct.selectedSize}}</p>
+                    <p>Color: {{cartProduct.product.color}}</p>
+                  </div>
+                </div>
+
+                <div class=sku>
+                  <p>SKU</p>
+                </div>
+                <div class=unit-price>
+                  <p>${{cartProduct.product.price}}</p>
+                </div>
+                <div class=prev-qty>
+                  <p>{{cartProduct.quantity_refunded}}</p>
+                </div>
+                <div class=prev-qty>
+                  <p>{{cartProduct.quantity_restocked}}</p>
+                </div>
+                <div class=total>
+                  <p>${{(cartProduct.product.price * cartProduct.quantity_refunded).toFixed(2)}}</p>
+                </div>
+              </div>
+
+              <div class="full-width-total-container">
+                <div class="detail-subtotal-header">
+                  <p>Subtotal:</p>
+                </div>
+                <div class="detail-subtotal">
+                  <p>${{previousRefundSubtotal.toFixed(2)}}</p>
+                </div>
+                <div class="detail-tax-header">
+                  <p>Tax: </p>
+                </div>
+                <div class="detail-tax">
+                  <p>${{previousRefundTax.toFixed(2)}}</p>
+                </div>
+                <div class="detail-shipping-header">
+                  <p>Shipping: </p>
+                </div>
+                <div class="detail-shipping">
+                  <p>${{previousRefundShipping.toFixed(2)}}</p>
+                </div>
+                <div class="detail-total-header">
+                  <p>Total Refunded: </p>
+                </div>
+                <div class="detail-total">
+                  <p>${{previousRefundTotal.toFixed(2)}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+     
+
+
+    <div class="order-container">
+      <h3 class="title">New Refund</h3>
+      <div class="products">
+
+        <div class="product-headers">
+          <p class='ph-one'>Product</p>
+          <p class='ph-two'>SKU</p>
+          <p class='ph-three'>Unit Price</p>
+          <p class='ph-four'>Refund</p>
+          <p class='ph-five'>Restock</p>
+          <p class='ph-six'>Total</p>
+        </div>
+
+        <div class="product-container" *ngFor="let cartProduct of newRefund; index as i">
+          <div class=product>
+              <div class=image>
+                <img src={{cartProduct.product.images[0]}}>
+              </div>
+            <div class=info>
+              <p>{{cartProduct.product.name}}</p>
+              <p>Size: {{cartProduct.selectedSize}}</p>
+              <p>Color: {{cartProduct.product.color}}</p>
+            </div>
+          </div>
+
+          <div class=sku>
+            <p>SKU</p>
+          </div>
+          <div class=unit-price>
+            <p>${{cartProduct.product.price}}</p>
+          </div>
+          <div class=qty>
+            <mat-form-field appearance="legacy">
+              <mat-select [(ngModel)]="cartProduct.quantity_refunded" name="refund-qty" (selectionChange)="calcRefundSubtotal()"
+                (selectionChange)="clearRestock(i)">
+                <mat-option *ngFor="let num of cartProduct.quantity_available_refund|iterableNumber" [value]=num.valueOf()>{{num}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <p> / {{cartProduct.quantity_available_refund}}</p>
+          </div>
+          <div class=qty>
+            <mat-form-field appearance="legacy">
+              <mat-select [(ngModel)]="cartProduct.quantity_restocked" name="restock-qty">
+                <mat-option *ngFor="let num of cartProduct.quantity_refunded|iterableNumber" [value]=+num>{{num}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <p> / {{cartProduct.quantity_refunded}}</p>
+
+          </div>
+
+          <div class=total>
+            <p>${{(cartProduct.product.price * cartProduct.quantity_refunded).toFixed(2)}}</p>
+          </div>
+        </div>
+
+
+        <div class="refund-shipping-div">
+          <mat-form-field appearance="outline">
+            <mat-label>Refund Shipping</mat-label>
+            <mat-hint>Max: {{(selectedOrder.shipping - previousRefundShipping).toFixed(2)}}</mat-hint>
+            <input matInput type="number" name="refund-shipping-amount" [(ngModel)]="refund_shipping" min=0 (change)=calcRefundSubtotal()>
+          </mat-form-field>
+        </div>
+
+        <div class="total-container">
+          <div class="detail-subtotal-header">
+            <p>Subtotal:</p>
+          </div>
+          <div class="detail-subtotal">
+            <p>${{refund_subtotal}}</p>
+          </div>
+          <div class="detail-tax-header">
+            <p>Tax: </p>
+          </div>
+          <div class="detail-tax">
+            <p>${{refund_tax}}</p>
+          </div>
+          <div class="detail-shipping-header">
+            <p>Shipping: </p>
+          </div>
+          <div class="detail-shipping">
+            <p>${{refund_shipping}}</p>
+          </div>
+          <div class="detail-total-header">
+            <p>Total Refund: </p>
+          </div>
+          <div class="detail-total">
+            <p>${{refund_total}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="submit-div">
+      <!-- Submit -->
+      <span>
+        <input type="submit" value="Submit Refund" class="submit-button dark-blue-button">
+        <br>
+      </span>
+    </div>
+
+
+  </div>
+</form>

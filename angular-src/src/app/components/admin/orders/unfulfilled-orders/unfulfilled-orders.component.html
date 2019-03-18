@@ -1,0 +1,48 @@
+<div class="center-div">
+  <h1 class=title>Unfulfilled Orders</h1>
+      <div class="headers-container">
+        <div class="order-number-header">
+          <p>Order Number</p>
+        </div>
+        <div class="total-header">
+          <p>Total</p>
+        </div>
+        <div class="date-header">
+          <p>Date</p>
+        </div>
+        <div class="shipped-header">
+          <p>Status</p>
+        </div>
+        <div class="actions-header">
+          <p></p>
+        </div>
+      </div>
+  
+      <div class="order-container" *ngFor="let order of model; index as i">
+        <div class="order-number">
+          <p>{{order._id.toUpperCase()}}</p>
+        </div>
+        <div class="total">
+          <p>${{order.total}}</p>
+        </div>
+        <div class="date">
+          <p>{{order.readableCreatedAt}}</p>
+        </div>
+        <ng-template [ngIf]="order.shipped">
+          <div class="status-container">
+            <button class="status-button" id="{{i}}" (click)="changeFulfillmentStatus($event.target.id)" [ngStyle]="{'background': 'hsl(123, 75%, 95%)', 'color': 'hsl(123, 79%, 25%)'}">Fulfilled</button>
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="!order.shipped">
+          <div class="status-container">
+            <button class="status-button" id="{{i}}" (click)="changeFulfillmentStatus($event.target.id)">Unfulfilled</button>
+          </div>
+        </ng-template>
+        <div class="actions-container">
+          <a class="shipping-label" href="{{order.shippingLabel}}" target="_blank"><span>Ship</span></a>
+          <button class="return-button" id="{{i}}" (click)="manageRefund($event.target.id)">Refund</button>
+          <button class="details-button" id="{{i}}" (click)="viewDetails($event.target.id)">View</button>
+        </div>
+      </div>
+      
+  </div>

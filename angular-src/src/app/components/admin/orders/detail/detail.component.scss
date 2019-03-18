@@ -1,0 +1,505 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+/********************************************************************
+                        DETAIL VIEW
+*********************************************************************/
+
+.background {
+  width: 100%;
+}
+
+/*
+.detail-view-container {
+  width: 100%;
+  height: auto;
+}
+
+/********************************************************************
+                         Top Panel
+  *********************************************************************/
+
+/********************************************************************
+                         Left Panel
+  *********************************************************************/
+
+.order-container {
+  margin-top: 30px;
+  width: 90%;
+  margin-left: 5%;
+  display: inline-block;
+  vertical-align: top;
+  
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  font-size: 14px;
+  font-family: "Montserrat";
+  background: white;
+  
+  .title {
+    background: $color-dark-blue;
+    color: $color-white-blue;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    height: 60px;
+    line-height: 60px;
+    text-transform: uppercase;
+  }
+
+  .products {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 20px;
+
+    /*************************
+      Product Header Grid
+    **************************/
+    .product-headers {
+      width: 100%;
+      height: 50px;
+      border-bottom: 1px solid $color-silver;
+      p {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 14px;
+        font-family: "Montserrat";
+      }
+      .ph-one {
+        width: 30%;
+        text-align: left;
+      }
+      .ph-two {
+        width: 20%;
+      }
+      .ph-three {
+        width: 20%;
+      }
+      .ph-four {
+        width: 15%;
+      }
+      .ph-five {
+        width: 15%;
+        text-align: right;
+      }
+    }
+
+    /*************************
+           Product Grid
+    **************************/
+    .product-container {
+      display: inline-block;
+      width: 100%;
+      height: 60px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $color-silver;
+
+      .product {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 30%;
+        .image {
+          display: inline-block;
+          vertical-align: top;
+          height: 60px;
+          width: 60px;
+          img {
+            height: inherit;
+            width: inherit;
+          }
+        }
+        .info {
+          display: inline-block;
+          vertical-align: top;
+          height: 60px;
+          padding-left: 5px;
+          width: calc(100% - 65px);
+          p {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0px;
+            padding: 0px;
+            height: 20px;
+            line-height: 20px;
+            width: 100%;
+            font-size: 12px;
+
+            text-align: left;
+          }
+        }
+      }
+
+      .sku {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 20%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .unit-price {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 20%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .qty {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 15%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: center;
+        }
+      }
+
+      .total {
+        display: inline-block;
+        vertical-align: top;
+        height: 60px;
+        width: 15%;
+        p {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+          width: 100%;
+
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.fulfillment-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  height: 120px;
+  padding-top: 30px;
+  mat-slide-toggle {
+    padding-left: 30%;
+    padding-top: 50px;
+
+    font-size: 16px;
+  }
+}
+
+/*************************
+       Totals Grid
+  **************************/
+
+.total-container {
+  display: inline-grid;
+  width: 50%;
+  font-family: "Montserrat";
+  font-size: 14px;
+
+  padding-top: 30px;
+
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: 30px 30px 30px 30px;
+  grid-template-areas:
+    "subtotal-header subtotal"
+    "tax-header tax"
+    "shipping-header shipping"
+    "total-header total";
+
+  /* box-shadow: 0px 1px 2px rgba(0,0,0,0.18);*/
+  color: $color-dark-blue;
+
+  .detail-subtotal-header {
+    grid-area: subtotal-header;
+    display: table;
+  }
+
+  .detail-subtotal {
+    grid-area: subtotal;
+    display: table;
+  }
+
+  .detail-tax-header {
+    grid-area: tax-header;
+    display: table;
+  }
+
+  .detail-tax {
+    grid-area: tax;
+    display: table;
+  }
+
+  .detail-shipping-header {
+    grid-area: shipping-header;
+    display: table;
+  }
+
+  .detail-shipping {
+    grid-area: shipping;
+    display: table;
+  }
+
+  .detail-total-header {
+    grid-area: total-header;
+    display: table;
+  }
+  .detail-total {
+    grid-area: total;
+    display: table;
+  }
+}
+
+.total-container * p {
+  margin: 0px;
+  padding: 0px;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+/************************************
+          Shipping Info Grid
+  ************************************/
+
+.shipping-container {
+  margin-top: 2.5%;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.18);
+
+  background: white;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  font-family: "Montserrat";
+  font-size: 14px;
+  padding-top: 10px;
+
+  .title {
+    background: $color-dark-blue;
+    color: $color-white-blue;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+.detail-view-shipping-info {
+  display: grid;
+  width: 100%;
+
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  grid-template-rows: 50px 50px;
+  grid-template-areas:
+    "carrier-header method-header tracking-header label-header"
+    "carrier method tracking label";
+
+  .shipping-carrier-header {
+    grid-area: carrier-header;
+    display: table;
+  }
+
+  .shipping-method-header {
+    grid-area: method-header;
+    display: table;
+  }
+
+  .shipping-tracking-header {
+    grid-area: tracking-header;
+    display: table;
+  }
+
+  .label-header {
+    grid-area: label-header;
+    display: table;
+  }
+
+  .shipping-carrier {
+    grid-area: carrier;
+    display: table;
+  }
+
+  .shipping-method {
+    grid-area: method;
+    display: table;
+  }
+
+  .shipping-tracking {
+    grid-area: tracking;
+    display: table;
+  }
+
+  .shipping-label-div {
+    grid-area: label;
+    display: table;
+  }
+
+  * p {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+    line-height: 50px;
+    width: inherit;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  * a {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+    line-height: 50px;
+    width: inherit;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/*******************************
+         Fulfillment Status
+  *******************************/
+mat-slide-toggle {
+  font-size: 16px;
+  font-family: "Montserrat";
+  letter-spacing: 0.5px;
+}
+
+/********************************************************************
+                         Right Panel
+  *********************************************************************/
+
+.shipping-address {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+  height: auto;
+  margin: 2.5% 2.5% 0 7.5%;
+  font-size: 14px;
+  font-family: "Montserrat";
+  
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  mat-form-field {
+    width: 80%;
+    padding-left: 10%;
+  }
+  
+  .title {
+    background: $color-dark-blue;
+    color: $color-white-blue;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 10px;
+  }
+}
+
+.customer-info {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+  margin: 2.5% 7.5% 0 2.5%;
+  height: auto;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  font-size: 14px;
+  font-family: "Montserrat";
+  
+  mat-form-field {
+    width: 80%;
+    padding-left: 10%;
+  }
+  
+  .title {
+    background: $color-dark-blue;
+    color: $color-white-blue;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 10px;
+  }
+}
+
+/****************************************
+                  Submit
+*****************************************/
+
+.submit-div {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+  margin-left: 30%;
+  padding-bottom: 100px;
+  margin-top: 30px;
+}
+
+.submit-button {
+  display: inline-block;
+  vertical-align: top;
+  
+  
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  
+  font-size: 16px;
+  text-align: center;
+  
+  text-decoration: none;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+/********************************************************************
+                          END DETAIL VIEW
+  *********************************************************************/

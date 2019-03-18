@@ -1,0 +1,90 @@
+<div class="main">
+
+  <div class="container">
+    <ng-container *ngIf="this.formType === true">
+      <div class="form-container">
+        <h3 class="title">LOGIN</h3><br>
+        <form (ngSubmit)="submitLogin()" #loginForm="ngForm">
+          <div class="text-fields">
+            
+              <span class="login-field">Username:
+                <input class="login-input" type="text" name="username" [(ngModel)]="model.username">
+              </span>
+           
+
+           
+              <span class="login-field">Password:
+                <input class="login-input" type="password" name="password" [(ngModel)]="model.password">
+              </span>
+            
+          </div>
+
+          <div class="submit-div">
+            <button class='submit-button white-button'>Submit</button>
+          </div>
+
+        </form>
+
+        <!--
+
+       
+        <div class="change-form-container">
+          <button class="change-form-button" (click)="changeForm()">Sign Up</button>
+        </div>
+         -->
+
+      </div>
+    </ng-container>
+
+    <!--
+    <ng-container *ngIf="this.formType === false">
+        <div class="form-container">
+          <h3 id="title">Sign Up</h3><br>
+  
+          <form (ngSubmit)="submitNewUser()" #loginForm="ngForm">
+            <div class="text-fields">
+              <div class="form-field">
+                  <span class="login-field">Email:
+                    <input class="login-input" type="email" name="email" [(ngModel)]="model.email">
+                    <br>
+                  </span>
+                </div>
+
+            <div class="form-field">
+              <span class="login-field">Username:
+                <input class="login-input" type="text" name="username" [(ngModel)]="model.username">
+                <br>
+              </span>
+            </div>
+  
+            <div class="form-field">
+              <span class="login-field">Password:
+                <input class="login-input" type="password" name="password" [(ngModel)]="model.password">
+                <br>
+              </span>
+            </div>
+          </div>
+  
+            <div class="submit-div">
+             
+              <span>
+                <input type="submit" value="Submit" class="submit-button">
+                <br>
+              </span>
+            </div>
+          </form>
+  
+          <div class="change-form-container">
+            <button class="change-form-button" (click)="changeForm()">Login</button>
+          </div>
+          
+        </div>
+      </ng-container>
+
+    -->
+
+
+
+  </div>
+
+</div>

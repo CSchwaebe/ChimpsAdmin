@@ -1,0 +1,36 @@
+<div class="main">
+
+  <div id="center-panel">
+
+
+    <ng-template [ngIf]="loggedIn === true">
+
+
+      <h3 id="title">ADMIN</h3>
+
+      <div class="choose-component-button-container">
+        <button class="choose-component-button" (click)="chooseComponent('prodcat')"
+        [style.color]="(selectedComponenet === 'prodcat') ? 'white': 'black'"
+        [style.background]="(selectedComponenet === 'prodcat') ? 'purple': 'white'"
+        >Products/Categories</button>
+
+        <button class="choose-component-button" (click)="chooseComponent('orders')"
+        [style.color]="(selectedComponenet === 'orders') ? 'white': 'black'"
+        [style.background]="(selectedComponenet === 'orders') ? 'purple': 'white'" 
+        >Orders</button>
+
+        <button class="choose-component-button" (click)="chooseComponent('homepage')"  
+        [style.color]="(selectedComponenet === 'homepage') ? 'white': 'black'"
+        [style.background]="(selectedComponenet === 'homepage') ? 'purple': 'white'" 
+        >Homepage</button>
+      </div>
+
+
+
+
+
+
+    </ng-template>
+  </div>
+
+</div>

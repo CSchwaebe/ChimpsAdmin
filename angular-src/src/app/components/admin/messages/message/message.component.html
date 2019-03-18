@@ -1,0 +1,42 @@
+<div class="center-div">
+ 
+  <h1 class=title>Recent Messages</h1>
+    <div class="headers-container">
+      <div class="name-header">
+        <p>Name</p>
+      </div>
+      <div class="date-header">
+        <p>Date</p>
+      </div>
+      <div class="status-header">
+        <p>Status</p>
+      </div>
+      <div class="actions-header">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="message-container" *ngFor="let message of model; index as i">
+      <div class="name">
+        <p>{{message.name}}</p>
+      </div>
+      <div class="date">
+        <p>{{message.readableCreatedAt}}</p>
+      </div>
+      <ng-template [ngIf]="message.status">
+        <div class="status-container">
+          <button class="status-button" id="{{i}}" (click)="changeStatus($event.target.id)" [ngStyle]="{'background': 'hsl(123, 75%, 95%)', 'color': 'hsl(123, 79%, 25%)'}">Closed</button>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="!message.status">
+        <div class="status-container">
+          <button class="status-button" id="{{i}}" (click)="changeStatus($event.target.id)">Open</button>
+        </div>
+      </ng-template>
+      <div class="actions-container">
+        <button class="details-button" id="{{i}}" (click)="viewDetails($event.target.id)">View</button>
+      </div>
+    </div>
+  
+
+</div>

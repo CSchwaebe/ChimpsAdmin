@@ -1,0 +1,42 @@
+<div class=container>
+
+  <h1 class=title>Homepage Slideshow</h1>
+
+  <div class="center-div">
+    <div class=image-div>
+
+      <div class=thumbnail>
+        <div *ngFor='let image of images; index as i' class=thumbnail-container>
+          <img src={{images[i]}}>
+          <button type='button' class=red-button (click)=removeImage(i)>X</button>
+        </div>
+      </div>
+
+
+      <ng-template [ngIf]='!isCloudinaryLoaded && images.length < 5'>
+        <div class=image-button>
+          <button class=upload-button (click)=loadCloudinary()>Add Image</button>
+        </div>
+      </ng-template>
+
+      <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'"
+        [style.height]="isCloudinaryLoaded ? 'auto': '0px'">
+        <div id=image1 class=image-button>
+          <button id="0" class="upload-button" [style.display]="(images.length < 5) ? 'inline-block' : 'none'"
+            type=button>Upload</button>
+        </div>
+
+        <p class=image-div-footer [style.display]="(images.length < 5) ? 'inline-block' : 'none'">* Max Images - 5</p>
+        <p class=image-div-footer [style.display]="(images.length < 5) ? 'inline-block' : 'none'">* Max File Size - 10MB
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="submit-div">
+    <button (click)=onSubmit() class="submit-button">Save</button>
+  </div>
+
+</div>

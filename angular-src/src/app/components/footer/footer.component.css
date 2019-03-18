@@ -1,0 +1,45 @@
+/* Color Scheme
+* Purple and Teal
+* pink - #C93CC9
+* teal - #00BCBE
+* slate blue - #3C4D7D
+* dark blue - #1E2B7A
+* purple - #63229B
+*/
+
+.footer {
+    min-width: 100vw;
+    
+    height: 10vh;
+    align-content: center;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
+    font-family: Lato;
+    font-weight: 100;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    height: 100px;
+    width: 100vw;
+    
+    
+    background: white;
+    
+}
+
+h2 {
+   
+   font-family: 'Lato';
+   color: black;
+   margin-top: 3vh;
+   font-size: 18px;
+   
+}
+
+h3 {
+  
+    font-family: 'Montserrat';
+    color: black;
+    font-weight: 100;
+    font-size: 16px;
+}

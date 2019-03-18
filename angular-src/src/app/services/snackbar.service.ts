@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SnackbarService {
+
+  constructor(private snackBar: MatSnackBar ) { }
+
+  /**
+   * Displays a Success Message
+   */
+  onSuccess() {
+    this.snackBar.open('Success!', null, {
+      duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
+      panelClass: ['snackbar-success'],
+    });
+  }
+
+  /**
+   * Displays an Error Message
+   */
+  onError() {
+    this.snackBar.open('Error', null, {
+      duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
+      panelClass: ['snackbar-error'],
+    });
+  }
+
+ 
+  
+}

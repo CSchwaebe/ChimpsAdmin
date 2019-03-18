@@ -1,0 +1,123 @@
+<div class=background>
+
+
+<form (ngSubmit)="onSubmit()" #addCategoryForm="ngForm">
+    <h1 class=title>New Collection</h1>
+  
+  <div class="left-div">
+      <h3 class="group-title">Name and Location</h3>
+    <!-- Choose Type -->
+      <mat-form-field appearance="outline">
+          <mat-label>New Category Type</mat-label>
+          <mat-select required placeholder="New Category Type" [(ngModel)]="model.type" name="selector">
+            <mat-option *ngFor="let opt of options" [value]=opt>{{opt}}</mat-option>
+            
+
+          </mat-select>
+        </mat-form-field>
+    <!-- Category -->
+    <ng-template [ngIf]="model.type==='Category' || model.type==='Subcategory'">
+      <mat-form-field appearance="outline">
+        <mat-label>Collection</mat-label>
+        <mat-select required placeholder="Collection" [(ngModel)]="model.shop" name="collection" (selectionChange)="getCategories()">
+          <mat-option *ngFor="let col of collections" [value]="col.name">{{col.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+    <!-- Subcategory -->
+    <ng-template [ngIf]="model.type==='Subcategory'">
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select required placeholder="Category" [(ngModel)]="model.category" name="category">
+          <mat-option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+
+    <!-- NAME -->
+    <mat-form-field appearance="outline">
+      <mat-label>{{model.type}} Name</mat-label>
+      <input required matInput class="product-input" type="text" name="name" [(ngModel)]="model.name">
+    </mat-form-field>
+
+  </div>
+
+  <div class="right-div">
+      <h3 class="group-title">Header Image</h3>
+    <!-- Images
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Header Image: " [(ngModel)]="CloudinaryService.imageUrls[0]" class="image-input" type="text" name="header-image">
+    </mat-form-field>
+    -->
+    <!--
+    <div id=image-div>
+
+        <div id=thumbnails>
+              
+        </div>
+
+        <ng-template [ngIf]=!isCloudinaryLoaded>
+          <div class=image-button>
+            <button class=upload-button (click)=loadCloudinary()>Add Image</button>
+          </div>
+        </ng-template>
+
+        <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'">
+          <div id=image1 class=image-button>
+            <button id="0" class="upload-button" [style.display]="(CloudinaryService.count === 1) ? 'none' : 'inline-block'"
+              type=button>Upload</button>
+          </div>
+
+          <div class=thumbnails [style.display]="(CloudinaryService.count > 0) ? 'inline-block' : 'none'">
+          </div>
+
+          <p class=image-div-footer>* Max Images - 1</p>
+          <p class=image-div-footer>* Max File Size - 10MB</p>
+        </div>
+      </div>
+
+    -->
+  
+    <div class=image-div>
+       <ng-template [ngIf]="image !== ''">
+        <div class=thumbnail>
+            <div class=thumbnail-container>
+              <img src={{image}}>
+              <button type='button' class=red-button (click)=removeImage()>Change Image</button>
+            </div>
+          </div>
+      </ng-template>
+
+      <ng-template [ngIf]='!isCloudinaryLoaded'>
+        <div class=image-button>
+          <button class="upload-button white-button" (click)=loadCloudinary()>Add Image</button>
+        </div>
+      </ng-template>
+
+      <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'" [style.height]="isCloudinaryLoaded ? 'auto': '0px'">
+        <div id=image1 class=image-button>
+          <button id="0" class="upload-button white-button" [style.display]="(image === '') ? 'inline-block' : 'none'"
+            type=button>Upload</button>
+        </div>
+
+        <p class=image-div-footer [style.display]="(image === '') ? 'inline-block' : 'none'">* Max Images - 1</p>
+        <p class=image-div-footer [style.display]="(image === '') ? 'inline-block' : 'none'">* Max File Size - 10MB</p>
+      </div>
+    </div>
+
+    <div class=toggle-container>
+        <h3 class="group-title">Status</h3>
+        <mat-slide-toggle name="activate" color=primary [(ngModel)]="model.active">Activate</mat-slide-toggle>
+    </div>
+  </div>
+
+  <div class="submit-div">
+    <!-- Submit -->
+    <span>
+      <input type="submit" value="Submit" class="submit-button dark-blue-button">
+      <br>
+    </span>
+  </div>
+
+</form>
+</div>

@@ -1,0 +1,106 @@
+<div class=background>
+
+  <div class=container>
+    <h1 class=title>Edit Collection</h1>
+    <div class="top-div">
+      <button class="white-button top-button" (click)="toggleInactiveGroups()">{{buttonText}} Deactivated
+        Collections</button>
+
+
+
+  
+      <div *ngFor="let col of sortedGroups; index as i">
+  
+        <div class="collection-container Collection">
+         
+          <div class=button-container *ngIf="sortedGroups[i].categories.length; else elseBlock">
+              <button id="{{col.collection.stub}}" class='expand-button'
+            (click)="toggleCollection(col, $event.target.id)">
+
+            <ng-template [ngIf]="col.isOpen">
+                <mat-icon id="{{col.collection.stub}}">expand_more</mat-icon>
+              </ng-template>
+
+              <ng-template [ngIf]="!col.isOpen">
+                <mat-icon id="{{col.collection.stub}}">chevron_right</mat-icon>
+              </ng-template>
+
+          </button>
+           </div>
+           <ng-template #elseBlock>
+             <div class=button-blank-space></div>
+           </ng-template>
+  
+  
+  
+          <div class=image-container>
+            <div class=overlay></div>
+            <img src={{col.collection.image}}>
+            <p class=name>{{col.collection.name}}</p>
+            <button class=select-button (click)=onContinue(col.collection._id)></button>
+          </div>
+          <button class=select-button (click)=onContinue(col.collection._id)>Select</button>
+        </div>
+  
+        <div class="dropdown-content {{col.collection.stub}}">
+          <div class="category" *ngFor="let cat of sortedGroups[i].categories; index as j">
+            <div class="collection-container Category">
+             <div class=button-container *ngIf="sortedGroups[i].categories[j].subcategories.length; else elseBlock">
+                <button id="{{cat.category.stub}}" class='expand-button'
+                (click)="toggleCategory(cat, $event.target.id)">
+
+                <ng-template [ngIf]="cat.isOpen">
+                    <mat-icon id="{{cat.category.stub}}">expand_more</mat-icon>
+                  </ng-template>
+
+                  <ng-template [ngIf]="!cat.isOpen">
+                    <mat-icon id="{{cat.category.stub}}">chevron_right</mat-icon>
+                  </ng-template>
+
+              </button>
+             </div>
+             <ng-template #elseBlock>
+               <div class=button-blank-space></div>
+             </ng-template>
+             
+  
+              <div class=image-container>
+                <div class=overlay></div>
+                <img src={{cat.category.image}}>
+                <p class=name>{{cat.category.name}}</p>
+                <button class=select-button (click)=onContinue(cat.category._id)></button>
+              </div>
+              <button class=select-button (click)=onContinue(cat.category._id)>Select</button>
+
+            </div>
+  
+            <div class="subcategory {{cat.category.stub}}" *ngFor="let sub of cat.subcategories">
+              <div class="collection-container Subcategory">
+                  <div class=button-blank-space></div>
+
+                <div class=image-container>
+                  <div class=overlay></div>
+                  <img src={{sub.image}}>
+                  <p class=name>{{sub.name}}</p>
+                  <button class=select-button (click)=onContinue(sub._id)></button>
+                </div>
+                <button class=select-button (click)=onContinue(sub._id)>Select</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+   
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+

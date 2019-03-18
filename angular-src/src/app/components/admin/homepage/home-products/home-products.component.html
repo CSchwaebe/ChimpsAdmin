@@ -1,0 +1,50 @@
+<div class=container>
+
+    <h1 class=title>Featured Products</h1>
+ 
+      <div class="products-div">
+  
+          
+          <div class=filter-container>
+            <h2 class=title>Filter</h2>
+              <mat-form-field appearance="outline">
+                  <mat-label>Collection</mat-label>
+                  <mat-select [(ngModel)]=productFilter.collection name=collection (selectionChange)=clearCat() (selectionChange)=getCategories() (selectionChange)=filterProducts()>
+                    <mat-option *ngFor="let col of collections" [value]=col.name>{{col.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <mat-select [(ngModel)]=productFilter.category name=category (selectionChange)=clearSub() (selectionChange)=getSubcategories() (selectionChange)=filterProducts()>
+                      <mat-option *ngFor="let cat of categories" [value]=cat.name>{{cat.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+  
+                  <mat-form-field appearance="outline">
+                      <mat-label>Subcategory</mat-label>
+                      <mat-select [(ngModel)]=productFilter.subcategory name=subcategory (selectionChange)=filterProducts()>
+                        <mat-option *ngFor="let sub of subcategories" [value]=sub.name>{{sub.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+          </div>
+
+          <div class=grid>
+            
+            <div class="product-box" *ngFor="let prod of filteredProducts; index as i">  
+                  <img src={{prod.images[0]}}>
+                  <p class=product-name>{{prod.name}}</p>
+                  <p class=product-name>${{prod.price}}</p>
+              <div class=toggle-container>
+                  <mat-slide-toggle name="{{i}}-featured" color=primary [(ngModel)]="prod.featured" (change)="updateProduct(prod)">Featured</mat-slide-toggle>
+              </div>
+            </div>
+          </div>
+  
+      
+      </div>
+  
+  
+    
+  
+    </div>

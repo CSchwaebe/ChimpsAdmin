@@ -1,0 +1,11 @@
+#shopping-cart {
+    display: none;
+}
+
+.router-outlet {
+    display: inline-block;
+    position: absolute;
+    top: 66px;
+    left: 250px;
+    width: calc(100vw - 250px);
+}

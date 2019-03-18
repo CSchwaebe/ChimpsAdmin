@@ -1,0 +1,278 @@
+
+
+
+
+<!-- Product Form -->
+<form (ngSubmit)="onSubmit()" #addProductForm="ngForm" class="product-form" id="add-product-form">
+
+  <div class=container>
+    <h1 class=title>New Product</h1>
+    <mat-horizontal-stepper [linear]=false #stepper>
+
+      <!-- STEP 1 -->
+      <mat-step [stepControl]="locationFormGroup">
+        <form class=location [formGroup]="locationFormGroup">
+          <ng-template matStepLabel>Location</ng-template>
+
+          <!-- Collection -->
+          <mat-form-field appearance="outline">
+            <mat-label>Collection</mat-label>
+            <mat-select placeholder="Collection" name="collection" (selectionChange)="this.getCategories()"
+              formControlName="collection" required>
+              <mat-option *ngFor="let col of collections" [value]="col.name">{{col.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Category -->
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select placeholder="Category" name="category" (selectionChange)="getSubcategories()"
+              formControlName="category">
+              <mat-option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Subcategory -->
+          <mat-form-field appearance="outline">
+            <mat-label>Subcategory</mat-label>
+            <mat-select placeholder="Subcategory" name="subcategory" formControlName="subcategory">
+              <mat-option *ngFor="let sub of subcategories" [value]="sub.name">{{sub.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class=button-container>
+            <button class=next-button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- STEP 2 -->
+      <mat-step [stepControl]="infoFormGroup">
+        <form class=info [formGroup]="infoFormGroup">
+          <ng-template matStepLabel>Product Info</ng-template>
+          <div class=left-div>
+            <!-- NAME -->
+            <mat-form-field appearance="legacy">
+              <mat-label>Product Name</mat-label>
+              <input matInput formControlName="name" type="text" name="name" required>
+            </mat-form-field>
+
+            <!-- PRICE -->
+            <mat-form-field appearance="legacy">
+              <mat-label>Price</mat-label>
+              <span matPrefix>$</span>
+              <input matInput formControlName="price" type="number" name="price" required>
+            </mat-form-field>
+
+            <!-- COST -->
+            <mat-form-field appearance="legacy">
+              <mat-label>Cost</mat-label>
+              <mat-hint>Used to calculate profit</mat-hint>
+
+              <span matPrefix>$</span>
+              <input matInput formControlName="cost" type="number" name="cost" required>
+            </mat-form-field>
+
+
+
+          </div>
+          <div class=right-div>
+            
+
+          <!-- COLOR -->
+          <mat-form-field appearance="legacy">
+            <mat-label>Color</mat-label>
+            <input matInput formControlName="color" type="text" name="color" required>
+          </mat-form-field>
+          
+
+            <!-- WEIGHT -->
+            <mat-form-field appearance="legacy">
+              <mat-label>Weight</mat-label>
+              <input matInput formControlName="weight" type="number" name="weight" required>
+              <span matSuffix>Ounces</span>
+            </mat-form-field>
+
+            <!-- DESCRIPTION -->
+            <mat-form-field appearance="legacy">
+              <mat-label>Description</mat-label>
+              <textarea cdkTextareaAutosize matInput formControlName="description" name="description" required></textarea>
+            </mat-form-field>
+
+          </div>
+          <div class=image-div>
+              <div class=old-thumbnails>
+                  <div *ngFor='let image of images; index as i' class=thumbnail-container>
+                    <img src={{images[i]}}>
+                    <button type='button' class=red-button (click)=removeImage(i)>X</button>
+                  </div>
+                </div>
+                <ng-template [ngIf]="!isCloudinaryLoaded && (images.length < 5)">
+                  <div class=image-button>
+                    <button class=upload-button (click)=loadCloudinary()>Add Images</button>
+                  </div>
+                </ng-template>
+    
+                <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'">
+                  <div id=image1 class=image-button>
+                    <button id="0" class="upload-button" [style.display]="(images.length === 5) ? 'none' : 'inline-block'"
+                      type=button>Upload</button>
+                  </div>
+    
+                  <p class=image-div-footer>* Max Images - 5</p>
+                  <p class=image-div-footer>* Max File Size - 10MB</p>
+                  <p class=image-div-footer>* You will be able to rearrage image order in the review tab</p>
+                </div>
+          </div>
+
+          <div class=button-container>
+            <button class=next-button mat-button matStepperNext>Next</button>
+            <button class=back-button mat-button matStepperPrevious>Back</button>
+
+          </div>
+        </form>
+
+      </mat-step>
+      <!-- STEP 3 -->
+      <mat-step [stepControl]="inventoryFormGroup">
+        <form class=inventory [formGroup]="inventoryFormGroup">
+          <ng-template matStepLabel>Sizes and Quantity</ng-template>
+
+          <!-- SIZES -->
+          <div class=left-div>
+            <h3 class=form-title>Sizes</h3>
+            <mat-form-field class=box appearance="outline">
+              <mat-chip-list #chipList>
+                <mat-chip *ngFor="let size of sizes" [selectable]=true [removable]=true (removed)="remove(size)">
+                  {{size.name}}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New size..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]=true (matChipInputTokenEnd)="add($event)">
+
+              </mat-chip-list>
+              <mat-hint>Tip: Press Enter to add another size</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!-- COLOR 
+          <div class=right-div>
+            <h3 class=form-title>Colors</h3>
+            <mat-form-field class=box appearance="outline">
+              <mat-chip-list #chipList>
+                <mat-chip *ngFor="let color of colors" [selectable]=true [removable]=true (removed)="removeColor(color)">
+                  {{color.name}}
+                  <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New color..." [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]=true (matChipInputTokenEnd)="addColor($event)">
+
+              </mat-chip-list>
+              <mat-hint>Tip: Press Enter to add another color</mat-hint>
+            </mat-form-field>
+          </div>
+          -->
+
+
+
+
+          <!-- QUANTITY -->
+          <div class=right-div>
+            <h3 class=form-title>Quantity in Stock</h3>
+            <mat-form-field class="quantity" *ngFor="let size of sizes">
+              <mat-label>{{size.name}}</mat-label>
+              <input matInput [(ngModel)]="inventory[size.name]" type="number" name="{{size.name}}-quantity"
+                [ngModelOptions]="{standalone: true}" required>
+            </mat-form-field>
+          </div>
+          <div class=button-container>
+            <button class=back-button mat-button matStepperPrevious>Back</button>
+            <button class=next-button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- STEP 4 -->
+      <mat-step>
+        <ng-template matStepLabel>Review</ng-template>
+
+        <div class=top-div>
+          <button class="preview-button dark-blue-button" type=button (click)=generatePreview()>{{previewButtonText}}
+            Preview</button>
+          <ng-template [ngIf]=preview>
+            <button class="save-button">Save</button>
+          </ng-template>
+        </div>
+
+        <!-- IMAGES -->
+        <ng-template [ngIf]=preview>
+          <div class=image-preview-container>
+
+            <div class="mainImage-container">
+              <img class=main-image src={{mainImage}}>
+            </div>
+
+            <!--   event.item.element.nativeElement.children[0].currentSrc   -->
+            <div class="secondary-images-list" cdkDropList cdkDropListOrientation="horizontal" #imagesList="cdkDropList"
+              [cdkDropListData]="images" (cdkDropListDropped)="drop($event)">
+              <div class="secondary-box" *ngFor="let image of images" cdkDrag>
+                <img class=secondary-image src={{image}}>
+              </div>
+            </div>
+            <p class=image-hint>*Drag and Drop the Images to Rearrange them</p>
+
+          </div>
+
+          <!-- END IMAGES -->
+
+          <!-- PRODUCT INFO -->
+          <div class=product-info-preview-container>
+            <div class="product-box">
+              <p class="product-name">{{model.name}}</p>
+              <p class="price">${{model.price}}</p>
+
+              <div class="selectors">
+                <mat-form-field class=size appearance="legacy">
+                  <mat-label>Size</mat-label>
+                  <mat-select placeholder="Size" name="selected-size" [(ngModel)]="selectedSize" (selectionChange)="getAvailableQty(selectedSize)">
+                    <mat-option *ngFor="let size of sizes" [value]="size.name">{{size.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field class=qty appearance="legacy">
+                  <mat-label>Qty</mat-label>
+                  <mat-select placeholder="Qty" name="qty">
+                    <mat-option *ngFor="let qty of availableQty" [value]="qty">{{qty}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+
+              </div>
+              <br>
+              <p class="description">{{model.description}}</p>
+
+              <button type="button" class="add-to-cart">ADD TO CART</button>
+
+            </div>
+
+          </div>
+        </ng-template>
+        <!-- END PRODUCT INFO -->
+
+
+
+        <div class=button-container>
+          <button class=next-button mat-button matStepperNext (click)=onSubmit()>Save</button>
+          <button class=back-button mat-button matStepperPrevious>Back</button>
+
+        </div>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </div>
+
+
+
+</form>
+

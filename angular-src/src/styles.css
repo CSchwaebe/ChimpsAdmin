@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Color Scheme
+* Purple and Teal
+* pink - #C93CC9
+* tela - #00BCBE
+* slate blue - #3C4D7D
+* dark blue - #1E2B7A
+* purple - #63229B
+*/
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* For the cloudinary thumbnails on the category page 
+body ul.cloudinary-thumbnails {
+  width: 100%;
+}
+
+body ul.cloudinary-thumbnails > li.cloudinary-thumbnail {
+  max-width: 100%;
+  margin: 0;
+}
+
+body ul.cloudinary-thumbnails > li.cloudinary-thumbnail > img {
+  width: 70% !important;
+  margin-left: 15% !important;
+  margin-right: 15% !important;
+  height: auto !important;
+}
+ End of Category Page */
+
+/* Background */
+.background {
+  
+  background-image: radial-gradient(
+    farthest-corner at 100vw 1vh,
+    rgba(255, 255, 255, 0.904) 0%,
+    rgb(216, 216, 216) 100%
+  );
+  background-image: linear-gradient(rgba(255, 255, 255, 0.904) 100%, rgb(216, 216, 216) 100%);
+
+}
+
+
+/*
+  $color-white-blue: hsl(239, 43%, 99%);
+$color-white-blue-active: hsl(239, 43%, 91%);
+
+//Start Ripple effect - White button
+*/
+/* BUTTONS */
+.white-button {
+  color: hsl(239, 100%, 9%);
+  font-family: "Montserrat";
+  background: hsl(239, 43%, 99%) radial-gradient(circle, transparent 1%, hsl(239, 43%, 99%) 1%) center/15000%;
+  background-position: center;
+  transition: background 0.8s;  
+  outline: none;
+  border: none;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);   
+
+}
+
+.white-button:active {
+  background-color: hsl(239, 43%, 91%);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+
+.dark-blue-button {
+  color:  hsl(239, 43%, 99%);
+  font-family: "Montserrat";
+  background: hsl(239, 100%, 9%) radial-gradient(circle, transparent 1%, hsl(239, 100%, 9%) 1%) center/15000%;
+  background-position: center;
+  transition: background 0.8s; 
+  outline: none;
+  border: none;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);   
+
+}
+
+.dark-blue-button:active {
+  background-color: hsl(238, 16%, 44%);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+
+.red-button {
+  color:  hsl(0, 43%, 99%);
+  color: hsl(0, 73%, 46%);
+  font-family: "Montserrat";
+  background: hsl(0, 73%, 97%) radial-gradient(circle, transparent 1%, hsl(0, 73%, 97%) 1%) center/15000%;
+  background-position: center;
+  transition: background 0.8s; 
+  outline: none;
+  border: none;
+  cursor: pointer;
+  /*
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);   
+  */
+}
+
+.red-button:active {
+  background-color: hsl(0, 50%, 65%);
+  background-size: 100%;
+  transition: background 0s;
+}
+/*End ripple effect - white button*/
+
+
+
+/* SnackBar Notifications */
+
+.snackbar-success {
+  background-color: hsl(239, 100%, 9%);
+  color: white;
+  letter-spacing: .75px;
+  font-family: 'Montserrat';
+  z-index: 1000;
+}
+
+.snackbar-error {
+  background-color: red;
+  color: white;
+  z-index: 1000;
+  letter-spacing: .75px;
+  font-family: 'Montserrat';
+}
