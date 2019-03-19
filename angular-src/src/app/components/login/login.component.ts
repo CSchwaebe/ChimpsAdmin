@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { LoginService } from '../../services/login.service';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   formType: boolean = true;
 
   constructor(private LoginService: LoginService,
-              private LocalStorageService: LocalStorageService) { }
+              private LocalStorageService: LocalStorageService,
+              private Router: Router) { }
 
   ngOnInit() {
     console.log(this.formType)
@@ -26,7 +28,10 @@ export class LoginComponent implements OnInit {
     
     let token = await this.LoginService.logIn(this.model);
     this.LocalStorageService.store('token', token);
-    console.log(this.LoginService.isAuthenticated());
+    if (await this.LoginService.isAuthenticated()) {
+      console.log('wtf')
+      this.Router.navigate(['/admin/orders/recent']);
+    };
     
   }
 

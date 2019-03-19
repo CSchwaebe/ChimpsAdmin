@@ -52,84 +52,102 @@ import { MailingListComponent } from './components/admin/email/mailing-list/mail
 const appRoutes: Routes = [
   {
     path: '',
-    component: AdminComponent,
-    canActivate: [AuthGuard]
+    component: LoginComponent
   },
   {
     path: 'homepage/featured/collections',
     component: HomeCollectionsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'homepage/featured/products',
     component: HomeProductsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'homepage/slideshow',
     component: HomeSlideshowComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/categories/add',
     component: AddCategoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/categories/edit',
     component: EditCategoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/categories/edit/:id',
     component: EditCategoryDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/categories/remove',
     component: RemoveCategoryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/products/add',
     component: AddProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/products/edit',
     component: EditProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'products/edit/:id',
     component: EditProductDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/products/remove',
     component: RemoveProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/orders/recent',
     component: RecentOrdersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/orders/unfulfilled',
     component: UnfulfilledOrdersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/orders/search',
     component: SearchOrdersComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'orders/detail/:id',
     component: DetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'orders/refund/:id',
     component: RefundComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/messages',
     component: MessageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/messages/:id',
     component: MessageDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin/subscribers',
     component: MailingListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

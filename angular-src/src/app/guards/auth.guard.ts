@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     
       return new Promise<boolean>(async (resolve, reject) => {
         if (await this.LoginService.isAuthenticated()) {
-          console.log('WE re in')
+         this.Router.navigate['/admin/orders/recent']
           resolve (true);
         }
           else {

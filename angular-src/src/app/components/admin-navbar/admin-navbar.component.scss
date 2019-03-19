@@ -52,13 +52,33 @@ svg {
   font-weight: 100;
 
   background: $color-white-blue;
+  
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 66px;
+
+  font-family: "Montserrat";
+  font-weight: 100;
+
+
+  background: $color-dark-blue;
+  background: linear-gradient(180deg, rgb(0, 2, 70) 0%, rgba(0,1,46,1) 100%);
+  //box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 
   z-index: 100;
 
   .title {
     height: 66px;
-    background: $color-silver;
+    //background: $color-silver;
+    width: 250px;
 
     .icon-container {
       display: inline-block;
@@ -77,13 +97,19 @@ svg {
       line-height: 66px;
       margin: 0px;
       text-decoration: none;
-      color: $color-dark-blue;
+      color: white;
+     
+      opacity: .29;
       letter-spacing: 2px;
       font-weight: 700;
     }
   }
 
+}
+  
+
   .list {
+    margin-top: 66px;
     display: inline-block;
     padding-left: 25px;
     .list-item {
@@ -98,6 +124,7 @@ svg {
         width: 25px;
         height: 25px;
         padding: 12.5px;
+        
       }
 
       .drop-btn {
@@ -135,19 +162,3 @@ svg {
   }
 }
 
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 250px;
-  width: calc(100vw - 250px);
-  height: 66px;
-
-  font-family: "Montserrat";
-  font-weight: 100;
-
-  background: $color-dark-blue;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-
-  z-index: 100;
-}
