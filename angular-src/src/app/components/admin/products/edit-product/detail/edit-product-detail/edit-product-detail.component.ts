@@ -185,6 +185,8 @@ export class EditProductDetailComponent implements OnInit, AfterViewInit, OnDest
     this.model.weight = { ounces: this.infoFormGroup.value.weight };
     this.model.description = this.infoFormGroup.value.description;
     this.model.images = this.images;
+    this.images.length ? this.mainImage=this.images[0] : this.mainImage='';
+   //this.mainImage = this.images[0];
 
     //From quantity
     this.model.inventory = [];

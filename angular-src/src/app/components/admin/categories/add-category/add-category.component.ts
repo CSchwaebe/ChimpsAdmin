@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -14,7 +14,9 @@ import { NewCollectionService } from 'src/app/services/new-collection.service';
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit, AfterViewInit {
-  
+  @ViewChild('addCategoryForm') form;
+
+
   formControl = new FormControl('', [Validators.required]);
   subscription: Subscription;
   isCloudinaryLoaded: boolean = false;
@@ -27,12 +29,9 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
   subcategries: string[];
   
  
-
   image: string = '';
-  //model = new Group(this.options[0], '', this.image, true);
   model = new Collection();
   
-
 
 
   constructor(//private CollectionService: CollectionService, 
@@ -66,6 +65,7 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
     this.model.category = '';
     this.model.shop = '';
     this.image = '';
+    this.form.resetForm();
   }
 
 
@@ -76,8 +76,6 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
   removeImage() {
     this.image = '';
   }
-
-  
 
   async onSubmit() { 
     this.model.featured = false;
@@ -92,50 +90,17 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
 
     this.model.stub = this.model.stub.replace(/\s+/g, '').toLowerCase();
     console.log(this.model);
-    
-    await this.CollectionService.post(this.model);
-    /*
-    switch(this.model.type) {
-      case 'Collection': 
-        let col = { 
-          name: this.model.name,
-          image: this.model.image,
-          stub: this.model.stub,
-          active: this.model.active
-        }
-        await this.CollectionService.post(col);
-        break;
 
-      case 'Category': 
-        let cat = { 
-          name: this.model.name,
-          shop: this.model.collection, 
-          image: this.model.image,
-          stub: this.model.stub,
-          active: this.model.active
-        }
-        await this.CategoryService.post(cat);
-        
-        break;
-
-      case 'Subcategory': 
-        let sub = { 
-          name: this.model.name,
-          shop: this.model.collection, 
-          category: this.model.category,
-          image: this.model.image,
-          stub: this.model.stub,
-          active: this.model.active
-        }
-        await this.SubcategoryService.post(sub);
-        break;
+    if (await this.CollectionService.get(this.model.stub)) {
+      alert('You cannot add duplicate collections')
+      return
+    } else {
+      let response = await this.CollectionService.post(this.model);
+      response ? this.SnackbarService.onSuccess() : this.SnackbarService.onError();
+      this.clear();
+      await delay(250);
+      this.getCollections();
     }
-    */
-
-    this.SnackbarService.onSuccess();
-    this.clear();
-    await delay(250);
-    this.getCollections();
   }
 
   async getCollections() {
@@ -144,11 +109,7 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
       this.collections = this.allGroups.filter((collection, index, collectionArray) => {
         return collection.type === 'Collection';
       })
-      /*     
-      for (let i = 0; i < shopArray.length; i++) {
-                this.collections.push(shopArray[i].name);
-            }
-            */
+     
         resolve (this.collections);
     }) 
   }
@@ -157,18 +118,6 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
     this.categories = this.allGroups.filter((collection, index, collectionArray) => {
       return (collection.type==='Category' && collection.shop === this.model.shop);
     })
-    //this.categories = await this.CollectionService.getCategories(this.model);
-
-    /*
-    return new Promise(async (resolve, reject) => {        
-      this.categories = [];
-      let categoryArray = await this.CategoryService.getAll(collection);
-            for (let i = 0; i < categoryArray.length; i++) {
-                this.categories.push(categoryArray[i].name);
-            }
-        resolve (this.categories);
-    })
-    */
   }
 
 

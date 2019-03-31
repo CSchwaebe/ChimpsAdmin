@@ -1,5 +1,5 @@
 <div class=background>  
-      <form (ngSubmit)="saveChanges()">
+      <form (ngSubmit)="saveChanges()" #editCategoryForm="ngForm">
         <h1 class=title>Edit {{selectedType}}</h1>
   
         <div class="left-div">

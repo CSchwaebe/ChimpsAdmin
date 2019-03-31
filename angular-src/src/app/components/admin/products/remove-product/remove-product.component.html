@@ -62,7 +62,9 @@
         <p class=color>{{prod.color}}</p>
         <p class=price>${{prod.price}}</p>
         <div class=remove-container>
-            <button class="remove-button red-button" (click)=removeProduct(i)>Deactivate</button>
+          <ng-template [ngIf]=prod.active>
+              <button class="remove-button red-button" (click)=removeProduct(i)>Deactivate</button>
+          </ng-template>
         
             <button class="delete-button red-button" (click)=deleteProduct(i)>Delete</button>
 

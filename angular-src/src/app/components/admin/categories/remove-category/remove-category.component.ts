@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewCollectionService } from 'src/app/services/new-collection.service';
 import { Collection } from 'src/app/models/admin/collection';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-
+import { ProductService } from 'src/app/services/product.service';
 
 interface cat {
   category: Collection;
@@ -31,17 +31,18 @@ export class RemoveCategoryComponent implements OnInit {
   collections: Collection[] = [];
   categories: Collection[];
   subcategories: Collection[];
- 
+
   sortedGroups: col[] = [];
 
 
-  constructor(private CollectionService: NewCollectionService, 
-              private SnackbarService: SnackbarService, 
-              ) { }
+  constructor(private CollectionService: NewCollectionService,
+    private SnackbarService: SnackbarService,
+    private ProductService: ProductService,
+  ) { }
 
   async ngOnInit() {
     await this.initialize();
-        console.log('On Init')  
+    console.log('On Init')
   }
 
   async initialize() {
@@ -67,25 +68,70 @@ export class RemoveCategoryComponent implements OnInit {
   }
 
   async delete(id: string) {
+    let col = this.allGroups.find((collection) => {
+      return collection._id === id;
+    })
+    let products = await this.ProductService.getAll('/' + col.stub)
+    //console.log(products)
+    if (products.length) {
+      alert('You must delete all Products from this ' + col.type + ' before you can delete it.')
+      return;
+    }
+
+
     let confirmation = confirm('Are you sure? This action cannot be undone');
     if (confirmation) {
-      let col = this.allGroups.find((collection) => {
-        return collection._id === id;
-      })
       await this.CollectionService.delete(col);
+
       this.sortedGroups = [];
       this.SnackbarService.onSuccess();
       this.initialize();
     }
-    
   }
 
   async onSubmit(id: string) {
     let col = this.allGroups.find((collection) => {
       return collection._id === id;
     })
-    await this.CollectionService.deactivate(col);
+
+    console.log();
     
+    //Deactivate all subgroups and products
+    let children = [];
+    switch (col.type) {
+      case 'Collection': 
+      children = this.allGroups.filter((collection) => {
+        return collection.shop === col.name;
+      }) 
+      break;
+      case 'Category': 
+      children = this.allGroups.filter((collection) => {
+        return collection.shop === col.shop && collection.category === col.name;
+      })
+      break;
+    }
+
+    //console.log(children);
+    for (let i = 0; i < children.length; i++) {
+      children[i].active = false;
+      children[i].featured = false;
+      this.CollectionService.update(children[i]);
+    }
+       
+
+    let products = await this.ProductService.getActive('/' + col.stub)
+    //console.log(products)
+    if (products) {
+      for (let j = 0; j < products.length; j++) {
+        products[j].active = false;
+        products[j].featured = false;
+        this.ProductService.update(products[j]);
+      }
+    }
+    //END Deactivate All Subgroups and Products
+
+    await this.CollectionService.deactivate(col);
+
     this.sortedGroups = [];
     this.SnackbarService.onSuccess();
     this.initialize();
@@ -141,7 +187,7 @@ export class RemoveCategoryComponent implements OnInit {
 
     if (col.isOpen)
       this.openCollection(id);
-    else 
+    else
       this.closeCollection(id);
   }
 
@@ -150,7 +196,7 @@ export class RemoveCategoryComponent implements OnInit {
 
     if (cat.isOpen)
       this.openCategory(id);
-    else 
+    else
       this.closeCategory(id);
   }
 
@@ -171,9 +217,9 @@ export class RemoveCategoryComponent implements OnInit {
   private closeCategory(id: string) {
     let elements: HTMLCollectionOf<HTMLElement> = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
     for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.toggle('display-subcategories');
-      }
-    
+      elements[i].classList.toggle('display-subcategories');
+    }
+
   }
 
   private openCategory(id: string) {

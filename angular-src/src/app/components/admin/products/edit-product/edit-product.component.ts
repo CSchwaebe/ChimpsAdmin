@@ -104,7 +104,7 @@ export class EditProductComponent implements OnInit {
     let prod = this.graveyard[index];
     prod.active = true;
     await this.ProductService.update(prod);
-    this.getProducts(prod.shop, prod.category, prod.subcategory);
+    await this.getProducts(this.selectedShop, this.selectedCategory, this.selectedSubcategory);
 
   }
 

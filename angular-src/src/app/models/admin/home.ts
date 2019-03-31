@@ -16,8 +16,8 @@ export interface FeaturedCollections {
 
 export class Home {
     public images: string[];
-    public featuredCollections: Collection[];
-    public featuredProducts: Product[];
+    public featuredCollections?: Collection[];
+    public featuredProducts?: Product[];
 
     constructor() {}
 

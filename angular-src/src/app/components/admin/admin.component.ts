@@ -14,8 +14,7 @@ export class AdminComponent implements OnInit {
   selectedComponenet: string = 'orders';
   loggedIn: boolean;
 
-  constructor(private LoginService: LoginService,
-              ) { }
+  constructor(private LoginService: LoginService) { }
 
   async ngOnInit() {
      this.loggedIn = await this.LoginService.isAuthenticated();

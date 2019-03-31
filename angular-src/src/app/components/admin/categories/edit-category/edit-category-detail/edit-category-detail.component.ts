@@ -9,8 +9,6 @@ import { NewCollectionService } from 'src/app/services/new-collection.service';
 import { Collection } from 'src/app/models/admin/collection';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-edit-category-detail',
   templateUrl: './edit-category-detail.component.html',
@@ -46,15 +44,15 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
     });
 
 
-   
-    
+
+
   }
 
   async ngOnInit() {
     this.getCollections();
 
     let id = this.Router.url.substring(23);
-    
+
     this.model = await this.CollectionService.getById(id);
     this.initialize();
   }
@@ -67,30 +65,30 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
     //this.model = this.allGroups[index];
     this.selectedType = this.model.type;
     switch (this.selectedType) {
-      case 'Collection': 
+      case 'Collection':
         this.selectedShop = this.model.name;
-        this.stub = this.selectedShop; 
+        this.stub = this.selectedShop;
         break;
-      case 'Category': 
+      case 'Category':
         this.selectedShop = this.model.shop;
         this.selectedCategory = this.model.name;
-        this.stub = this.model.stub; 
+        this.stub = this.model.stub;
         break;
-      case 'Subcategory': 
+      case 'Subcategory':
         this.selectedShop = this.model.shop;
         this.selectedCategory = this.model.category;
         this.selectedSubcategory = this.model.name;
         this.stub = this.model.stub;
         this.getCategories();
-      break;
+        break;
     }
     this.stub = (this.stub.replace(/\s+/g, '')).toLowerCase();
 
     if (this.model.image) {
       this.image = this.model.image.replace('w_1600', 'w_405');
     }
-    
-    
+
+
 
     setTimeout(() => {
       this.cloudinaryInit();
@@ -126,13 +124,15 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
     await delay(250);
     this.model.image = this.image.replace('w_405', 'w_1600');
 
+    console.log(this.model)
+
     switch (this.selectedType) {
       case 'Collection': await this.saveCollection(); break;
       case 'Category': await this.saveCategory(); break;
       case 'Subcategory': await this.saveSubcategory(); break;
     }
 
-    
+
     this.clear();
     this.SnackbarService.onSuccess();
     await delay(500);
@@ -143,7 +143,7 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
     this.model.stub = this.model.name.replace(/\s+/g, '').toLowerCase();
 
     this.updateProducts();
-   
+
     //UPDATE CATEGORY AND SUBCATEGORIES
     let categoryArray = this.allGroups.filter((collection, index, collectionArray) => {
       return (collection.type === 'Category' && collection.shop === this.selectedShop);
@@ -153,45 +153,70 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
       categoryArray[j].shop = this.model.name;
       categoryArray[j].stub = (this.model.stub + '/' + categoryArray[j].name).replace(/\s+/g, '').toLowerCase();
 
+      //Cant be active if its parent isnt active
+      if (!this.model.active) {
+        categoryArray[j].active = false;
+        categoryArray[j].featured = false;
+      }
+
       let subcategoryArray = this.allGroups.filter((collection, index, collectionArray) => {
         return (collection.type === 'Subcategory' && collection.category === categoryArray[j].name && collection.shop === this.selectedShop);
       })
       for (let i = 0; i < subcategoryArray.length; i++) {
         subcategoryArray[i].shop = this.model.name;
         subcategoryArray[i].stub = (this.model.stub + '/' + categoryArray[j].name + '/' + subcategoryArray[i].name).replace(/\s+/g, '').toLowerCase();
+        //Cant be active if its parent isnt active
+        if (!this.model.active) {
+          subcategoryArray[i].active = false;
+          subcategoryArray[i].featured = false;
+        }
+
         this.CollectionService.update(subcategoryArray[i])
       }
       this.CollectionService.update(categoryArray[j]);
     }
 
     //UPDATE COLLECTION / SHOP
-    this.CollectionService.update(this.model);
+    if (!this.model.active) 
+      this.model.featured = false;
+    await this.CollectionService.update(this.model);
+
   }
 
   async saveCategory() {
     console.log(this)
-    
+
     let newStub = this.model.shop + '/' + this.model.name;
     newStub = newStub.replace(/\s+/g, '').toLowerCase();
     this.model.stub = newStub;
 
     this.updateProducts();
-    
+
 
     //UPDATE SUBCATEGORIES
     let subcategoryArray = this.allGroups.filter((collection, index, collectionArray) => {
-      return (collection.type === 'Subcategory' && collection.category==this.selectedCategory && collection.shop === this.selectedShop);
-    })    
-   
+      return (collection.type === 'Subcategory' && collection.category == this.selectedCategory && collection.shop === this.selectedShop);
+    })
+
     for (let i = 0; i < subcategoryArray.length; i++) {
       subcategoryArray[i].shop = this.model.shop;
       subcategoryArray[i].category = this.model.name;
       subcategoryArray[i].stub = (this.model.stub + '/' + subcategoryArray[i].name).replace(/\s+/g, '').toLowerCase();
+
+      //Cant be active if its parent isnt active
+      if (!this.model.active) {
+        subcategoryArray[i].active = false;
+        subcategoryArray[i].featured = false;
+      }
+
       this.CollectionService.update(subcategoryArray[i]);
     }
 
     //UPDATE CATEGORY
+    if (!this.model.active) 
+      this.model.featured = false;
     this.CollectionService.update(this.model);
+
   }
 
   async saveSubcategory() {
@@ -199,14 +224,19 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
     newStub = newStub.replace(/\s+/g, '').toLowerCase();
     this.model.stub = newStub;
 
+
+
     this.updateProducts();
 
     //UPDATE SUBCATEGORY
+    if (!this.model.active) 
+      this.model.featured = false;
     this.CollectionService.update(this.model);
+
   }
 
   async updateProducts() {
-   
+
     let tmpStub = '/' + this.stub;
     let productArray: Product[] = await this.ProductService.getAll(tmpStub);
     for (let i = 0; i < productArray.length; i++) {
@@ -216,21 +246,19 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
       switch (this.selectedType) {
         case 'Collection':
           productArray[i].shop = this.model.name;
-
           break;
         case 'Category':
           productArray[i].shop = this.model.shop;
           productArray[i].category = this.model.name;
-          //productArray[i].location = (this.model.stub + '/' + productArray[i].subcategory).replace(/\s+/g, '').toLowerCase();
           this.ProductService.update(productArray[i])
           break;
         case 'Subcategory':
           productArray[i].shop = this.model.shop;
           productArray[i].category = this.model.category;
           productArray[i].subcategory = this.model.name;
-          //productArray[i].location = this.model.stub;
           break;
       }
+
       //Updates Location - Product can be in any level
       if (productArray[i].subcategory)
         productArray[i].location = (this.model.stub + '/' + productArray[i].category + '/' + productArray[i].subcategory).replace(/\s+/g, '').toLowerCase()
@@ -238,6 +266,13 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
         productArray[i].location = (this.model.stub + '/' + productArray[i].category).replace(/\s+/g, '').toLowerCase();
       else
         productArray[i].location = this.model.stub;
+
+
+      //If they deactivate the Collection then obviously the products cant still be active
+      if (!this.model.active) {
+        productArray[i].active = false;
+        productArray[i].featured = false;
+      }
 
 
       console.log('Updated Product');
@@ -263,17 +298,15 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
       this.collections = this.allGroups.filter((collection, index, collectionArray) => {
         return collection.type === 'Collection';
       })
-     
+
       resolve(this.collections);
     })
   }
 
   getCategories() {
-
     this.categories = this.allGroups.filter((collection, index, collectionArray) => {
-      return (collection.type==='Category' && collection.shop===this.model.shop);
+      return (collection.type === 'Category' && collection.shop === this.model.shop);
     })
-
   }
 
 }

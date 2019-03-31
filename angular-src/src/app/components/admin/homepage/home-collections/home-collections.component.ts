@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { Home } from 'src/app/models/admin/home';
 import { HomeService } from 'src/app/services/home.service';
@@ -41,13 +39,13 @@ export class HomeCollectionsComponent implements OnInit {
 
   model: Home;
 
- 
+
 
   constructor(private HomeService: HomeService,
     private SnackbarService: SnackbarService,
     private CollectionService: NewCollectionService,
   ) {
-    
+
   }
 
   async ngOnInit() {
@@ -69,30 +67,30 @@ export class HomeCollectionsComponent implements OnInit {
 
   async createGroups() {
     let collections: Collection[] = await this.CollectionService.getAll();
-    
+
     for (let i = 0; i < collections.length; i++) {
-      if(collections[i].active && collections[i].image) {
+      if (collections[i].active && collections[i].image) {
         this.allGroups.push(collections[i])
       }
 
     }
     this.groups = this.allGroups;
-    
+
     console.log(this.allGroups)
   }
 
-  
+
 
   async onSubmit() {
     this.fillModel();
 
-    
 
-   
-      let response = this.HomeService.update(this.model);
-      response ? this.SnackbarService.onSuccess() : this.SnackbarService.onError()
-    
-    
+
+
+    let response = this.HomeService.update(this.model);
+    response ? this.SnackbarService.onSuccess() : this.SnackbarService.onError()
+
+
 
   }
 
@@ -105,7 +103,7 @@ export class HomeCollectionsComponent implements OnInit {
         this.saveGroups.push(cat.category);
         cat.subcategories.forEach(subcategory => {
           this.saveGroups.push(subcategory);
-        });  
+        });
       });
     });
 
@@ -114,10 +112,13 @@ export class HomeCollectionsComponent implements OnInit {
 
     this.saveGroups.forEach(collection => {
       this.CollectionService.update(collection);
-      if (collection.featured)
-      this.model.featuredCollections.push(collection);
+      //This is the unnecessary Part
+      //if (collection.featured)
+        //this.model.featuredCollections.push(collection);
+        //end
     })
-    
+
+   
     console.log(this.model)
   }
 
@@ -130,11 +131,11 @@ export class HomeCollectionsComponent implements OnInit {
 
   async initialize() {
     this.sortedGroups = [];
-  
-      this.allGroups = (await this.CollectionService.getAll()).filter((collection, index, collectionArray) => {
-        return collection.active === true;
-      })
-      
+
+    this.allGroups = (await this.CollectionService.getAll()).filter((collection, index, collectionArray) => {
+      return collection.active === true;
+    })
+
     this.sortGroups();
   }
 
@@ -192,7 +193,7 @@ export class HomeCollectionsComponent implements OnInit {
 
     if (col.isOpen)
       this.openCollection(id);
-    else 
+    else
       this.closeCollection(id);
   }
 
@@ -201,7 +202,7 @@ export class HomeCollectionsComponent implements OnInit {
 
     if (cat.isOpen)
       this.openCategory(id);
-    else 
+    else
       this.closeCategory(id);
   }
 
@@ -222,9 +223,9 @@ export class HomeCollectionsComponent implements OnInit {
   private closeCategory(id: string) {
     let elements: HTMLCollectionOf<HTMLElement> = <HTMLCollectionOf<HTMLElement>>document.getElementsByClassName(id);
     for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.toggle('display-subcategories');
-      }
-    
+      elements[i].classList.toggle('display-subcategories');
+    }
+
   }
 
   private openCategory(id: string) {

@@ -62,16 +62,7 @@ export class HomeProductsComponent implements OnInit {
   }
 
 
-  async updateProduct(prod: Product) {
-    if (prod.featured)
-      this.model.featuredProducts.push(prod);
-    else {
-      let i = this.model.featuredProducts.findIndex((product, index, productArray) => {
-        return product._id === prod._id;
-      })
-      this.model.featuredProducts.splice(i, 1);
-    }
-     
+  async updateProduct(prod: Product) {   
     await this.ProductService.update(prod);
     let response = await this.HomeService.update(this.model);
     response ? this.SnackbarService.onSuccess() : this.SnackbarService.onError();

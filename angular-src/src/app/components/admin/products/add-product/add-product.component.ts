@@ -185,7 +185,7 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
     this.model.weight = { ounces: this.infoFormGroup.value.weight };
     this.model.description = this.infoFormGroup.value.description;
     this.model.images = this.images;
-    console.log(this.model.images);
+    this.images.length ? this.mainImage=this.images[0] : this.mainImage='';
 
     //From quantity
     this.model.inventory = [];
@@ -244,7 +244,6 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
    * Generates the Product Preview
    */
   generatePreview() {
-    this.mainImage = this.images[0];
     this.fillModel();
     this.preview = true;
     this.previewButtonText = 'Refresh';
