@@ -18,7 +18,6 @@ import { ShippingService } from './services/shipping.service';
 import { IterableNumberPipe } from './pipes/iterable-number.pipe';
 
 
-import { AdminComponent } from './components/admin/admin.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 
 import { AddProductComponent } from './components/admin/products/add-product/add-product.component';
@@ -165,7 +164,6 @@ const appRoutes: Routes = [
     LoginComponent,
     RecentOrdersComponent,
     RefundComponent,
-    AdminComponent,
     AddProductComponent,
     AddCategoryComponent,
     RemoveCategoryComponent,
