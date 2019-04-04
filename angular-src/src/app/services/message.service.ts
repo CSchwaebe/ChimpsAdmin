@@ -49,4 +49,13 @@ export class MessageService {
     })
   }
 
+
+  async delete(Message: Message) {
+    return new Promise<Message>(async (resolve, reject) => {
+      this.http.post(this.url + '/delete', Message).subscribe((res: MessageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
 }

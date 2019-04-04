@@ -60,7 +60,7 @@ export class Product {
     public inventory: Variant[];
     public images: string[];
     public color: string;
-    public description: string;
+    public description: any;
     public shop: string;
     public featured: boolean;
     public category?: string;

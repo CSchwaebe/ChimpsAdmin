@@ -52,7 +52,7 @@
           </div>
 
           <div class=fulfillment-container>
-            <mat-slide-toggle name="status" color=primary [(ngModel)]="selectedOrder.shipped">Fulfilled</mat-slide-toggle>
+            <mat-slide-toggle name="status" color=primary [(ngModel)]="selectedOrder.shipped" (change)=updateStatus()>Fulfilled</mat-slide-toggle>
           </div>
 
           <div class="total-container">

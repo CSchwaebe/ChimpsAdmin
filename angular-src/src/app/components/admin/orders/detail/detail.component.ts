@@ -33,6 +33,12 @@ export class DetailComponent implements OnInit {
 
   async ngOnInit() {
 
+    await this.initialize();
+    
+
+  }
+
+  async initialize() {
     let id = this.Router.url.substring(15)
 
     this.selectedOrder = await this.OrderService.getById(id);
@@ -72,6 +78,11 @@ export class DetailComponent implements OnInit {
     }
   }
 
+  async updateStatus() {
+    let response = this.OrderService.update(this.selectedOrder);
+    response ? this.SnackbarService.onSuccess('Status Updated') : this.SnackbarService.onError();
+  }
+
   async updateShipping() {
     let weight: number = 0;
     for (let i = 0; i < this.selectedOrder.products.length; i++) {
@@ -91,13 +102,16 @@ export class DetailComponent implements OnInit {
     switch (refundStatus) {
       case 'submitted':
         console.log('Submitted');
+        this.SnackbarService.onSuccess('Shipping Refund Submitted');
         this.buyNewShipping(shipment);
         break;
       case 'refunded':
         console.log('Refunded');
+        this.SnackbarService.onSuccess('Shipping Refunded');
         this.buyNewShipping(shipment);
         break;
       case 'rejected':
+        this.SnackbarService.onError();
         console.log('Rejected');
         break;
       case 'not_applicable':
@@ -116,9 +130,10 @@ export class DetailComponent implements OnInit {
     this.selectedOrder.trackingNumber = tracking.tracking;
     this.selectedOrder.shippingLabel = tracking.shippingLabel;
     if (await this.OrderService.update(this.selectedOrder)) {
-      this.SnackbarService.onSuccess();
+      this.SnackbarService.onSuccess('New Shipping Purchased');
       //alert('Shipping Refunded, New Shipping Purchased, Order Updated with new Shipping Label and Tracking Number. \n Return to the previous page to print the new Shipping Label.');
     };
+    await this.initialize();
   }
 
 

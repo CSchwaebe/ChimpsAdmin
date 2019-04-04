@@ -54,6 +54,21 @@ FOR THE TEMPLATE FORM
       width: 80%;
       margin-left: 10%;
     }
+
+  }
+
+
+  .description {
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+    .quill {
+      display: block;
+      width: 100%;
+    }
   }
 
   .image-div {
@@ -317,12 +332,24 @@ FOR THE TEMPLATE FORM
       margin-bottom: 0;
     }
     .price {
-      width: 93%;
-      margin-left: 7%;
+      width: 94%;
+      margin-left: 6%;
       font-family: "Montserrat";
       font-weight: 100;
       font-size: 16px;
       margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .color {
+      display: inline-block;
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-top: 0;
+      font-family: "Montserrat";
+
+      font-size: 13px;
     }
 
     .selectors {
@@ -338,14 +365,14 @@ FOR THE TEMPLATE FORM
       }
     }
 
-    .description {
-      width: 80%;
-      margin-left: 10%;
-      margin-right: 10%;
-      margin-top: 0;
-      font-family: "Open Sans";
 
-      font-size: 13px;
+    .description {
+      display: inline-block;
+      width: 100%;
+      //margin-left: 5%;
+      //margin-right: 5%;
+      margin-top: 0;
+     
     }
 
     .add-to-cart {

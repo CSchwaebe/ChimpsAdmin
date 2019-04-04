@@ -7,6 +7,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import * as Cloudinary from 'cloudinary-core';
+import { QuillModule } from 'ngx-quill';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -195,6 +196,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgxPayPalModule,
+    QuillModule,
     NgxWebstorageModule.forRoot(),
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'bigkatoriginal'}),
   ],

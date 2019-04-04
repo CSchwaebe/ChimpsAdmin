@@ -218,6 +218,9 @@ div.container {
       font-size: inherit;
       line-height: inherit;
       font-family: "Montserrat";
+      white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
     }
 
     .color {
@@ -227,6 +230,9 @@ div.container {
       font-size: inherit;
       line-height: inherit;
       font-family: "Montserrat";
+      white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
     }
 
     .select-container {

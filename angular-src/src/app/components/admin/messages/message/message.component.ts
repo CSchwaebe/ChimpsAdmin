@@ -21,14 +21,17 @@ export class MessageComponent implements OnInit {
   }
  
   async generateList() {
-    this.model = await this.MessageService.get();
-    console.log(this.model);
+    this.model = await this.MessageService.get();    
     
-    /*
     for (let i = 0; i < this.model.length; i++) {
       this.model[i].readableCreatedAt = new Date(this.model[i].createdAt).toLocaleString();
     }
-    */
+    
+    this.model.sort(function(a,b){
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return +new Date(b.createdAt) - +new Date(a.createdAt);
+    });
     
   }
 
@@ -40,6 +43,16 @@ export class MessageComponent implements OnInit {
 
   viewDetails(index: number) {
     this.Router.navigate(['admin/messages/' + this.model[index]._id])
+  }
+
+  async delete(index: number) {
+    let confirmation = confirm('Are you sure? This action cannot be undone');
+    
+    if (confirmation) { 
+      await this.MessageService.delete(this.model[index]);
+      this.generateList();
+    }
+
   }
 
 

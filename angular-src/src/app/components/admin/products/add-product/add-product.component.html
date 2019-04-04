@@ -93,13 +93,36 @@
               <span matSuffix>Ounces</span>
             </mat-form-field>
 
-            <!-- DESCRIPTION -->
+            
+
+            <!-- DESCRIPTION 
             <mat-form-field appearance="legacy">
               <mat-label>Description</mat-label>
               <textarea cdkTextareaAutosize matInput formControlName="description" name="description" required></textarea>
             </mat-form-field>
+            -->
 
           </div>
+
+          <div class=description>
+            <quill-editor formControlName=description class=quill format=object theme=snow placeholder=Description 
+            [modules]="{ 
+              toolbar: [
+                ['bold', 'italic', 'underline', 'strike'],       
+                         
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],     
+                [{ 'indent': '-1'}, { 'indent': '+1' }],                                 
+            
+                [{ 'size': ['small', false, 'large', 'huge'] }],
+               
+                [{ 'color': [] }, { 'background': [] }],          
+    
+                [{ 'align': [] }]                  
+              ]
+            }"></quill-editor>
+          </div>
+
           <div class=image-div>
               <div class=old-thumbnails>
                   <div *ngFor='let image of images; index as i' class=thumbnail-container>
@@ -230,6 +253,7 @@
             <div class="product-box">
               <p class="product-name">{{model.name}}</p>
               <p class="price">${{model.price}}</p>
+              <p class="color">{{model.color}}</p>
 
               <div class="selectors">
                 <mat-form-field class=size appearance="legacy">
@@ -249,8 +273,13 @@
 
 
               </div>
-              <br>
-              <p class="description">{{model.description}}</p>
+            
+           
+               
+              
+             
+              <quill-editor class=description [(ngModel)]=model.description [ngModelOptions]="{standalone: true}" 
+              [modules]="{toolbar: false}" theme=bubble readOnly=true format=object placeholder=''></quill-editor>
 
               <button type="button" class="add-to-cart">ADD TO CART</button>
 
@@ -259,13 +288,9 @@
           </div>
         </ng-template>
         <!-- END PRODUCT INFO -->
-
-
-
         <div class=button-container>
-          <button class=next-button mat-button matStepperNext (click)=onSubmit()>Save</button>
+          <button class=next-button mat-button matStepperNext>Save</button>
           <button class=back-button mat-button matStepperPrevious>Back</button>
-
         </div>
       </mat-step>
 

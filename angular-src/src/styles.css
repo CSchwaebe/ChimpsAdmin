@@ -1,13 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
-/* Color Scheme
-* Purple and Teal
-* pink - #C93CC9
-* tela - #00BCBE
-* slate blue - #3C4D7D
-* dark blue - #1E2B7A
-* purple - #63229B
-*/
+@import "//cdn.quilljs.com/1.3.6/quill.snow.css";
+@import "//cdn.quilljs.com/1.3.6/quill.bubble.css";
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
@@ -132,4 +125,13 @@ $color-white-blue-active: hsl(239, 43%, 91%);
   z-index: 1000;
   letter-spacing: .75px;
   font-family: 'Montserrat';
+}
+
+/* Quill Editor */
+
+.ql-editor {
+  font-family: "Montserrat";
+}
+.ql-editor > * {
+  cursor: default;
 }

@@ -16,7 +16,6 @@ export interface Size {
   name: string,
 }
 
-
 export interface Color {
   name: string,
 }
@@ -32,6 +31,7 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
   isCloudinaryLoaded: boolean = false;
   subscription: Subscription;
   model = new Product();
+
 
   //Form Groups
   infoFormGroup: FormGroup;
@@ -80,7 +80,6 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
       color: ['', Validators.required],
       cost: ['', Validators.required],
       weight: ['', Validators.required],
-
     });
 
     this.inventoryFormGroup = this.FormBuilder.group({
@@ -243,7 +242,7 @@ export class AddProductComponent implements OnInit, AfterViewInit, OnDestroy {
   /**
    * Generates the Product Preview
    */
-  generatePreview() {
+  generatePreview() {    
     this.fillModel();
     this.preview = true;
     this.previewButtonText = 'Refresh';

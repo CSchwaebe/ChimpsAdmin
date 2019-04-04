@@ -35,6 +35,8 @@
       </ng-template>
       <div class="actions-container">
         <button class="details-button" id="{{i}}" (click)="viewDetails($event.target.id)">View</button>
+        <button class="delete-button red-button" id="{{i}}" (click)="delete($event.target.id)">Delete</button>
+
       </div>
     </div>
   

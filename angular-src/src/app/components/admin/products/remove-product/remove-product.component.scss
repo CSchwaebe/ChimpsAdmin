@@ -201,6 +201,9 @@ FOR THE TEMPLATE FORM
       font-size: inherit;
       line-height: inherit;
       font-family: "Montserrat";
+      white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
      
     }
 
@@ -211,6 +214,9 @@ FOR THE TEMPLATE FORM
       font-size: inherit;
       line-height: inherit;
       font-family: "Montserrat";
+      white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
       
     }
 

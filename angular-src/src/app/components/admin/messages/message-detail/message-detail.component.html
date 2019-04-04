@@ -24,7 +24,7 @@
     <div class=status-div>
       <h2 class=title>Status</h2>
         <span>
-            Open <mat-slide-toggle name="status" color=primary [(ngModel)]="message.status">Closed</mat-slide-toggle>
+            Open <mat-slide-toggle name="status" color=primary [(ngModel)]="message.status" (change)=update()>Closed</mat-slide-toggle>
         </span>
     </div>
 
