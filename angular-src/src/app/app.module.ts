@@ -38,7 +38,6 @@ import { DetailComponent } from './components/admin/orders/detail/detail.compone
 import { MaterialModule } from './material/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarService } from './services/snackbar.service';
-import { Collection } from './models/admin/collection';
 import { EditCategoryDetailComponent } from './components/admin/categories/edit-category/edit-category-detail/edit-category-detail.component';
 import { HomeSlideshowComponent } from './components/admin/homepage/home-slideshow/home-slideshow.component';
 import { HomeCollectionsComponent } from './components/admin/homepage/home-collections/home-collections.component';
@@ -202,7 +201,6 @@ const appRoutes: Routes = [
     CollectionService,
     ShippingService,
     SnackbarService,
-    Collection
   ],
   bootstrap: [AppComponent]
 })

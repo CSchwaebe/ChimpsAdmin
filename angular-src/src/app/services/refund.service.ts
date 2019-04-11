@@ -11,7 +11,6 @@ import { environment } from '../../environments/environment';
 export class RefundService {
 
   url: string = environment.baseURL + 'api/orders/refund';
-  order: Order = undefined;
 
   constructor(private LoginService: LoginService,
               private http: HttpClient) { }
@@ -20,7 +19,6 @@ export class RefundService {
   async refund(order: Order, amount: number) {
     return new Promise<Order>(async (resolve, reject) => {
       this.http.post(this.url, {order: order, amount: amount}).subscribe((res: OrderResponse) => {
-        this.order = res.data;
         resolve(res.data);
       });
     })

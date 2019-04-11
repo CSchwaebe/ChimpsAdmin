@@ -63,25 +63,25 @@
                   <p>Subtotal:</p>
                 </div>
                 <div class="detail-subtotal">
-                  <p>${{selectedOrder.subtotal}}</p>
+                  <p>${{selectedOrder.subtotal.toFixed(2)}}</p>
                 </div>
                 <div class="detail-tax-header">
                   <p>Tax: </p>
                 </div>
                 <div class="detail-tax">
-                  <p>${{selectedOrder.tax}}</p>
+                  <p>${{selectedOrder.tax.toFixed(2)}}</p>
                 </div>
                 <div class="detail-shipping-header">
                   <p>Shipping: </p>
                 </div>
                 <div class="detail-shipping">
-                  <p>${{selectedOrder.shipping}}</p>
+                  <p>${{selectedOrder.shipping.toFixed(2)}}</p>
                 </div>
                 <div class="detail-total-header">
-                  <p>Total Refund: </p>
+                  <p>Total: </p>
                 </div>
                 <div class="detail-total">
-                  <p>${{selectedOrder.total}}</p>
+                  <p>${{selectedOrder.total.toFixed(2)}}</p>
                 </div>
               </div>
             </div>
@@ -235,25 +235,25 @@
             <p>Subtotal:</p>
           </div>
           <div class="detail-subtotal">
-            <p>${{refund_subtotal}}</p>
+            <p>${{refund_subtotal.toFixed(2)}}</p>
           </div>
           <div class="detail-tax-header">
             <p>Tax: </p>
           </div>
           <div class="detail-tax">
-            <p>${{refund_tax}}</p>
+            <p>${{refund_tax.toFixed(2)}}</p>
           </div>
           <div class="detail-shipping-header">
             <p>Shipping: </p>
           </div>
           <div class="detail-shipping">
-            <p>${{refund_shipping}}</p>
+            <p>${{refund_shipping.toFixed(2)}}</p>
           </div>
           <div class="detail-total-header">
             <p>Total Refund: </p>
           </div>
           <div class="detail-total">
-            <p>${{refund_total}}</p>
+            <p>${{refund_total.toFixed(2)}}</p>
           </div>
         </div>
       </div>

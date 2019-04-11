@@ -190,6 +190,7 @@ export class CartService {
         refund_type: 'None',
         refund_shipping: false,
         refund_shipping_amount: 0,
+        refund_tax: 0,
         refund_amount: 0,
         refunded: false,
         notes: ''

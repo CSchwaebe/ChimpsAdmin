@@ -9,6 +9,7 @@ export interface Return {
     refund_type: string,
     refund_shipping: boolean,
     refund_shipping_amount: number,
+    refund_tax: number,
     refund_amount: number,
     //refunded_products: CartProduct[],
     //restocked_products: CartProduct[],

@@ -91,21 +91,26 @@ export class ProductService {
     })
   }
 
-  /*
-  putBack(id: string, size: string, quantity: number) {
+  
+  async restock(id: string, size: string, quantity: number) {
       let obj = { 
         id: id,
         size: size,
         quantity: quantity
       }
-      console.log(obj);
-
+      return new Promise<Product>(async (resolve, reject) => {
+        this.http.post(this.url + 'api/products/restock', obj).subscribe((res: ProductResponse) => {
+          resolve(res.data);
+        });
+      })
       
+      /*
       let xhr = new XMLHttpRequest();
       xhr.open("POST", this.url + 'api/products/putback', false);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send(JSON.stringify(obj));
+      */
     }
-    */
+    
 
 }

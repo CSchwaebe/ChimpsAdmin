@@ -24,6 +24,7 @@
     "@angular/router": "^7.2.2",
     "@auth0/angular-jwt": "^2.1.0",
     "@cloudinary/angular-5.x": "^1.0.2",
+    "@swimlane/ngx-charts": "^10.1.0",
     "@types/big.js": "^4.0.5",
     "angular-jwt": "^0.1.10",
     "big.js": "^5.2.2",
