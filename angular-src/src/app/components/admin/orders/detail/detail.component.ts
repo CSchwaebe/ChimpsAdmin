@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../../../services/order.service';
-import { ShippingService } from '../../../../services/shipping.service';
+import { OrderService } from 'src/app/services/order.service';
+import { ShippingService } from 'src/app/services/shipping.service';
 
 import { Order } from 'src/app/models/admin/order'
 import { AddressModel } from 'src/app/models/admin/address';
@@ -16,12 +16,11 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 })
 export class DetailComponent implements OnInit {
 
-  selectedOrder: Order = new Order();
+  selectedOrder: Order;
   displaySubtotal: number = 0;
   displayTax: number = 0;
   displayShipping: number = 0;
   displayTotal: number = 0;
-  displayedColumns: string[] = ['qty', 'price'];
 
   originalAddress: AddressModel;
   constructor(public OrderService: OrderService,
