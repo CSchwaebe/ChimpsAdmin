@@ -6,6 +6,7 @@ import { CloudinaryService } from 'src/app/services/cloudinary.service';
 import { delay } from 'q';
 import { Collection } from 'src/app/models/admin/collection';
 import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 
 @Component({
@@ -66,6 +67,17 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
     this.model.shop = '';
     this.image = '';
     this.form.resetForm();
+  }
+
+  isFormValid(): boolean {
+    if (this.model.type === 'Collection' && this.model.name) {
+      return true;
+    } else if (this.model.type === 'Category' && this.model.shop && this.model.name) {
+      return true;
+    } else if (this.model.type === 'Subcategory' && this.model.shop && this.model.category && this.model.name) {
+      return true;
+    } else 
+    return false;
   }
 
 

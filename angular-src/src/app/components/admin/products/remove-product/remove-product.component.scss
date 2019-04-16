@@ -78,13 +78,27 @@ FOR THE TEMPLATE FORM
       }
   
       .name {
-        width: 15%;
+        width: 30%;
         display: inline-block;
         vertical-align: top;
         font-size: inherit;
         line-height: inherit;
         font-family: "Montserrat"; 
-        
+        white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+      }
+
+      .sku {
+        width: 0%;
+        display: inline-block;
+        vertical-align: top;
+        font-size: inherit;
+        line-height: inherit;
+        font-family: "Montserrat";
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
   
       .price {
@@ -94,18 +108,12 @@ FOR THE TEMPLATE FORM
         font-size: inherit;
         line-height: inherit;
         font-family: "Montserrat";
+        white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
       }
       
   
-      .sku {
-        width: 15%;
-        display: inline-block;
-        vertical-align: top;
-        font-size: inherit;
-        line-height: inherit;
-        font-family: "Montserrat";
-       
-      }
   
       .color {
         width: 15%;
@@ -114,6 +122,9 @@ FOR THE TEMPLATE FORM
         font-size: inherit;
         line-height: inherit;
         font-family: "Montserrat";
+        white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
         
       }
   
@@ -173,7 +184,7 @@ FOR THE TEMPLATE FORM
     }
 
     .name {
-      width: 15%;
+      width: 30%;
       display: inline-block;
       vertical-align: top;
       font-size: inherit;
@@ -182,6 +193,19 @@ FOR THE TEMPLATE FORM
       white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
+    }
+
+    .sku {
+      width: 0%;
+      display: inline-block;
+      vertical-align: top;
+      font-size: inherit;
+      line-height: inherit;
+      font-family: "Montserrat";
+      white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+     
     }
 
     .price {
@@ -194,18 +218,6 @@ FOR THE TEMPLATE FORM
     }
     
 
-    .sku {
-      width: 15%;
-      display: inline-block;
-      vertical-align: top;
-      font-size: inherit;
-      line-height: inherit;
-      font-family: "Montserrat";
-      white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-     
-    }
 
     .color {
       width: 15%;

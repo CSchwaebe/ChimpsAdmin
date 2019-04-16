@@ -10,7 +10,6 @@ import * as Cloudinary from 'cloudinary-core';
 import { QuillModule } from 'ngx-quill';
 
 import { AppComponent } from './app.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { CollectionService } from './services/collection.service';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -159,7 +158,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     LoginComponent,
     RecentOrdersComponent,
     RefundComponent,

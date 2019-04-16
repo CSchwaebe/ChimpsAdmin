@@ -74,7 +74,7 @@ export class RemoveCategoryComponent implements OnInit {
     let products = await this.ProductService.getAll('/' + col.stub)
     //console.log(products)
     if (products.length) {
-      alert('You must delete all Products from this ' + col.type + ' before you can delete it.')
+      alert('You must remove all products from this ' + col.type + ' before you can delete it.')
       return;
     }
 
