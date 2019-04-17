@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  //baseURL: 'https://localhost:3000/'
+  //baseURL: 'http://localhost:3000/'
   baseURL: 'https://api.chimps.io/'
 };

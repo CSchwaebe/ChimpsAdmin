@@ -100,6 +100,9 @@ form {
         line-height: 50px;
         font-size: 14px;
         font-family: "Montserrat";
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .ph-one {
         width: 25%;
@@ -138,7 +141,8 @@ form {
         display: inline-block;
         vertical-align: top;
         height: 60px;
-        width: 25%;
+        //width: 25%;
+        width: 40%;
         .image {
           display: inline-block;
           vertical-align: top;
@@ -164,7 +168,9 @@ form {
             line-height: 20px;
             width: 100%;
             font-size: 12px;
-
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-align: left;
           }
         }
@@ -174,7 +180,8 @@ form {
         display: inline-block;
         vertical-align: top;
         height: 60px;
-        width: 15%;
+        //width: 15%;
+        width: 0%;
         p {
           display: inline-block;
           vertical-align: top;
@@ -333,6 +340,9 @@ form {
         line-height: 50px;
         font-size: 14px;
         font-family: "Montserrat";
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .ph-one {
         width: 30%;
@@ -368,7 +378,7 @@ form {
         display: inline-block;
         vertical-align: top;
         height: 60px;
-        width: 30%;
+        width: 50%;
         .image {
           display: inline-block;
           vertical-align: top;
@@ -394,7 +404,9 @@ form {
             line-height: 20px;
             width: 100%;
             font-size: 12px;
-
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-align: left;
           }
         }
@@ -404,7 +416,7 @@ form {
         display: inline-block;
         vertical-align: top;
         height: 60px;
-        width: 20%;
+        width: 0%;
         p {
           display: inline-block;
           vertical-align: top;

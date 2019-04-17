@@ -106,7 +106,7 @@ $color-white-blue: hsl(239, 43%, 99%);
         display: inline-block;
         vertical-align: top;
         height: 60px;
-        width: 30%;
+        width: 50%;
         .image {
           display: inline-block;
           vertical-align: top;
@@ -132,7 +132,9 @@ $color-white-blue: hsl(239, 43%, 99%);
             line-height: 20px;
             width: 100%;
             font-size: 12px;
-
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
             text-align: left;
           }
         }
@@ -142,7 +144,7 @@ $color-white-blue: hsl(239, 43%, 99%);
         display: inline-block;
         vertical-align: top;
         height: 60px;
-        width: 20%;
+        width: 0%;
         p {
           display: inline-block;
           vertical-align: top;

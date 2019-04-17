@@ -68,7 +68,6 @@ export class ShippingService {
 
 
   async refundShipment(id: string) {
-    return 'submitted';
     return new Promise<string>(async (resolve, reject) => {
       this.http.post(this.url + '/refund', {id: id}).subscribe((res: ShippingRefundResponse) => {
         console.log(res.data);

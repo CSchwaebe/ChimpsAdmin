@@ -112,8 +112,12 @@ $color-white-blue-active: hsl(239, 43%, 91%);
 /* SnackBar Notifications */
 
 .snackbar-success {
+  /*
   background-color: hsl(239, 100%, 9%);
   color: white;
+  */
+  background-color: rgb(223, 239, 217);
+  color: rgb(20, 151, 23);
   letter-spacing: .75px;
   font-family: 'Montserrat';
   z-index: 1000;
