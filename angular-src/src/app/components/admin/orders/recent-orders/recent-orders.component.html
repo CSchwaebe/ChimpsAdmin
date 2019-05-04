@@ -1,5 +1,11 @@
+
 <div class="center-div">
- 
+    <ng-template [ngIf]="loading">
+        <div class="loading-screen">
+            <mat-spinner class="loading-icon"></mat-spinner>
+        </div>
+    </ng-template>
+
   <h1 class=title>Recent Orders</h1>
     <div class="headers-container">
       <div class="order-number-header">
@@ -40,7 +46,15 @@
         </div>
       </ng-template>
       <div class="actions-container">
-        <a class="shipping-label" href="{{order.shippingLabel}}" target="_blank"><span>Ship</span></a>
+        <ng-template [ngIf]=order.shippingLabel>
+            <a class="shipping-label" href="{{order.shippingLabel}}" target="_blank"><span>Ship</span></a>
+        </ng-template>
+        <ng-template [ngIf]=!order.shippingLabel>
+            <button class="shipping-label-button" id="{{i}}" (click)="buyShipping(i)">Buy Shipping</button>
+        </ng-template>
+        <!--
+<a class="shipping-label" (click)=buyShipping(i) href="{{order.shippingLabel}}" target="_blank"><span>Buy Shipping</span></a>
+        -->
         <button class="return-button" id="{{i}}" (click)="manageRefund($event.target.id)">Refund</button>
         <button class="details-button" id="{{i}}" (click)="viewDetails($event.target.id)">View</button>
       </div>

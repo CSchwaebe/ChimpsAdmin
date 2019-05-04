@@ -1,5 +1,5 @@
 import { CartProduct } from '../cartProduct'; ///must use models so they are separte items in memory
-import { Address } from './shipping';
+import { Address, Rate } from './shipping';
 import { SquareTransactionResponse } from './square';
 
 
@@ -15,6 +15,7 @@ export interface Order {
     total: number,
     cost: number,
     shipped: boolean,
+    shippingRate: Rate,
     shipmentId: string,
     shippingCarrier: string,
     shippingMethod: string, //called service in easypost

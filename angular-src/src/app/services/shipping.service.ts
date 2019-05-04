@@ -43,12 +43,18 @@ export class ShippingService {
   //Weight is in ounces
   async buyShipment(rate: Rate) {
     return new Promise<Tracking>(async (resolve, reject) => {
-      this.http.post(this.url + '/purchase', {rate: rate, id: this.shipmentId}).subscribe((res: TrackingResponse) => {
-        this.tracking = res.data.tracking;
-        this.public_url = res.data.public_url;
-        console.log(this.tracking);
-        console.log(this.public_url);
-        console.log(res.data);
+      this.http.post(this.url + '/purchase', {rate: rate, id: rate.shipment_id}).subscribe((res: TrackingResponse) => {
+        if (res.data) {
+          this.tracking = res.data.tracking;
+          this.public_url = res.data.public_url;
+          //console.log(this.tracking);
+          //console.log(this.public_url);
+          console.log(res.data);
+          resolve(res.data);
+        } else {
+          resolve(null);
+        }
+        
 
         /*
         let tmp = this.LocalStorageService.retrieve('trackingInfo');
@@ -61,7 +67,7 @@ export class ShippingService {
           this.LocalStorageService.store('trackingInfo', obj)
         }
         */
-        resolve(res.data);
+       
       });
     })
   }

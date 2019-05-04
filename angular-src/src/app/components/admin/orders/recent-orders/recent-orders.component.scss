@@ -13,6 +13,22 @@ form {
   
 }
 
+
+.loading-screen {
+  position: fixed;
+  top: 66px;
+  left: 0px;
+  min-height: 100%;
+  min-width: 100%;
+  background: rgba(255, 255, 255, 0.63);
+  z-index: 1000000000;
+  .loading-icon {
+    position: absolute;
+    top: 25%;
+    left: calc(50% - 50px);
+  }
+}
+
 .center-div {
   background: white;
   border: 0px solid black;
@@ -183,11 +199,10 @@ p {
 
   padding: 0px 10px 0px 10px;
   font-size: 12px;
-  width: 30px;
+  min-width: 30px;
 
   text-align: center;
 
-  color: hsl(263, 76%, 40%);
   color: hsl(239, 76%, 40%);
   text-decoration: none;
 
@@ -200,13 +215,35 @@ p {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.18);
 }
 
+
+.shipping-label-button {
+  display: inline-block;
+  margin-top: 22.5px;
+
+  padding: 0px 10px 0px 10px;
+  font-size: 12px;
+  min-width: 30px;
+
+  text-align: center;
+
+  color: hsl(239, 76%, 40%);
+  text-decoration: none;
+  background: transparent;
+
+  font-family: "Montserrat";
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  border: 0px;
+  border-right: 1px solid;
+  cursor: pointer;
+}
+
 .return-button {
   padding: 0px 10px 0px 10px;
   font-size: 12px;
 
   text-align: center;
 
-  color: hsl(263, 76%, 40%);
   color: hsl(239, 76%, 40%);
   text-decoration: none;
   background: transparent;
@@ -217,7 +254,6 @@ p {
   border: 0px;
   border-right: 1px solid;
   cursor: pointer;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.18);
 }
 
 .details-button {

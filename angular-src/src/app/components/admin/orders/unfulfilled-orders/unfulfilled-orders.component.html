@@ -1,4 +1,10 @@
 <div class="center-div">
+    <ng-template [ngIf]="loading">
+        <div class="loading-screen">
+            <mat-spinner class="loading-icon"></mat-spinner>
+        </div>
+    </ng-template>
+
   <h1 class=title>Unfulfilled Orders</h1>
       <div class="headers-container">
         <div class="order-number-header">
@@ -23,7 +29,7 @@
           <p>{{order._id.toUpperCase()}}</p>
         </div>
         <div class="total">
-          <p>${{order.total}}</p>
+          <p>${{order.total.toFixed(2)}}</p>
         </div>
         <div class="date">
           <p>{{order.readableCreatedAt}}</p>
@@ -39,9 +45,14 @@
           </div>
         </ng-template>
         <div class="actions-container">
-          <a class="shipping-label" href="{{order.shippingLabel}}" target="_blank"><span>Ship</span></a>
-          <button class="return-button" id="{{i}}" (click)="manageRefund($event.target.id)">Refund</button>
-          <button class="details-button" id="{{i}}" (click)="viewDetails($event.target.id)">View</button>
+            <ng-template [ngIf]=order.shippingLabel>
+                <a class="shipping-label" href="{{order.shippingLabel}}" target="_blank"><span>Ship</span></a>
+            </ng-template>
+            <ng-template [ngIf]=!order.shippingLabel>
+                <button class="shipping-label-button" (click)="buyShipping(i)">Buy Shipping</button>
+            </ng-template>
+          <button class="return-button" (click)="manageRefund(i)">Refund</button>
+          <button class="details-button" (click)="viewDetails(i)">View</button>
         </div>
       </div>
       

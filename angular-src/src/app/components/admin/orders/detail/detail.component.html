@@ -125,36 +125,36 @@
         <!-- Street 1 -->
         <mat-form-field appearance=standard>
           <mat-label>Street 1</mat-label>
-          <input matInput required [(ngModel)]=selectedOrder.address.street1 type=text name=street1>
+          <input matInput readonly=true required [(ngModel)]=selectedOrder.address.street1 type=text name=street1>
         </mat-form-field>
 
         <!-- Street 2 -->
         <mat-form-field appearance=standard>
           <mat-label>Street 2</mat-label>
-          <input matInput [(ngModel)]=selectedOrder.address.street2 type=text name=street2>
+          <input matInput readonly=true [(ngModel)]=selectedOrder.address.street2 type=text name=street2>
         </mat-form-field>
 
         <!-- City -->
         <mat-form-field appearance=standard>
           <mat-label>City</mat-label>
-          <input matInput required [(ngModel)]=selectedOrder.address.city type=text name=city>
+          <input matInput readonly=true required [(ngModel)]=selectedOrder.address.city type=text name=city>
         </mat-form-field>
 
         <!-- State -->
         <mat-form-field appearance=standard>
           <mat-label>State</mat-label>
-          <input matInput required [(ngModel)]=selectedOrder.address.state type=text name=state>
+          <input matInput readonly=true required [(ngModel)]=selectedOrder.address.state type=text name=state>
         </mat-form-field>
 
         <!-- Zip -->
         <mat-form-field appearance=standard>
           <mat-label>Zipcode</mat-label>
-          <input matInput required [(ngModel)]=selectedOrder.address.zip type=text name=zip>
+          <input matInput readonly=true required [(ngModel)]=selectedOrder.address.zip type=text name=zip>
         </mat-form-field>
         <!-- Country -->
         <mat-form-field appearance=standard>
           <mat-label>Country</mat-label>
-          <input matInput required [(ngModel)]=selectedOrder.address.country type=text name=country>
+          <input matInput readonly=true required [(ngModel)]=selectedOrder.address.country type=text name=country>
         </mat-form-field>
 
 
@@ -166,27 +166,28 @@
           <!-- Name  -->
           <mat-form-field appearance=standard>
             <mat-label>Name</mat-label>
-            <input matInput required [(ngModel)]=selectedOrder.address.name type=text name=name>
+            <input matInput readonly=true required [(ngModel)]=selectedOrder.address.name type=text name=name>
           </mat-form-field>
 
           <!-- Email -->
           <mat-form-field appearance=standard>
             <mat-label>Email</mat-label>
-            <input matInput required [(ngModel)]=selectedOrder.address.email type=text name=email>
+            <input matInput readonly=true required [(ngModel)]=selectedOrder.address.email type=text name=email>
           </mat-form-field>
 
           <!-- Phone -->
           <mat-form-field appearance=standard>
             <mat-label>Phone</mat-label>
-            <input matInput required [(ngModel)]=selectedOrder.address.phone type=text name=phone>
+            <input matInput readonly=true required [(ngModel)]=selectedOrder.address.phone type=text name=phone>
           </mat-form-field>
         </div>
 
 
 
       <div class="submit-div">
-        <!-- Submit -->
+        <!-- Submit 
         <input type="submit" value="Save Changes" class="submit-button dark-blue-button">
+        -->
       </div>
 
     </div>
