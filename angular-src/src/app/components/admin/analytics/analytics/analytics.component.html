@@ -1,0 +1,63 @@
+<div class=main>
+    <div class=chart-container>
+      <h2>Sales by Date</h2>
+        <ngx-charts-area-chart
+        scheme="horizon"
+        [results]="chartData"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showGridLines]=false
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [autoScale]="autoScale"
+        [timeline]="timeline">
+      </ngx-charts-area-chart>
+    </div>
+
+    <div class=chart-container>
+        <h2>Total Sales</h2>
+          <ngx-charts-area-chart
+          scheme="horizon"
+          [results]="chartData"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showGridLines]=false
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [autoScale]="autoScale"
+          [timeline]="timeline">
+        </ngx-charts-area-chart>
+      </div>
+
+      <ng-template [ngIf]=barChartData.length>
+
+     
+      <div class=chart-container>
+          <h2>Total Sales</h2>
+            <ngx-charts-bar-vertical
+            [scheme]="bar_chart_colorScheme"
+            [results]="barChartData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showGridLines]=false
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            >
+          </ngx-charts-bar-vertical>
+        </div>
+      </ng-template>
+</div>
+
+

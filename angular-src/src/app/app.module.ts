@@ -8,6 +8,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import * as Cloudinary from 'cloudinary-core';
 import { QuillModule } from 'ngx-quill';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { EmbedVideo } from 'ngx-embed-video';
 
 import { AppComponent } from './app.component';
 import { CollectionService } from './services/collection.service';
@@ -44,6 +46,13 @@ import { HomeProductsComponent } from './components/admin/homepage/home-products
 import { MessageComponent } from './components/admin/messages/message/message.component';
 import { MessageDetailComponent } from './components/admin/messages/message-detail/message-detail.component';
 import { MailingListComponent } from './components/admin/email/mailing-list/mailing-list.component';
+import { AnalyticsComponent } from './components/admin/analytics/analytics/analytics.component';
+import { FaqComponent } from './components/admin/pages/faq/faq.component';
+import { AboutComponent } from './components/admin/pages/about/about.component';
+import { VideoComponent } from './components/admin/pages/blocks/video/video.component';
+import { TextComponent } from './components/admin/pages/blocks/text/text.component';
+import { PageComponent } from './components/admin/pages/page/page/page.component';
+import { BlockDirective } from './components/admin/pages/directives/block.directive';
 
 
 
@@ -148,6 +157,21 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'admin/pages/faq',
+    component: PageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/pages/about',
+    component: AboutComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/analytics',
+    component: AnalyticsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -180,8 +204,16 @@ const appRoutes: Routes = [
     HomeProductsComponent,
     MessageComponent,
     MessageDetailComponent,
-    MailingListComponent
+    MailingListComponent,
+    AnalyticsComponent,
+    FaqComponent,
+    AboutComponent,
+    VideoComponent,
+    TextComponent,
+    PageComponent,
+    BlockDirective
   ],
+  entryComponents: [ TextComponent, VideoComponent ],
   imports: [
     MaterialModule,
     BrowserAnimationsModule,
@@ -194,6 +226,8 @@ const appRoutes: Routes = [
     QuillModule,
     NgxWebstorageModule.forRoot(),
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'bigkatoriginal'}),
+    NgxChartsModule,
+    EmbedVideo.forRoot(),
   ],
   providers: [
     CollectionService,

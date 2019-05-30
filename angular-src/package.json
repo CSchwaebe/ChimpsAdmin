@@ -24,6 +24,7 @@
     "@angular/router": "^7.2.2",
     "@auth0/angular-jwt": "^2.1.0",
     "@cloudinary/angular-5.x": "^1.0.2",
+    "@shopify/draggable": "^1.0.0-beta.8",
     "@swimlane/ngx-charts": "^10.1.0",
     "@types/big.js": "^4.0.5",
     "angular-jwt": "^0.1.10",
@@ -31,6 +32,7 @@
     "cloudinary-core": "^2.6.1",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
+    "ngx-embed-video": "^1.0.4",
     "ngx-paypal": "^3.2.1",
     "ngx-quill": "^4.6.13",
     "ngx-webstorage": "^3.0.0-beta.14",
@@ -41,7 +43,7 @@
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.8",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "^7.3.8",
     "@angular/compiler-cli": "^7.2.11",
     "@angular/language-service": "^7.2.2",

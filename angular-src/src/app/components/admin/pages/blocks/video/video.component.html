@@ -1,0 +1,31 @@
+<div class="block">
+
+  
+  
+  <div class=url [innerHtml]="yt_iframe_html">
+
+  </div>
+
+  <div class=text>
+     <div class=quill-wrapper>
+
+      <quill-editor z-index=10000000 [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html theme=bubble placeholder=Text [modules]="{ 
+        toolbar: [
+          ['bold', 'italic', 'underline', 'strike'],       
+          ['blockquote', 'code-block'],           
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          [{ 'script': 'sub'}, { 'script': 'super' }],     
+          [{ 'indent': '-1'}, { 'indent': '+1' }],                                 
+      
+          [{ 'size': ['small', false, 'large', 'huge'] }],
+          [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+          [{ 'color': [] }, { 'background': [] }],          
+          [{ 'font': [] }],
+          [{ 'align': [] }],
+          ['clean']                 
+        ]
+      }"></quill-editor>
+    </div>
+  </div>
+
+</div>

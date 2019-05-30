@@ -134,6 +134,7 @@ $color-white-blue-active: hsl(239, 43%, 91%);
 /* Quill Editor */
 
 .ql-editor {
+  z-index: 1000000000000;
   font-family: "Montserrat";
 }
 .ql-editor > * {

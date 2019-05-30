@@ -1,0 +1,26 @@
+
+/////////////////////////////////////////////////
+//                  TEXT
+/////////////////////////////////////////////////
+
+export interface Text {
+    data: TextBlockData;
+}
+
+export interface TextBlockData {
+    text: any,
+}
+
+
+/////////////////////////////////////////////////
+//                  VIDEO
+/////////////////////////////////////////////////
+
+export interface Video {
+    data: VideoBlockData;
+}
+
+export interface VideoBlockData {
+    text: any,
+    url: string,
+}

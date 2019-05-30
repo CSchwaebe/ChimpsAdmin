@@ -1,0 +1,44 @@
+div.main {
+    text-align: center;
+
+    .draggable-container {
+        display: inline-block;
+        width: 90%;
+        height: 500px;
+
+
+        .draggable-item {
+            display: inline-block;
+            background: grey;
+            width: 10%;
+            margin: 1%;
+            height: 400px;
+
+        }
+    }
+
+    div.centered-container {
+        display: inline-block;
+        width: 80%;
+        text-align: center;
+    
+
+    form.add-question-form {
+        display: inline-block;
+        width: 100%;
+
+        .quill-wrapper {
+
+            width: 100%;
+            padding-bottom: 50px;
+        }
+
+       
+    }
+}
+}
+
+div.button-container {
+    display: inline-block;
+    width: 100%;
+}

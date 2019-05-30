@@ -24,6 +24,15 @@ export class OrderService {
     })
   }
 
+
+  async getAll() {
+    return new Promise<Order[]>(async (resolve, reject) => {
+      this.http.get(this.url).subscribe((res: MultipleOrderResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
   async getRecent() {
     return new Promise<Order[]>(async (resolve, reject) => {
       this.http.get(this.url + 'recent').subscribe((res: MultipleOrderResponse) => {
