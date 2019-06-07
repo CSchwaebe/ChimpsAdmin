@@ -12,14 +12,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TextComponent implements Text {
   @Input() data: TextBlockData;
 
-  constructor(private FormBuilder: FormBuilder) { 
+  showStyles: boolean = false;
 
-   
+  constructor(private FormBuilder: FormBuilder) {
 
   }
 
   ngOnInit() {
     console.log(this.data)
+
+   
   }
+
+  toggleStyles() {
+    this.showStyles = !this.showStyles;
+  }
+
+
 
 }

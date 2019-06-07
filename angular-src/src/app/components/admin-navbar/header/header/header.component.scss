@@ -1,0 +1,87 @@
+button:focus {
+  outline: 0;
+}
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+$color-primary: #263238;
+$color-primary-dark: #000a12;
+$color-primary-light: #4f5b62;
+$color-primary-text: #e0e0e0;
+$color-secondary: #1a237e;
+$color-secondary-dark: #000051;
+$color-secondary-light: #534bae;
+
+button {
+  text-decoration: solid;
+  text-align: left;
+  font-size: 18px;
+  line-height: 50px;
+  color: $color-dark-blue;
+  letter-spacing: 0.5px;
+  font-family: "Montserrat";
+  background: none;
+  border: none;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+//$color-dark-blue: hsl(261, 100%, 9%); //DARK
+//$color-white-blue: hsl(260, 43%, 99%); //LIGHT
+
+//$color-white-blue: rgb(158, 158, 158);
+.header {
+  text-align: center;
+  width: 100%;
+  height: 66px;
+
+  font-family: "Montserrat";
+  font-weight: 100;
+
+  background: $color-dark-blue;
+  background: linear-gradient(180deg, rgb(0, 2, 70) 0%, rgba(0, 1, 46, 1) 100%);
+  //box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+  z-index: 100;
+
+  .title {
+      display: inline-block;
+    height: 66px;
+    //background: $color-silver;
+    width: 250px;
+
+    .icon-container {
+      display: inline-block;
+      vertical-align: top;
+      width: 40px;
+      height: 40px;
+      padding: 13px;
+      margin-left: 20px;
+    }
+
+    .title-text {
+      display: inline-block;
+      width: 150px;
+      text-align: left;
+      font-size: 24px;
+      line-height: 66px;
+      margin: 0px;
+      text-decoration: none;
+      color: white;
+
+      opacity: 0.29;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+  }
+}

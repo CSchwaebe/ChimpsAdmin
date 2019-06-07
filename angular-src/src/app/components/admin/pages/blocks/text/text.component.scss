@@ -1,11 +1,53 @@
-.text-block {
-    display: inline-block;
-    min-height: 200px;
-    width: 40%;
+.block {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  //min-height: 200px;
+  width: 40%;
+  //padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 
-    .quill-wrapper {
-        .quill-editor {
-            
-        }
+  
+  .quill-wrapper {
+    min-height: 100px;
+    .quill-editor {
     }
+  }
+
+  .style-container {
+    width: 100%;
+    text-align: left;
+    //background: grey;
+    .handle {
+        cursor: grab;
+        float: right;
+        height: 25px;
+        width: 25px;
+        text-align: center;
+    }
+
+    .style-button {
+      
+      background: transparent;
+      box-shadow: none;
+      width: 40px;
+      height: 25px;
+      border-radius: 10px;
+    }
+
+    .style-form-container {
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      width: 95%;
+      text-align: left;
+
+      mat-form-field {
+        width: 100px;
+        margin-right: 10px;
+      }
+    }
+  }
 }
+
+

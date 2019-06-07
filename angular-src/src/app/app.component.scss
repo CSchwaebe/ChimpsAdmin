@@ -1,0 +1,37 @@
+
+button:focus {
+    outline: 0;
+}
+
+#shopping-cart {
+    display: none;
+}
+
+.menu-button {
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 66px;
+    height: 66px;
+    margin: 0px;
+    padding: 0px;
+    background: transparent;
+    color: white;
+    border: none;
+}
+
+
+
+mat-sidenav-container {
+    min-height: 120vh;
+    mat-sidenav {
+        min-height: 120vh;
+    }
+    mat-sidenav-content {
+        min-height: 120vh;
+
+    }
+}
+    
+
+  

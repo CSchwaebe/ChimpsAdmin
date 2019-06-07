@@ -1,12 +1,8 @@
-<div class="text-block">
-  
-  <div class=text>
-    {{data.text}}
-  </div>
+<div class="block draggable-item" [ngStyle]=data.style>
 
-    <div class=quill-wrapper>
-
-      <quill-editor [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html theme=bubble placeholder=Question [modules]="{ 
+  <div class=quill-wrapper>
+    <quill-editor [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html
+      theme=bubble bounds=.quill-wrapper placeholder="Text Block" [modules]="{ 
         toolbar: [
           ['bold', 'italic', 'underline', 'strike'],       
           ['blockquote', 'code-block'],           
@@ -22,7 +18,43 @@
           ['clean']                 
         ]
       }"></quill-editor>
-    </div>
+  </div>
+
+  <div class=style-container>
+      <div class=handle>
+          <mat-icon>open_with</mat-icon>
+        </div>
+
+    <button class='white-button style-button' (click)=toggleStyles()>
+      <ng-template [ngIf]=showStyles>
+        <mat-icon>expand_more</mat-icon>
+      </ng-template>
+
+      <ng-template [ngIf]=!showStyles>
+        <mat-icon>settings</mat-icon>
+      </ng-template>
+    </button>
+    <ng-template [ngIf]=showStyles>
+      <div class=style-form-container>
+        <mat-form-field appearance="outline">
+            <mat-label>Width</mat-label>
+            <mat-select required [(ngModel)]="data.style.width" name="width">
+              <mat-option value="50%">50%</mat-option>
+              <mat-option value="100%">100%</mat-option>
+            </mat-select>
+          </mat-form-field>
+<!--
+<mat-form-field appearance="legacy">
+          <mat-label>Height</mat-label>
+          <input required matInput class="style-input" type="text" name="height" [(ngModel)]="data.style.height">
+        
+        </mat-form-field>
+-->
+        
+      </div>
+    </ng-template>
+  </div>
+
 
 
 </div>

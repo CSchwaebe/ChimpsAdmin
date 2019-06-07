@@ -1,23 +1,32 @@
-<mat-sidenav-container class="example-container">
-    
-  <mat-sidenav mode="side" opened>
-      <app-admin-navbar>
-      </app-admin-navbar>
-    </mat-sidenav>
+<app-header></app-header>
 
-    <mat-sidenav-content>
-      <div class=router-outlet>
-        <router-outlet></router-outlet>
+<button class="hamburger hamburger--spring menu-button" type="button" (click)=sidenav.toggle() (click)=collapse()>
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav mode="side" #sidenav>
+    <app-admin-navbar>
+    </app-admin-navbar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class=router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
-  </mat-sidenav-container>
+
+</mat-sidenav-container>
 
 
 
 
 
 
- <!--
+<!--
 <div>
   <div class="background">
    

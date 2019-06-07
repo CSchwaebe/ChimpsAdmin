@@ -1,3 +1,24 @@
+/////////////////////////////////////////////////
+//                  STYLE
+/////////////////////////////////////////////////
+
+export interface Style {
+    width?: string,
+    height?: string,
+}
+
+
+/////////////////////////////////////////////////
+//                  SPACER
+/////////////////////////////////////////////////
+
+export interface Spacer {
+    data: SpacerBlockData;
+}
+
+export interface SpacerBlockData {
+    style: Style,
+}
 
 /////////////////////////////////////////////////
 //                  TEXT
@@ -9,6 +30,7 @@ export interface Text {
 
 export interface TextBlockData {
     text: any,
+    style: Style,
 }
 
 
@@ -23,4 +45,5 @@ export interface Video {
 export interface VideoBlockData {
     text: any,
     url: string,
+    style: Style
 }

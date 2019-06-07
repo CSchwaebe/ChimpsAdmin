@@ -13,9 +13,10 @@ export class VideoComponent implements Video {
   yt_iframe_html: any;
   vimeo_iframe_html: any;
   dm_iframe_html: any;
+  showStyles: boolean = false;
 
   constructor(private EmbedService: EmbedVideoService) {
-    
+   
    }
 
   ngOnInit() {
@@ -23,6 +24,10 @@ export class VideoComponent implements Video {
     this.yt_iframe_html = this.EmbedService.embed(this.data.url, {
       attr: { width: '100%', height: '100%' }
     });
+  }
+
+  toggleStyles() {
+    this.showStyles = !this.showStyles;
   }
 
 }

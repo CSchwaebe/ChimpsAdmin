@@ -53,6 +53,9 @@ import { VideoComponent } from './components/admin/pages/blocks/video/video.comp
 import { TextComponent } from './components/admin/pages/blocks/text/text.component';
 import { PageComponent } from './components/admin/pages/page/page/page.component';
 import { BlockDirective } from './components/admin/pages/directives/block.directive';
+import { HeaderComponent } from './components/admin-navbar/header/header/header.component';
+import { ImageComponent } from './components/admin/pages/blocks/image/image.component';
+import { SpacerComponent } from './components/admin/pages/blocks/spacer/spacer.component';
 
 
 
@@ -211,9 +214,13 @@ const appRoutes: Routes = [
     VideoComponent,
     TextComponent,
     PageComponent,
-    BlockDirective
+    BlockDirective,
+    HeaderComponent,
+    ImageComponent,
+    SpacerComponent
+    
   ],
-  entryComponents: [ TextComponent, VideoComponent ],
+  entryComponents: [ TextComponent, VideoComponent, ImageComponent, SpacerComponent ],
   imports: [
     MaterialModule,
     BrowserAnimationsModule,

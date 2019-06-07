@@ -1,0 +1,38 @@
+<div class="block draggable-item" [ngStyle]=data.style>
+
+   
+  
+    <div class=style-container>
+        <div class=handle>
+            <mat-icon>open_with</mat-icon>
+          </div>
+  
+      <button class='white-button style-button' (click)=toggleStyles()>
+        <ng-template [ngIf]=showStyles>
+          <mat-icon>expand_more</mat-icon>
+        </ng-template>
+  
+        <ng-template [ngIf]=!showStyles>
+          <mat-icon>settings</mat-icon>
+        </ng-template>
+      </button>
+      <ng-template [ngIf]=showStyles>
+        <div class=style-form-container>
+          <mat-form-field appearance="legacy">
+            <mat-label>Width</mat-label>
+            <input required matInput class="style-input" type="text" name="width" [(ngModel)]="data.style.width">
+            <span matSuffix>%</span>
+          </mat-form-field>
+  
+          <mat-form-field appearance="legacy">
+            <mat-label>Height</mat-label>
+            <input required matInput class="style-input" type="text" name="height" [(ngModel)]="data.style.height">
+          
+          </mat-form-field>
+        </div>
+      </ng-template>
+    </div>
+  
+  
+  
+  </div>

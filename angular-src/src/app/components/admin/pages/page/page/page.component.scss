@@ -1,0 +1,59 @@
+div.main {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+
+  div.toolbar {
+    width: 100%;
+    min-height: 100px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+
+    button.toolbar-button {
+      height: 50px;
+      width: 50px;
+      border-radius: 50px;
+      display: inline-block;
+      margin: 20px;
+      font-size: 24px;
+    }
+    div.block-menu {
+      display: block;
+      padding-left: 50px;
+      text-align: left;
+      button.block-menu-button {
+        padding: 10px 20px 10px 20px;
+        width: auto;
+        margin: 0px 10px 0px 10px;
+        font-size: 14px;
+        border-radius: 20px;
+      }
+    }
+  }
+
+  div.page-container {
+      box-shadow: 0px 2px 4px rgba(0,0,0, .1);
+    div.title-container {
+      width: 100%;
+
+      h1.title {
+        width: 100%;
+      }
+    }
+    div.content-container {
+      width: 100%;
+    }
+  }
+}
+
+#toolbar {
+  background: white;
+}
+
+.hide-toolbar {
+  display: none;
+}
+
+.show-toolbar {
+  display: block;
+}
