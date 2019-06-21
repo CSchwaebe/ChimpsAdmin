@@ -56,6 +56,8 @@ import { BlockDirective } from './components/admin/pages/directives/block.direct
 import { HeaderComponent } from './components/admin-navbar/header/header/header.component';
 import { ImageComponent } from './components/admin/pages/blocks/image/image.component';
 import { SpacerComponent } from './components/admin/pages/blocks/spacer/spacer.component';
+import { BlockService } from './services/block.service';
+import { PageService } from './services/page.service';
 
 
 
@@ -240,6 +242,8 @@ const appRoutes: Routes = [
     CollectionService,
     ShippingService,
     SnackbarService,
+    BlockService,
+    PageService
   ],
   bootstrap: [AppComponent]
 })

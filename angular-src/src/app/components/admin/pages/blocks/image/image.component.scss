@@ -1,3 +1,134 @@
-.main{
-    
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+.block {
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    //min-height: 200px;
+    //width: 40%;
+    //padding: 20px;
+    margin-bottom: 20px;
+
+.image-div {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    //margin: 0 5% 5% 5%;
+    //margin-top: 0;
+    height: auto;
+
+    div.thumbnail {
+      width: 100%;
+
+      div.thumbnail-container {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+
+        img {
+          display: inline-block;
+          width: 100%;
+        }
+
+        button {
+          display: inline-block;
+          width: 120px;
+          height: 30px;
+          margin-top: 20px;
+          font-size: 12px;
+          line-height: 30px;
+          border: none;
+          border-radius: 10px;
+          font-weight: bold;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px 2px 4px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .image-button {
+      display: inline-block;
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 2%;
+      text-align: center;
+
+      .upload-button {
+        display: inline-block;
+        width: 150px;
+        height: 40px;
+       
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    p {
+      min-width: 100%;
+      text-align: center;
+      font-family: "Montserrat";
+      font-size: 12px;
+      color: $color-dark-blue;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+
+
+  .style-container {
+    width: 100%;
+    text-align: left;
+    //background: grey;
+    .handle {
+        cursor: grab;
+        float: right;
+        height: 25px;
+        width: 25px;
+        text-align: center;
+    }
+    .swap-container {
+        float: right;
+        
+        button.up {
+          display: inline-block;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+        }
+  
+        button.down {
+          display: inline-block;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          
+        }
+      }
+
+    .style-button {
+      
+      background: transparent;
+      box-shadow: none;
+      width: 40px;
+      height: 25px;
+      border-radius: 10px;
+    }
+
+    .style-form-container {
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+      width: 95%;
+      text-align: left;
+
+      mat-form-field {
+        width: 100px;
+        margin-right: 10px;
+      }
+    }
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 declare var cloudinary: any;
 import { Subject } from 'rxjs';
+import { BarVerticalStackedComponent } from '@swimlane/ngx-charts';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,20 @@ export class CloudinaryService {
     //16:9 IMAGES
     cropping: true,
     croppingAspectRatio: 1.77,
+    croppingDefaultSelectionRatio: .9,
+    croppingShowDimensions: true,
+    singleUploadAutoClose: true,
+  }
+
+  imageBlockPreset = {
+    cloudName: this.cloudinary_name,
+    uploadPreset: 'imageBlock',
+    resourceType: 'image',
+    maxFileSize: 10000000,
+
+    //16:9 IMAGES
+    cropping: true,
+    //croppingAspectRatio: 1.77,
     croppingDefaultSelectionRatio: .9,
     croppingShowDimensions: true,
     singleUploadAutoClose: true,
@@ -151,6 +166,28 @@ export class CloudinaryService {
 
 
   /**
+   * For Header Images (Collection, Category, Subcategory)
+   * 
+   * @param id 
+   */
+  load_ImageBlock(id: string) {
+    this.uploadType = 'block';
+
+    if (this.myWidget !== undefined) {
+      this.myWidget.update(this.imageBlockPreset, (error, result) => {
+        this.callback(error, result)
+      });
+    } else {
+      this.myWidget = cloudinary.createUploadWidget(this.imageBlockPreset, (error, result) => {
+        this.callback(error, result)
+      });
+    }
+
+    this.addEventListener(id);
+  }
+
+
+  /**
    * The Callback that handles a successful upload
    * 
    */
@@ -158,6 +195,31 @@ export class CloudinaryService {
     if (result && result.event === "success") {
       let url: string = 'https://res.cloudinary.com/' + this.cloudinary_name;
 
+      switch (this.uploadType) {
+        case 'product':
+          url = url
+            + '/image/upload/c_scale,w_768,q_60,f_auto,dpr_auto/'
+            + result.info.path;
+          break;
+        case 'header':
+          url = url
+            + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
+            + result.info.path;
+          break;
+        case 'slideshow':
+          url = url
+            + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
+            + result.info.path;
+          break;
+        case 'block':
+          url = url
+            + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
+            + result.info.path;
+          break;
+      }
+
+
+      /*
       if (this.uploadType === 'product') {
         url = url
           + '/image/upload/c_scale,w_768,q_60,f_auto,dpr_auto/'
@@ -171,6 +233,7 @@ export class CloudinaryService {
           + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
           + result.info.path;
       }
+      */
 
       this.images.next(url);
     }

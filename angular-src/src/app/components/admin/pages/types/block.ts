@@ -8,6 +8,7 @@ export class Block {
     constructor(component: Type<any>, data: any) {
         this.component = component;
         this.data = data;
+      
     }
 
 }

@@ -1,12 +1,11 @@
 .block {
   box-sizing: border-box;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
   //min-height: 200px;
-  width: 40%;
+  //width: 40%;
   //padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 
   
   .quill-wrapper {
@@ -27,6 +26,26 @@
         text-align: center;
     }
 
+    .swap-container {
+      float: right;
+      
+      button.up {
+        display: inline-block;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+
+      button.down {
+        display: inline-block;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        
+      }
+    }
+
+   
     .style-button {
       
       background: transparent;
@@ -34,6 +53,7 @@
       width: 40px;
       height: 25px;
       border-radius: 10px;
+      cursor: pointer;
     }
 
     .style-form-container {
@@ -46,6 +66,9 @@
         width: 100px;
         margin-right: 10px;
       }
+
+      
+  
     }
   }
 }

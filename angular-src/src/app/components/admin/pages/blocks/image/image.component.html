@@ -1,3 +1,89 @@
-<p>
-  image works!
-</p>
+<div class="block draggable-item" [ngStyle]=data.style [style.boxShadow]="PageService.preview ? 'none' :  '0px 2px 4px #d9d9d9'">
+
+
+  <div class=image-div>
+    <ng-template [ngIf]="data.image !== ''">
+      <div class=thumbnail>
+        <div class=thumbnail-container>
+          <img src={{data.image}}>
+          <ng-template [ngIf]="!PageService.preview">
+              <button type='button' class=red-button (click)=removeImage()>Change Image</button>
+          </ng-template>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template [ngIf]='!isCloudinaryLoaded && !data.image'>
+      <div class=image-button>
+        <button class="upload-button white-button" (click)=loadCloudinary()>Add Image</button>
+      </div>
+    </ng-template>
+
+    <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'"
+      [style.height]="isCloudinaryLoaded ? 'auto': '0px'">
+      <div id=image1 class=image-button>
+        <button id="0" class="upload-button white-button" [style.display]="(data.image === '') ? 'inline-block' : 'none'"
+          type=button>Upload</button>
+      </div>
+
+      <p class=image-div-footer [style.display]="(data.image === '') ? 'inline-block' : 'none'">* Max Images - 1</p>
+      <p class=image-div-footer [style.display]="(data.image === '') ? 'inline-block' : 'none'">* Max File Size - 10MB
+      </p>
+    </div>
+  </div>
+  <ng-template [ngIf]=!PageService.preview>
+  <div class=style-container>
+    <!--
+ <div class=handle>
+          <mat-icon>open_with</mat-icon>
+        </div>
+    -->
+     
+
+    <button class='white-button style-button' (click)=toggleStyles()>
+      <ng-template [ngIf]=showStyles>
+        <mat-icon>expand_more</mat-icon>
+      </ng-template>
+
+      <ng-template [ngIf]=!showStyles>
+        <mat-icon>settings</mat-icon>
+      </ng-template>
+    </button>
+    <div class=swap-container>
+        <button class=down (click)="PageService.swap(data.sortOrder, 'down')">
+            <mat-icon>arrow_downward</mat-icon>
+        </button>
+        <button class=up (click)="PageService.swap(data.sortOrder, 'up')">
+            <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    <ng-template [ngIf]=showStyles>
+      <div class=style-form-container>
+        <mat-form-field appearance="outline">
+            <mat-label>Width</mat-label>
+            <mat-select required [(ngModel)]="data.style.width" name="width">
+                <mat-option value="30%">30%</mat-option>
+                <mat-option value="40%">40%</mat-option>
+                <mat-option value="50%">50%</mat-option>
+                <mat-option value="60%">60%</mat-option>
+                <mat-option value="70%">70%</mat-option>
+              <mat-option value="80%">80%</mat-option>
+              <mat-option value="90%">90%</mat-option>
+              <mat-option value="100%">100%</mat-option>
+            </mat-select>
+          </mat-form-field>
+<!--
+<mat-form-field appearance="legacy">
+          <mat-label>Height</mat-label>
+          <input required matInput class="style-input" type="text" name="height" [(ngModel)]="data.style.height">
+        
+        </mat-form-field>
+-->
+
+        
+      </div>
+    </ng-template>
+  </div>
+  </ng-template>
+
+</div>

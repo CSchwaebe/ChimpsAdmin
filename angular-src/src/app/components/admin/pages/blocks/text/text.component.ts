@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
-
 import { Text, TextBlockData } from '../../models/blocks';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { PageService } from 'src/app/services/page.service';
 
 @Component({
   selector: 'app-text',
@@ -14,14 +12,12 @@ export class TextComponent implements Text {
 
   showStyles: boolean = false;
 
-  constructor(private FormBuilder: FormBuilder) {
+  constructor(public PageService: PageService) {
 
   }
 
   ngOnInit() {
-    console.log(this.data)
-
-   
+    console.log(this.data)   
   }
 
   toggleStyles() {

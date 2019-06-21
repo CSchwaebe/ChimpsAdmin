@@ -4,7 +4,9 @@ import { BlockDirective } from '../../directives/block.directive';
 import { Text } from '../../models/blocks';
 import { BlockService } from 'src/app/services/block.service';
 import { Page } from '../../models/page';
-import { Draggable, Swappable, Sortable, sortableEvent } from '@shopify/draggable';
+//import { Draggable, Swappable, Sortable, sortableEvent, draggableEvent, draggableInitializedEvent } from '@shopify/draggable';
+import { PageService } from 'src/app/services/page.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-page',
@@ -22,109 +24,126 @@ export class PageComponent implements OnInit, AfterViewInit {
   blocks: Block[];
   viewContainerRef: ViewContainerRef;
   toolbar: boolean = false;
-  sortable: Sortable;
+
+  //For Adding a new Block
+  options: string[] = [
+    'Text',
+    'Image',
+    'Video'
+  ]
+  type: string = '';
+  style = {
+    width: '',
+  }
+  videoURL: string = '';
+
+  subscription: Subscription;
+
 
   @ViewChild(BlockDirective) blockDirective: BlockDirective;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
     private BlockService: BlockService,
-  ) { }
+    public PageService: PageService
+  ) { 
+    this.subscription = this.PageService.isDirty().subscribe(status => {
+      this.model.blocks = this.PageService.blocks;
+      this.loadComponents();
+    });
+  }
 
   async ngOnInit() {
     this.viewContainerRef = this.blockDirective.viewContainerRef;
 
 
+
     //this.blocks = this.BlockService.getBlocks();
     this.model.title = 'Page Title';
-    this.model.blocks = await this.BlockService.getBlocks();
+    this.model.blocks = this.PageService.blocks;
+
+    this.addFirstBlock();
+   
     this.loadComponents();
 
   }
 
   ngAfterViewInit() {
-    this.sortable = new Sortable(document.querySelectorAll('.draggable-container'), {
-      draggable: '.draggable-item',
-      mirror: {
-        constrainDimensions: true,
-      },
-      delay: 100,
-      handle: '.handle'
-    });
-
-
-
-    console.log(this.sortable)
-    this.sortable.on('sortable:start', (sortableEvent) => {this.sortStart(sortableEvent)});
-    this.sortable.on('sortable:stop', (sortableEvent) => {this.sortStop(sortableEvent)});
-    
-
-
+   
   }
 
   ngOnDestroy() {
 
   }
 
-  sortStart(sortableEvent) {
-    console.log('Start');
-   //console.log(sortableEvent.startIndex);
-   //startContainer
+  addFirstBlock() {
+    this.PageService.addBlock(this.BlockService.newTextBlock('50%', this.PageService.blocks.length));
   }
 
-  sortStop(sortableEvent) {
-    console.log('Stop');
-    //console.log(sortableEvent.oldIndex);
-    //console.log(sortableEvent.newIndex);
-   }
 
 
-  loadComponents() {
+loadComponents() {
+  console.log(this.model.blocks);
+  this.viewContainerRef.clear();
+  for (let i = 0; i < this.model.blocks.length; i++) {
 
-    for (let i = 0; i < this.model.blocks.length; i++) {
-      //Basicall this.blocks contains objects that have a componenet and data needed to initialize that componenet
-      let page = this.model.blocks[i];
+    //Basicall this.blocks contains objects that have a componenet and data needed to initialize that componenet
+    let block = this.model.blocks[i];
 
-      //This grabs the component
-      let componentFactory = this.componentFactoryResolver.resolveComponentFactory(page.component);
+    //This grabs the component
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(block.component);
 
-      //creates the component
-      let componentRef = this.viewContainerRef.createComponent(componentFactory);
-      //Adds the data to the componenet
-      (<Block>componentRef.instance).data = page.data;
-    }
-
-  }
-
-  toggleToolbar() {
-    this.toolbar = !this.toolbar;
-  }
-
-  addBlock(page: Block) {
-    
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(page.component);
+    //creates the component
     let componentRef = this.viewContainerRef.createComponent(componentFactory);
-    (<Block>componentRef.instance).data = page.data;
-    
+    //Adds the data to the componenet
+    (<Block>componentRef.instance).data = block.data;
   }
 
-  insertBlock(type: string) {
-    switch (type) {
-      case 'Text':
-        this.addBlock(this.BlockService.newTextBlock());
-      case 'Image': break;
-      case 'Video':
-        this.addBlock(this.BlockService.newVideoBlock());
-        break;
-      case 'Spacer':
-        this.addBlock(this.BlockService.newSpacerBlock());
-        break;
-    }
+}
 
+toggleToolbar() {
+  this.toolbar = !this.toolbar;
+}
+
+addBlock() {
+  //this.model.blocks.push(block);
+
+  this.loadComponents();
+  /*
+  //This grabs the component
+  let componentFactory = this.componentFactoryResolver.resolveComponentFactory(block.component);
+  //creates the component
+  let componentRef = this.viewContainerRef.createComponent(componentFactory);
+  //Adds the data to the componenet
+  (<Block>componentRef.instance).data = block.data;
+  */
+
+}
+
+insertBlock() {
+  switch (this.type) {
+    case 'Text':
+      this.PageService.addBlock(this.BlockService.newTextBlock(this.style.width, this.PageService.blocks.length));
+      break;
+    case 'Image':
+    this.PageService.addBlock(this.BlockService.newImageBlock(this.style.width, this.PageService.blocks.length));
+      break;
+    case 'Video':
+    this.PageService.addBlock(this.BlockService.newVideoBlock(this.videoURL, this.PageService.blocks.length));
+      break;
+    case 'Spacer':
+    this.PageService.addBlock(this.BlockService.newSpacerBlock(this.PageService.blocks.length));
+      break;
   }
 
-  save() {
-    console.log(this.model);
-  }
+  this.loadComponents();
+}
+
+save() {
+  console.log(this.model);
+  //console.log(this.viewContainerRef);
+}
+
+
 
 
 }

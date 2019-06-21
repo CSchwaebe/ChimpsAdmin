@@ -1,4 +1,4 @@
-<div class="block draggable-item"  [ngStyle]=data.style>
+<div class="block draggable-item"  [ngStyle]=data.style [style.boxShadow]="PageService.preview ? 'none' :  '0px 2px 4px #d9d9d9'">
 
   
   <div class=video-container>
@@ -22,7 +22,7 @@
           [{ 'size': ['small', false, 'large', 'huge'] }],
           [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
           [{ 'color': [] }, { 'background': [] }],          
-          [{ 'font': [] }],
+         
           [{ 'align': [] }],
           ['clean']                 
         ]
@@ -30,10 +30,13 @@
     </div>
   </div>
 
+  <ng-template [ngIf]=!PageService.preview>
   <div class=style-container>
-      <div class=handle>
+      <!--
+ <div class=handle>
           <mat-icon>open_with</mat-icon>
         </div>
+    -->
 
     <button class='white-button style-button' (click)=toggleStyles()>
       <ng-template [ngIf]=showStyles>
@@ -44,17 +47,30 @@
         <mat-icon>settings</mat-icon>
       </ng-template>
     </button>
+    <div class=swap-container>
+        <button class=down (click)="PageService.swap(data.sortOrder, 'down')">
+            <mat-icon>arrow_downward</mat-icon>
+        </button>
+        <button class=up (click)="PageService.swap(data.sortOrder, 'up')">
+            <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
     <ng-template [ngIf]=showStyles>
       <div class=style-form-container>
           <mat-form-field appearance="outline">
               <mat-label>Width</mat-label>
               <mat-select required [(ngModel)]="data.style.width" name="width">
                 <mat-option value="50%">50%</mat-option>
+                <mat-option value="60%">60%</mat-option>
+                <mat-option value="70%">70%</mat-option>
                 <mat-option value="80%">80%</mat-option>
               </mat-select>
             </mat-form-field>
+
+           
       </div>
     </ng-template>
   </div>
+</ng-template>
 
 </div>

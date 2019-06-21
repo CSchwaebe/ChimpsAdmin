@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Video, VideoBlockData } from 'src/app/components/admin/pages/models/blocks';
 import { EmbedVideoService } from 'ngx-embed-video';
+import { PageService } from 'src/app/services/page.service';
 
 @Component({
   selector: 'app-video',
@@ -15,7 +16,8 @@ export class VideoComponent implements Video {
   dm_iframe_html: any;
   showStyles: boolean = false;
 
-  constructor(private EmbedService: EmbedVideoService) {
+  constructor(private EmbedService: EmbedVideoService,
+    public PageService: PageService) {
    
    }
 
