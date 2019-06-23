@@ -167,8 +167,8 @@
       </div>
       <button class=drop-btn id=pages (click)=showDropContent($event.target.id)>Pages</button>
       <div class="drop-content pages">
-        <a class=router-link routerLink='/admin/pages/faq'>FAQ</a>
-        <a class=router-link routerLink='/admin/pages/about'>About</a>
+        <a *ngFor="let page of pages" class=router-link href='/admin/pages/{{page.stub}}'>{{page.title}}</a>
+        <a class=router-link href='/admin/pages/new'><mat-icon>add</mat-icon></a>
       </div>
     </li>
 

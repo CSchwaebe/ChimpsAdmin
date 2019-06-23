@@ -31,7 +31,8 @@ export class BlockService {
         height: 'auto',
         width: width
       }, 
-      sortOrder
+      sortOrder: sortOrder,
+      type: 'Text'
     });
 
   }
@@ -44,7 +45,8 @@ export class BlockService {
         height: 'auto',
         width: width
       }, 
-      sortOrder
+      sortOrder: sortOrder,
+      type: 'Image'
     });
   }
 
@@ -52,9 +54,10 @@ export class BlockService {
 
     return new Block(VideoComponent, {
       url: url,
-      text: 'Description',
+      text: undefined,
       style: { height: 'auto', width: '80%' },
-      sortOrder
+      sortOrder: sortOrder,
+      type: 'Video'
     });
 
   }
@@ -64,8 +67,24 @@ export class BlockService {
       style: {
         height: 'auto', width: '100%'
       },
-      sortOrder
+      sortOrder: sortOrder,
+      type: 'Spacer'
     });
+  }
+
+
+
+  attachComponentToData(type, data) {
+    switch (type) {
+      case 'Text': return new Block(TextComponent, data);
+      break;
+      case 'Image': return new Block(ImageComponent, data);
+      break;
+      case 'Video': return new Block(VideoComponent, data);
+      break;
+      case 'Spacer': return new Block(SpacerComponent, data);
+      break;
+    } 
   }
 
 

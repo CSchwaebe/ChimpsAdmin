@@ -18,8 +18,8 @@ export interface Spacer {
 
 export interface SpacerBlockData {
     style: Style,
-    sortOrder: number
-
+    sortOrder: number,
+    type: string
 }
 
 /////////////////////////////////////////////////
@@ -34,7 +34,8 @@ export interface Text {
 export interface TextBlockData {
     text: any,
     style: Style,
-    sortOrder: number
+    sortOrder: number,
+    type: string
 }
 
 
@@ -50,7 +51,8 @@ export interface ImageBlockData {
     text: any,
     image: string,
     style: Style,
-    sortOrder: number
+    sortOrder: number,
+    type: string
 }
 
 /////////////////////////////////////////////////
@@ -65,5 +67,6 @@ export interface VideoBlockData {
     text: any,
     url: string,
     style: Style,
-    sortOrder: number
+    sortOrder: number,
+    type: string
 }

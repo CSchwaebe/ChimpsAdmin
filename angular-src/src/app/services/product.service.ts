@@ -82,7 +82,6 @@ export class ProductService {
     })
   }
 
-
   async getFeatured() {
     return new Promise<Product[]>(async (resolve, reject) => {
       this.http.get(this.url.slice(0, -1) + 'api/products/featured').subscribe((res: AllProductResponse) => {

@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Block } from 'src/app/components/admin/pages/types/block';
 import { Subject } from 'rxjs';
+import { Page, PageResponse, MultiplePageResponse } from '../components/admin/pages/models/page';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PageService {
 
+  url: string = environment.baseURL + 'api/pages/';
   blocks: Block[];
   public dirty: Subject<boolean> = new Subject<boolean>();
   public preview: boolean = false;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.blocks = [];
   }
 
@@ -23,6 +27,16 @@ export class PageService {
     block.data.sortOrder = this.blocks.length;
     this.blocks.push(block);
     this.dirty.next(true);
+  }
+
+
+  async loadPage(stub: string) {
+    let page = await this.getByStub(stub);
+    console.log(page)
+    if (page) {
+      return true;
+    } else
+      return false;
   }
 
 
@@ -61,8 +75,90 @@ export class PageService {
     this.dirty.next(true);
   }
 
+  splice(sortOrder) {
+    this.blocks.splice(sortOrder, 1);
+    for (let i = 0; i < this.blocks.length; i++) {
+      this.blocks[i].data.sortOrder = i;
+    }
+    this.dirty.next(true);
+  }
+
 
   togglePreview() {
     this.preview = !this.preview;
   }
+
+
+  async save(page: Page) {
+    console.log(page);
+    if (page._id) {
+      return this.update(page);
+    }
+
+    let res = await this.getByStub(page.stub);
+
+    console.log(page)
+    if (res) {
+      let confirmation = confirm('A page with this title already exists, would you like to overwrite it?')
+      if (confirmation)
+        return this.update(page);
+      else
+        return false;
+    }
+    else
+      return this.post(page);
+  }
+
+  //////////////////////////////////////////////////////////////////////
+  //                    HTTP METHODS
+  //////////////////////////////////////////////////////////////////////
+
+  async post(page: Page) {
+    return new Promise<Page>(async (resolve, reject) => {
+      this.http.post(this.url, page).subscribe((res: PageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
+  async update(page: Page) {
+    return new Promise<Page>(async (resolve, reject) => {
+      this.http.post(this.url + 'update', page).subscribe((res: PageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
+  async getByStub(stub: String) {
+    return new Promise<Page>(async (resolve, reject) => {
+      this.http.get(this.url + stub).subscribe((res: PageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
+  async getByID(id: String) {
+    return new Promise<Page>(async (resolve, reject) => {
+      this.http.get(this.url + '/id/' + id).subscribe((res: PageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
+  async getAll() {
+    return new Promise<Page[]>(async (resolve, reject) => {
+      this.http.get(this.url).subscribe((res: MultiplePageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
+  async delete(page: Page) {
+    return new Promise<Page>(async (resolve, reject) => {
+      this.http.post(this.url + 'delete', page).subscribe((res: PageResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
 }

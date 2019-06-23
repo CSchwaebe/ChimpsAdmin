@@ -1,8 +1,8 @@
 <div class="block draggable-item" [ngStyle]=data.style [style.boxShadow]="PageService.preview ? 'none' :  '0px 2px 4px #d9d9d9'">
 
-  <div class=quill-wrapper>
+  <div class="quill-wrapper-{{data.sortOrder}}">
     <quill-editor [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html
-      theme=bubble bounds=.quill-wrapper placeholder="Text Block" [modules]="{ 
+      theme=bubble bounds=.quill-wrapper-{{data.sortOrder}} placeholder="Text Block" [modules]="{ 
         toolbar: [
           ['bold', 'italic', 'underline', 'strike'],       
           ['blockquote', 'code-block'],           
@@ -23,7 +23,6 @@
   <div class=style-container>
   
     <button class='white-button style-button' (click)=toggleStyles()>
-
       <ng-template [ngIf]=showStyles>
         <mat-icon>expand_more</mat-icon>
       </ng-template>
@@ -55,6 +54,12 @@
             <mat-option value="100%">100%</mat-option>
           </mat-select>
         </mat-form-field>
+
+        <div class=delete-container>
+            <button class="delete-button red-button" (click)="PageService.splice(data.sortOrder)">
+               Delete
+            </button>
+          </div>
         <!--
 <mat-form-field appearance="legacy">
           <mat-label>Height</mat-label>

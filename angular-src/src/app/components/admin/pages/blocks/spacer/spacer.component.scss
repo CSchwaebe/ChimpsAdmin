@@ -60,6 +60,27 @@
           width: 60px;
           margin-right: 10px;
         }
+
+        .delete-container {
+          float: right;
+          height: 80px;
+          .delete-button {
+            display: inline-block;
+            vertical-align: middle;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            height: 50px;
+            box-sizing: border-box;
+            width: 80px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            //background: red;
+            border-radius: 10px;
+            //color: white;
+          }
+        }
       }
     }
   }

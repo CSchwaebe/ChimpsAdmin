@@ -7,7 +7,6 @@
   //padding: 20px;
   margin-bottom: 20px;
 
-  
   .quill-wrapper {
     min-height: 100px;
     .quill-editor {
@@ -19,16 +18,16 @@
     text-align: left;
     //background: grey;
     .handle {
-        cursor: grab;
-        float: right;
-        height: 25px;
-        width: 25px;
-        text-align: center;
+      cursor: grab;
+      float: right;
+      height: 25px;
+      width: 25px;
+      text-align: center;
     }
 
     .swap-container {
       float: right;
-      
+
       button.up {
         display: inline-block;
         background: transparent;
@@ -41,13 +40,10 @@
         background: transparent;
         border: none;
         cursor: pointer;
-        
       }
     }
 
-   
     .style-button {
-      
       background: transparent;
       box-shadow: none;
       width: 40px;
@@ -67,10 +63,26 @@
         margin-right: 10px;
       }
 
-      
-  
+      .delete-container {
+        float: right;
+        height: 80px;
+        .delete-button {
+          display: inline-block;
+          vertical-align: middle;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          height: 50px;
+          box-sizing: border-box;
+          width: 80px;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          font-size: 16px;
+          //background: red;
+          border-radius: 10px;
+          //color: white;
+        }
+      }
     }
   }
 }
-
-

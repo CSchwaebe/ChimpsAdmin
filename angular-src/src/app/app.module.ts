@@ -162,13 +162,8 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'admin/pages/faq',
+    path: 'admin/pages/:stub',
     component: PageComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'admin/pages/about',
-    component: AboutComponent,
     canActivate: [AuthGuard]
   },
   {

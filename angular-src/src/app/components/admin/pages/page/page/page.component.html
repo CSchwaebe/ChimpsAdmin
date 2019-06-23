@@ -1,28 +1,111 @@
 <div class=main>
+
+  <ng-template [ngIf]=location>
+    <div class=location-background>
+      <div class=location-container>
+        <div class=header>
+          <div class=back-container>
+            <button class=back (click)=toggleLocation()>
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+          </div>
+          <div class=title-container>
+            <h2 class=title>Menu Location</h2>
+          </div>
+        </div>
+
+        <div class=top-form-container>
+          <!-- MENU LOCATION -->
+          <div class=mat-wrapper>
+            <mat-form-field appearance="outline">
+              <mat-label>Menu</mat-label>
+              <mat-select required [(ngModel)]="model.menu.location" name="menu">
+                <mat-option value="Main">Main</mat-option>
+                <mat-option value="Footer">Footer</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- LEVEL -->
+          <div class=mat-wrapper>
+            <mat-form-field appearance="outline">
+              <mat-label>Level</mat-label>
+              <mat-select required [(ngModel)]="model.menu.level" name="level" (selectionChange)="clearCol()">
+                <mat-option value="Collection">Collection</mat-option>
+                <mat-option value="Category">Category</mat-option>
+                <mat-option value="Subcategory">Subcategory</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class=bottom-form-container>
+
+
+
+          <!-- COLLECTION -->
+          <ng-template [ngIf]="model.menu.level && model.menu.level !== 'Collection'">
+            <div class=mat-wrapper>
+              <mat-form-field appearance="outline">
+                <mat-label>Collection</mat-label>
+                <mat-select required [(ngModel)]="model.menu.shop" name="collection"
+                  (selectionChange)="getCategories()" (selectionChange)="clearCat()">
+                  <mat-option *ngFor="let col of collections" [value]=col.name>{{col.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- CATEGORY -->
+            <ng-template [ngIf]="model.menu.shop && model.menu.level === 'Subcategory'">
+              <div class=mat-wrapper>
+                <mat-form-field appearance="outline">
+                  <mat-label>Category</mat-label>
+                  <mat-select required [(ngModel)]="model.menu.category" name="category">
+                    <mat-option *ngFor="let cat of categories" [value]=cat.name>{{cat.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </ng-template>
+          </ng-template>
+        </div>
+
+        <div class=submit-div>
+          <button class=save-button (click)=save()>Save</button>
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+
   <div class=toolbar>
     <div class=toolbar-button-container [style.margin-bottom]="toolbar ? '0px' : '-31px'">
-        <button class='save-button' (click)=save()>Save</button>
-        <button class='preview-button dark-blue-button' (click)=PageService.togglePreview()>
-          <ng-template [ngIf]=PageService.preview>Edit</ng-template>
-          <ng-template [ngIf]=!PageService.preview>Show Preview</ng-template>
-        </button>
-        <button class="toolbar-button white-button" (click)=toggleToolbar()>
-          <ng-template [ngIf]=!toolbar>
-              <mat-icon>add_circle_outline</mat-icon>
-          </ng-template>
-          <ng-template [ngIf]=toolbar>
-              <mat-icon>remove_circle_outline</mat-icon>
-          </ng-template>
-        </button>
-    </div>
-   
-   
-     
 
-   
+      <button class='save-button' (click)=toggleLocation()>Save</button>
+      <button class='delete-button' (click)=delete()>Delete</button>
+
+      <button [class.active]="!PageService.preview" [class.inactive]="PageService.preview" class='preview-button'
+        (click)=PageService.togglePreview()>
+        Edit
+      </button>
+      <button [class.active]="PageService.preview" [class.inactive]="!PageService.preview" class='preview-button'
+        (click)=PageService.togglePreview()>
+        Preview
+      </button>
+      <button class="toolbar-button white-button" (click)=toggleToolbar()>
+        <ng-template [ngIf]=!toolbar>
+          <mat-icon>add_circle_outline</mat-icon>
+        </ng-template>
+        <ng-template [ngIf]=toolbar>
+          <mat-icon>remove_circle_outline</mat-icon>
+        </ng-template>
+      </button>
+    </div>
+
+
+
+
+
     <div class=block-menu>
       <div class=background>
-          <ng-template [ngIf]=toolbar>
+        <ng-template [ngIf]=toolbar>
           <!-- Choose Type -->
           <mat-form-field appearance="outline">
             <mat-label>Type</mat-label>
@@ -36,11 +119,11 @@
             <mat-form-field appearance="outline">
               <mat-label>Width</mat-label>
               <mat-select required [(ngModel)]="style.width" name="selector">
-                  <mat-option value="30%">30%</mat-option>
-                  <mat-option value="40%">40%</mat-option>
-                  <mat-option value="50%">50%</mat-option>
-                  <mat-option value="60%">60%</mat-option>
-                  <mat-option value="70%">70%</mat-option>
+                <mat-option value="30%">30%</mat-option>
+                <mat-option value="40%">40%</mat-option>
+                <mat-option value="50%">50%</mat-option>
+                <mat-option value="60%">60%</mat-option>
+                <mat-option value="70%">70%</mat-option>
                 <mat-option value="80%">80%</mat-option>
                 <mat-option value="90%">90%</mat-option>
                 <mat-option value="100%">100%</mat-option>
@@ -55,11 +138,11 @@
             <mat-form-field appearance="outline">
               <mat-label>Width</mat-label>
               <mat-select required [(ngModel)]="style.width" name="selector">
-                  <mat-option value="30%">30%</mat-option>
-                  <mat-option value="40%">40%</mat-option>
-                  <mat-option value="50%">50%</mat-option>
-                  <mat-option value="60%">60%</mat-option>
-                  <mat-option value="70%">70%</mat-option>
+                <mat-option value="30%">30%</mat-option>
+                <mat-option value="40%">40%</mat-option>
+                <mat-option value="50%">50%</mat-option>
+                <mat-option value="60%">60%</mat-option>
+                <mat-option value="70%">70%</mat-option>
                 <mat-option value="80%">80%</mat-option>
                 <mat-option value="90%">90%</mat-option>
                 <mat-option value="100%">100%</mat-option>
@@ -82,7 +165,7 @@
         </ng-template>
       </div>
     </div>
-  
+
 
     <!--
 <div class=block-menu>

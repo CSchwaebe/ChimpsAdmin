@@ -9,9 +9,9 @@
   
 
   <div class=text>
-     <div class=quill-wrapper>
+     <div class=quill-wrapper-{{data.sortOrder}}>
 
-      <quill-editor overflow=visible [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html theme=bubble bounds=.quill-wrapper placeholder=Text [modules]="{ 
+      <quill-editor overflow=visible [(ngModel)]=data.text [ngModelOptions]='{standalone: true}' class=quill-editor format=html theme=bubble bounds=.quill-wrapper-{{data.sortOrder}} placeholder=Description [modules]="{ 
         toolbar: [
           ['bold', 'italic', 'underline', 'strike'],       
           ['blockquote', 'code-block'],           
@@ -67,6 +67,11 @@
               </mat-select>
             </mat-form-field>
 
+            <div class=delete-container>
+                <button class="delete-button red-button" (click)="PageService.splice(data.sortOrder)">
+                   Delete
+                </button>
+              </div>
            
       </div>
     </ng-template>
