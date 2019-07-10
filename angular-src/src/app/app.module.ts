@@ -58,6 +58,7 @@ import { ImageComponent } from './components/admin/pages/blocks/image/image.comp
 import { SpacerComponent } from './components/admin/pages/blocks/spacer/spacer.component';
 import { BlockService } from './services/block.service';
 import { PageService } from './services/page.service';
+import { AccountComponent } from './components/admin/account/account/account.component';
 
 
 
@@ -172,6 +173,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'admin/account',
+    component: AccountComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -214,7 +220,8 @@ const appRoutes: Routes = [
     BlockDirective,
     HeaderComponent,
     ImageComponent,
-    SpacerComponent
+    SpacerComponent,
+    AccountComponent
     
   ],
   entryComponents: [ TextComponent, VideoComponent, ImageComponent, SpacerComponent ],

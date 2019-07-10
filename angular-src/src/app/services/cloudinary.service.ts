@@ -64,9 +64,19 @@ export class CloudinaryService {
     resourceType: 'image',
     maxFileSize: 10000000,
 
-    //16:9 IMAGES
     cropping: true,
-    //croppingAspectRatio: 1.77,
+    croppingDefaultSelectionRatio: .9,
+    croppingShowDimensions: true,
+    singleUploadAutoClose: true,
+  }
+
+  logoPreset = {
+    cloudName: this.cloudinary_name,
+    uploadPreset: 'shopLogo',
+    resourceType: 'image',
+    maxFileSize: 10000000,
+
+    cropping: true,
     croppingDefaultSelectionRatio: .9,
     croppingShowDimensions: true,
     singleUploadAutoClose: true,
@@ -186,6 +196,27 @@ export class CloudinaryService {
     this.addEventListener(id);
   }
 
+  /**
+   * For Header Images (Collection, Category, Subcategory)
+   * 
+   * @param id 
+   */
+  load_shopLogo(id: string) {
+    this.uploadType = 'logo';
+
+    if (this.myWidget !== undefined) {
+      this.myWidget.update(this.logoPreset, (error, result) => {
+        this.callback(error, result)
+      });
+    } else {
+      this.myWidget = cloudinary.createUploadWidget(this.logoPreset, (error, result) => {
+        this.callback(error, result)
+      });
+    }
+
+    this.addEventListener(id);
+  }
+
 
   /**
    * The Callback that handles a successful upload
@@ -216,25 +247,12 @@ export class CloudinaryService {
             + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
             + result.info.path;
           break;
+        case 'logo':
+            url = url
+              + '/image/upload/c_scale,h_256,q_auto:best,f_auto,dpr_auto/'
+              + result.info.path;
+            break;
       }
-
-
-      /*
-      if (this.uploadType === 'product') {
-        url = url
-          + '/image/upload/c_scale,w_768,q_60,f_auto,dpr_auto/'
-          + result.info.path;
-      } else if (this.uploadType === 'header') {
-        url = url
-          + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
-          + result.info.path;
-      } else if (this.uploadType === 'slideshow') {
-        url = url
-          + '/image/upload/c_scale,w_1600,q_auto:best,f_auto,dpr_auto/'
-          + result.info.path;
-      }
-      */
-
       this.images.next(url);
     }
   }

@@ -47,8 +47,8 @@
             <div class=mat-wrapper>
               <mat-form-field appearance="outline">
                 <mat-label>Collection</mat-label>
-                <mat-select required [(ngModel)]="model.menu.shop" name="collection"
-                  (selectionChange)="getCategories()" (selectionChange)="clearCat()">
+                <mat-select required [(ngModel)]="model.menu.shop" name="collection" (selectionChange)="getCategories()"
+                  (selectionChange)="clearCat()">
                   <mat-option *ngFor="let col of collections" [value]=col.name>{{col.name}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -161,6 +161,28 @@
 
             <button class="dark-blue-button insert-block" (click)="insertBlock()">Add Block</button>
 
+          </ng-template>
+
+          <!-- SPACER -->
+          <ng-template [ngIf]="type==='Spacer'">
+            <!-- WIDTH -->
+            <mat-form-field appearance="outline">
+              <mat-label>Width</mat-label>
+              <mat-select required [(ngModel)]="style.width" name="selector">
+                <mat-option value="10%">10%</mat-option>
+                <mat-option value="20%">20%</mat-option>
+                <mat-option value="30%">30%</mat-option>
+                <mat-option value="40%">40%</mat-option>
+                <mat-option value="50%">50%</mat-option>
+                <mat-option value="60%">60%</mat-option>
+                <mat-option value="70%">70%</mat-option>
+                <mat-option value="80%">80%</mat-option>
+                <mat-option value="90%">90%</mat-option>
+                <mat-option value="100%">100%</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button class="dark-blue-button insert-block" (click)="insertBlock()">Add Block</button>
           </ng-template>
         </ng-template>
       </div>

@@ -139,5 +139,10 @@ $color-white-blue-active: hsl(239, 43%, 91%);
   font-family: "Montserrat";
 }
 .ql-editor > * {
-  cursor: default;
+  cursor: text;
+}
+
+
+.mat-drawer-inner-container {
+  background: #fbfbfe;
 }

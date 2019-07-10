@@ -1,0 +1,66 @@
+<div class=main>
+  <h1 class=title>Account</h1>
+  <div class=store>
+      <h2 class=secondary-header>Info</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Store Name</mat-label>
+      <input required matInput type="text" name="name" [(ngModel)]="model.name">
+    </mat-form-field>
+
+<h3>Logo</h3>
+<div class=image-div>
+    <ng-template [ngIf]="model.logo">
+      <div class=thumbnail>
+        <div class=thumbnail-container>
+          <img src={{model.logo}}>
+        <br>
+          <button type='button' class=red-button (click)=removeImage()>Change Image</button>
+        </div>
+      </div>
+    </ng-template>
+  
+    <ng-template [ngIf]='!isCloudinaryLoaded && !model.logo'>
+      <div class=image-button>
+        <button class="upload-button white-button" (click)=loadCloudinary()>Add Image</button>
+      </div>
+    </ng-template>
+  
+    <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'"
+      [style.height]="isCloudinaryLoaded ? 'auto': '0px'">
+      <div id=image1 class=image-button>
+        <button id="0" class="upload-button white-button" [style.display]="(model.logo === '') ? 'inline-block' : 'none'"
+          type=button>Upload</button>
+      </div>
+  
+      <p class=image-div-footer [style.display]="(model.logo === '') ? 'inline-block' : 'none'">* Max Images - 1</p>
+      <p class=image-div-footer [style.display]="(model.logo === '') ? 'inline-block' : 'none'">* Max File Size - 10MB
+      </p>
+    </div>
+  </div>
+  </div>
+
+  <div class=social>
+    <h2 class=secondary-header>Social Links</h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Facebook</mat-label>
+      <input matInput type="text" name="facebook" [(ngModel)]="model.facebook">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Instagram</mat-label>
+      <input matInput type="text" name="instagram" [(ngModel)]="model.instagram">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Twitter</mat-label>
+      <input matInput type="text" name="twitter" [(ngModel)]="model.twitter">
+    </mat-form-field>
+  </div>
+
+  <div class=submit>
+    <button class="submit dark-blue-button" (click)=save()>Save</button>
+  </div>
+</div>
+
+

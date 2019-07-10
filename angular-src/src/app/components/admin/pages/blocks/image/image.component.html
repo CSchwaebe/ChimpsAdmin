@@ -15,14 +15,14 @@
 
     <ng-template [ngIf]='!isCloudinaryLoaded && !data.image'>
       <div class=image-button>
-        <button class="upload-button white-button" (click)=loadCloudinary()>Add Image</button>
+        <button class="upload-button white-button" (click)=loadCloudinary(data.sortOrder)>Add Image</button>
       </div>
     </ng-template>
 
     <div [style.visibility]="isCloudinaryLoaded ? 'visible': 'hidden'"
       [style.height]="isCloudinaryLoaded ? 'auto': '0px'">
-      <div id=image1 class=image-button>
-        <button id="0" class="upload-button white-button" [style.display]="(data.image === '') ? 'inline-block' : 'none'"
+      <div id=image-{{data.sortOrder}} class=image-button>
+        <button id="{{data.sortOrder}}" class="upload-button white-button" [style.display]="(data.image === '') ? 'inline-block' : 'none'"
           type=button>Upload</button>
       </div>
 

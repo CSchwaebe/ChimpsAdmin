@@ -62,10 +62,10 @@ export class BlockService {
 
   }
 
-  newSpacerBlock(sortOrder: number) {
+  newSpacerBlock(width: string, sortOrder: number) {
     return new Block(SpacerComponent, {
       style: {
-        height: 'auto', width: '100%'
+        height: 'auto', width: width
       },
       sortOrder: sortOrder,
       type: 'Spacer'

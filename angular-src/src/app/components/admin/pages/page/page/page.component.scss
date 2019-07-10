@@ -45,7 +45,7 @@ div.main {
           height: 35px;
 
           button.back {
-            margin-left: 10px;
+            margin-left: 15px;
             width: 35px;
             height: 35px;
             border: 0px;
@@ -288,7 +288,7 @@ div.main {
       background: $color-dark-blue;
       border-radius: 900px;
       margin-top: -37px;
-
+      
       .background {
         margin: 20px;
         border-radius: 100px;
@@ -315,8 +315,9 @@ div.main {
   }
 
   div.page-container {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
     margin-bottom: 100px;
+    padding-bottom: 40px;
     div.title-container {
       width: 100%;
       text-align: center;
@@ -328,6 +329,8 @@ div.main {
 
         input {
           text-align: center;
+          font-family: 'Montserrat';
+          font-weight: 100;
         }
       }
 

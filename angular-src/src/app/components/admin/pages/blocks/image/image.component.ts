@@ -7,7 +7,8 @@ import { PageService } from 'src/app/services/page.service';
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.scss']
+  styleUrls: ['./image.component.scss'],
+  providers: [CloudinaryService],
 })
 export class ImageComponent implements Image, OnInit, AfterViewInit {
   @Input() data: ImageBlockData;
@@ -27,12 +28,12 @@ export class ImageComponent implements Image, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.CloudinaryService.loadInit('image1');
+    this.CloudinaryService.loadInit('image-' + this.data.sortOrder);
   }
 
-  loadCloudinary() {
+  loadCloudinary(id: string) {
     this.isCloudinaryLoaded = true;
-    this.CloudinaryService.load_ImageBlock('0');
+    this.CloudinaryService.load_ImageBlock(id);
   }
 
    /**

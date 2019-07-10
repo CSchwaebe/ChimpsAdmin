@@ -14,9 +14,9 @@ $color-white-blue: hsl(239, 43%, 99%);
 .image-div {
     display: inline-block;
     vertical-align: top;
-    width: 100%;
-    //margin: 0 5% 5% 5%;
-    //margin-top: 0;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
     height: auto;
 
     div.thumbnail {

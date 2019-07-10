@@ -43,7 +43,8 @@ export class PageComponent implements OnInit, AfterViewInit {
   options: string[] = [
     'Text',
     'Image',
-    'Video'
+    'Video', 
+    'Spacer'
   ]
   type: string = '';
   style = {
@@ -67,10 +68,11 @@ export class PageComponent implements OnInit, AfterViewInit {
       this.model.blocks = this.PageService.blocks;
       this.loadComponents();
     });
+
+    
   }
 
   async ngOnInit() {
-    this.getCollections();
     this.viewContainerRef = this.blockDirective.viewContainerRef;
 
     let exists = await this.checkForPage();
@@ -103,9 +105,17 @@ export class PageComponent implements OnInit, AfterViewInit {
         await this.PageService.addBlock(this.BlockService.attachComponentToData(blocks[i].data.type, blocks[i].data))
         console.log("added block " + i)
       }
+
+      await this.getCollections();
+      this.getCategories();
+      this.getSubcategories();
+
       return true;
-    } else
+    } else {
+      this.getCollections();
       return false;
+    }
+      
 
   }
 
@@ -158,7 +168,7 @@ export class PageComponent implements OnInit, AfterViewInit {
         this.PageService.addBlock(this.BlockService.newVideoBlock(this.videoURL, this.PageService.blocks.length));
         break;
       case 'Spacer':
-        this.PageService.addBlock(this.BlockService.newSpacerBlock(this.PageService.blocks.length));
+        this.PageService.addBlock(this.BlockService.newSpacerBlock(this.style.width, this.PageService.blocks.length));
         break;
     }
 
@@ -215,6 +225,8 @@ export class PageComponent implements OnInit, AfterViewInit {
   }
 
   getCategories() {
+    if (!this.model.menu.shop)
+      return
     console.log('GEt categories')
     let collection: string = this.model.menu.shop;
     console.log(collection);
@@ -228,6 +240,9 @@ export class PageComponent implements OnInit, AfterViewInit {
 
 
   getSubcategories() {
+    if (!this.model.menu.shop && !this.model.menu.category)
+      return
+
     let collection: string = this.model.menu.shop;
     let category: string = this.model.menu.category;
 
