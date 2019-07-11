@@ -27,23 +27,28 @@
           </div>
 
           <!-- LEVEL -->
+          <ng-template [ngIf]="model.menu.location==='Main'">
+
+         
           <div class=mat-wrapper>
             <mat-form-field appearance="outline">
               <mat-label>Level</mat-label>
-              <mat-select required [(ngModel)]="model.menu.level" name="level" (selectionChange)="clearCol()">
+              <mat-select [(ngModel)]="model.menu.level" name="level" (selectionChange)="clearCol()">
                 <mat-option value="Collection">Collection</mat-option>
                 <mat-option value="Category">Category</mat-option>
                 <mat-option value="Subcategory">Subcategory</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
+        </ng-template>
+
         </div>
         <div class=bottom-form-container>
 
 
 
           <!-- COLLECTION -->
-          <ng-template [ngIf]="model.menu.level && model.menu.level !== 'Collection'">
+          <ng-template [ngIf]="model.menu.location==='Main' && model.menu.level && model.menu.level !== 'Collection'">
             <div class=mat-wrapper>
               <mat-form-field appearance="outline">
                 <mat-label>Collection</mat-label>

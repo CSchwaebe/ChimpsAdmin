@@ -47,8 +47,6 @@ import { MessageComponent } from './components/admin/messages/message/message.co
 import { MessageDetailComponent } from './components/admin/messages/message-detail/message-detail.component';
 import { MailingListComponent } from './components/admin/email/mailing-list/mailing-list.component';
 import { AnalyticsComponent } from './components/admin/analytics/analytics/analytics.component';
-import { FaqComponent } from './components/admin/pages/faq/faq.component';
-import { AboutComponent } from './components/admin/pages/about/about.component';
 import { VideoComponent } from './components/admin/pages/blocks/video/video.component';
 import { TextComponent } from './components/admin/pages/blocks/text/text.component';
 import { PageComponent } from './components/admin/pages/page/page/page.component';
@@ -212,8 +210,6 @@ const appRoutes: Routes = [
     MessageDetailComponent,
     MailingListComponent,
     AnalyticsComponent,
-    FaqComponent,
-    AboutComponent,
     VideoComponent,
     TextComponent,
     PageComponent,

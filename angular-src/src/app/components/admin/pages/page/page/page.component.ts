@@ -182,7 +182,13 @@ export class PageComponent implements OnInit, AfterViewInit {
 
   async save() {
     this.model.stub = this.model.title.replace(/\s+/g, '').toLowerCase();
+    if (this.model.menu.location==='Footer') {
+      this.model.menu.level = '';
+      this.model.menu.shop = '';
+      this.model.menu.category = '';
+    }
     console.log(this.model);
+
     let result = await this.PageService.save(this.model);
     if (result) {
       this.SnackbarService.onSuccess();
