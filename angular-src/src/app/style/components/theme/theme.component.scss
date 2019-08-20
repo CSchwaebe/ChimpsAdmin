@@ -1,0 +1,128 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+button:focus {
+  outline: 0;
+}
+
+.main {
+  display: inline-block;
+  vertical-align: top;
+  position: sticky;
+  top: 0px;
+  width: 310px;
+  text-align: center;
+
+  .title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: $color-dark-blue;
+    font-family: "Montserrat";
+  }
+
+  .top-buttons-container {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    box-sizing: border-box;
+
+    div.top-level {
+      text-align: left;
+      .button-container {
+        width: 100%;
+        text-align: left;
+        .icon-container {
+          display: inline-block;
+          .inner-container {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0px 7px 2px;
+            border: none;
+            background: none;
+            mat-icon {
+            }
+          }
+        }
+        .top-level-button {
+          text-align: left;
+          font-size: 24px;
+
+          height: 50px;
+          border-radius: 5px;
+          font-size: 18px;
+
+          color: $color-dark-blue;
+          font-family: "Montserrat";
+
+          background: transparent;
+          
+          outline: none;
+          border: none;
+
+        }
+      }
+
+      div.level-2 {
+        
+        display: inline-block;
+        vertical-align: top;
+        
+        text-align: left;
+        
+        margin-left: 50px;
+
+        div.button-container {
+            width: 100%;
+            text-align: left;
+            .icon-container {
+                display: inline-block;
+                .inner-container {
+                  display: inline-block;
+                  vertical-align: middle;
+                  padding: 0px 7px 3px;
+                  border: none;
+                  background: none;
+                  mat-icon {
+                  }
+                }
+              }
+
+            .level-2-button {
+                text-align: left;
+               
+                font-size: 24px;
+      
+                width: 220px;
+                height: 50px;
+                border-radius: 5px;
+                font-size: 16px;
+      
+                color: $color-dark-blue;
+                font-family: "Montserrat";
+                background: transparent;
+               
+                outline: none;
+                border: none;
+      
+               
+              }
+        }
+       
+      }
+    }
+  }
+
+  .color-container {
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      margin-top: 20px;
+      margin-bottom: 100px;
+      .inner-container {
+          display: inline-block;
+          vertical-align: middle;
+      }
+  }
+}

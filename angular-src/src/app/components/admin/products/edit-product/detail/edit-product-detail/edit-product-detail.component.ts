@@ -4,7 +4,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Product, Version } from "src/app/models/admin/product";
 
 import { ProductService } from 'src/app/services/product.service';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -61,7 +61,7 @@ export class EditProductDetailComponent implements OnInit, AfterViewInit, OnDest
 
 
   constructor(private ProductService: ProductService,
-    private CollectionService: NewCollectionService,
+    private CollectionService: CollectionService,
     private FormBuilder: FormBuilder,
     public CloudinaryService: CloudinaryService,
     public Router: Router,

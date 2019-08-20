@@ -64,6 +64,14 @@ export class ProductService {
     })
   }
 
+  async getOne() {
+    return new Promise<Product>(async (resolve, reject) => {
+      this.http.get(this.url + 'api/products').subscribe((res: ProductResponse) => {
+        resolve(res.data);
+      });
+    })
+  }
+
   async update(prod: Product) {
     console.log('Updating Product')
     console.log(prod);
@@ -84,7 +92,7 @@ export class ProductService {
 
   async getFeatured() {
     return new Promise<Product[]>(async (resolve, reject) => {
-      this.http.get(this.url.slice(0, -1) + 'api/products/featured').subscribe((res: AllProductResponse) => {
+      this.http.get(this.url + 'api/products/featured').subscribe((res: AllProductResponse) => {
         resolve(res.data);    
       });
     })

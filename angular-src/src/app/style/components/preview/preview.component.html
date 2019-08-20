@@ -1,0 +1,55 @@
+<div class=top-buttons>
+  <button [class.active]="selected==='home'" (click)="select('home')">Homepage</button>
+  <button [class.active]="selected==='detail'" (click)="select('detail')">Product Detail</button>
+  <button [class.active]="selected==='side_menu'" (click)="select('side_menu')">Side Menu</button>
+</div>
+
+<div class=container [ngStyle]="{ 'background': StyleService.style.theme.background }">
+
+
+  <button class="hamburger-helper hamburger--spring menu-button" type="button" (click)=toggleSideNav()
+    [ngStyle]="{ 'background': StyleService.style.header.background }">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+
+  <ng-template [ngIf]="selected!=='side_menu'">
+      <app-header [parent]=this></app-header>
+  </ng-template>
+      
+  
+
+  <ng-template [ngIf]="selected==='home'">
+    <app-home></app-home>
+  </ng-template>
+
+  <ng-template [ngIf]="selected==='detail'">
+    <app-product-detail></app-product-detail>
+  </ng-template>
+
+  <ng-template [ngIf]="selected==='side_menu'">
+      <app-navbar-preview></app-navbar-preview>
+  </ng-template>
+</div>
+<!--
+
+
+<mat-sidenav-container style="text-align:center" class="example-container">
+
+  <mat-sidenav mode="over" #sidenav>
+
+    <app-navbar [parent]="this">
+    </app-navbar>
+
+
+  </mat-sidenav>
+
+  <mat-sidenav-content [ngStyle]="{ 'background': StyleService.style.theme.background }">
+    <div class=router-outlet>
+      
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+-->

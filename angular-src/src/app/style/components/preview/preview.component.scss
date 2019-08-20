@@ -1,0 +1,58 @@
+#shopping-cart {
+  display: none;
+}
+button:focus {
+  outline: 0;
+}
+
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+.top-buttons {
+  //background: white;
+  min-height: 80px;
+
+  button {
+    //background: transparent;
+    font-family: "Montserrat";
+    height: 50px;
+    width: 200px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+
+    background-position: center;
+    transition: background 0.8s;
+
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.1);
+    color: hsl(239, 100%, 9%);
+    background: hsl(239, 43%, 99%) radial-gradient(circle, transparent 1%, hsl(239, 43%, 99%) 1%) center/15000%;
+
+
+    &.active {
+      color: hsl(239, 43%, 99%);
+      background: hsl(239, 100%, 9%) radial-gradient(circle, transparent 1%, hsl(239, 100%, 9%) 1%) center/15000%;
+    }
+  }
+}
+
+.menu-button {
+  position: relative;
+  top: 0px;
+  width: 66px;
+  height: 66px;
+  margin: 0px;
+  margin-right: -66px;
+  padding: 0px;
+  border: none;
+  z-index: 1000000000;
+}
+
+.container {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* FOR MOBILE AND IPAD */
+@media only screen and (max-width: 1024px) {
+}

@@ -1,0 +1,67 @@
+<!-- Slideshow container -->
+<div class="main">
+
+  <ng-template [ngIf]=model>
+
+    <div class=slideshow-container>
+      <img *ngFor="let img of slideshow.images; index as i" src="{{img}}" class="image"
+        [class.display-image]="activeImage === i">
+    </div>
+    <ng-template [ngIf]=model.featuredProducts&&model.featuredProducts.length>
+      <div class=featured-products-container>
+
+        <h2 class=title></h2>
+        <!--
+        {{featuredProductsTitle}}
+      -->
+        <div class=grid>
+          <div class=product-box *ngFor="let prod of model.featuredProducts; index as i"
+            [ngStyle]="{ 'color': StyleService.style.theme.text }">
+            <ng-template [ngIf]=soldOut(prod)>
+              <div class=image-link>
+                <div class=sold-out-overlay>
+                  <img class="product-image" src="{{prod.images[0]}}">
+                  <img class="sold-out-text" src='../../../assets/icons/sold_out.svg'>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template [ngIf]=!soldOut(prod)>
+              <a class=image-link routerLink="/detail/{{prod.stub + '-' + prod._id}}">
+                <img src={{prod.images[0]}}>
+              </a>
+            </ng-template>
+
+            <a class=name routerLink="/detail/{{prod.stub + '-' + prod._id}}">{{prod.name}}</a>
+            <a class=price routerLink="/detail/{{prod.stub + '-' + prod._id}}">${{prod.price}}</a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]=model.featuredCollections&&model.featuredCollections.length>
+      <div class=featured-collections-div>
+        <h2 class=title [ngStyle]="{ 'color': StyleService.style.theme.title }">{{featuredGroupsTitle}}</h2>
+        <div class=grid>
+          <div class=collection-container *ngFor="let col of model.featuredCollections; index as i">
+            <div class=collection-box>
+              <div class=overlay></div>
+              <img src={{collectionImageResize(col.image)}}>
+              <a class=name routerLink="{{col.stub}}">{{col.name}}</a>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </ng-template>
+
+  </ng-template>
+
+
+  <div class=padding></div>
+
+</div>
+
+
+<app-footer></app-footer>

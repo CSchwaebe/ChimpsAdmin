@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { Collection } from 'src/app/models/admin/collection';
 import { Router } from '@angular/router';
 
@@ -33,7 +33,7 @@ export class EditCategoryComponent implements OnInit {
   sortedGroups: col[] = [];
 
 
-  constructor(private CollectionService: NewCollectionService,
+  constructor(private CollectionService: CollectionService,
     private Router: Router,
   ) {
 

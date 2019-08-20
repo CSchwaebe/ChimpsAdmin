@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from "src/app/models/admin/product";
 
 import { ProductService } from 'src/app/services/product.service';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { Collection } from 'src/app/models/admin/collection';
 
@@ -23,7 +23,7 @@ export class RemoveProductComponent implements OnInit {
   model = new Product();
 
   constructor(private ProductService: ProductService,
-    private CollectionService: NewCollectionService,
+    private CollectionService: CollectionService,
 
     private SnackbarService: SnackbarService,
   ) {

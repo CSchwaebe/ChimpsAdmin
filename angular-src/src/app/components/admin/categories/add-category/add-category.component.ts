@@ -5,7 +5,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { CloudinaryService } from 'src/app/services/cloudinary.service';
 import { delay } from 'q';
 import { Collection } from 'src/app/models/admin/collection';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 
@@ -36,7 +36,7 @@ export class AddCategoryComponent implements OnInit, AfterViewInit {
 
 
   constructor(//private CollectionService: CollectionService, 
-      private CollectionService: NewCollectionService, 
+      private CollectionService: CollectionService, 
               public CloudinaryService: CloudinaryService,
               private SnackbarService: SnackbarService,
               ) { 

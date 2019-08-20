@@ -1,0 +1,67 @@
+<div class="navbar" [ngStyle]="{ 'background': StyleService.style.header.background }">
+
+  <div class=spacer>
+    
+  </div>
+  <!-- The content that appears if the hamburger button is pressed -->
+  <ng-template [ngIf]="showMobileMenu">
+    <div class="mobile-dropdown-background">
+      <div class="mobile-dropdown-content-container">
+
+        <div class="button-container" *ngFor="let col of model.collections; index as i">
+          <ng-template [ngIf]=!col.page>
+            <button class="mobile-collection-button" id="{{col.collection.stub}}" [ngStyle]="{ 'color': StyleService.style.header.text}"
+              (click)="expandCollectionsMobile($event.target.id)">{{col.collection.name}}</button>
+
+            <div class="dropdown-content {{col.collection.stub}}" [ngStyle]="{ 'background': StyleService.style.side_menu.category_background, 'color': StyleService.style.side_menu.category_text }">
+              <a class="collection-link" (click)=toggleMobileMenu()>View all</a>
+
+              <div class="category" *ngFor="let cat of col.categories">
+                <ng-template [ngIf]="cat.category">
+                  <button class="mobile-category-button" id="{{cat.category.stub}}"
+                    (click)="expandCategoriesMobile($event.target.id)">{{
+                        cat.category.name }}</button>
+                  <a class="subcategory-link {{cat.category.stub}}" [ngStyle]="{ 'background': StyleService.style.side_menu.subcategory_background, 'color': StyleService.style.side_menu.subcategory_text }"
+                    (click)=toggleMobileMenu()>View
+                    all</a>
+
+                  <div class="subcategory" *ngFor="let sub of cat.subcategories">
+                    <a class="subcategory-link {{cat.category.stub}}" [ngStyle]="{ 'background': StyleService.style.side_menu.subcategory_background, 'color': StyleService.style.side_menu.subcategory_text }"
+                      (click)=toggleMobileMenu()>
+                      {{ sub.name }}</a>
+                  </div>
+
+                  <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
+                    <a class="subcategory-link {{cat.category.stub}}" [ngStyle]="{ 'background': StyleService.style.side_menu.subcategory_background, 'color': StyleService.style.side_menu.subcategory_text }"
+                      (click)=toggleMobileMenu()>
+                      {{ page.title }}</a>
+                  </div>
+                </ng-template>
+
+                <ng-template [ngIf]="cat.page">
+                  <a class="mobile-category-button" id="{{cat.page.stub}}" [style.paddingLeft.px]="0"
+                    [style.paddingRight.px]="0" (click)="toggleMobileMenu()">{{
+                        cat.page.title }}</a>
+
+                </ng-template>
+
+
+
+              </div>
+
+            </div>
+          </ng-template>
+
+          <ng-template [ngIf]=col.page>
+            <a class="mobile-collection-button" id="{{col.page.title}}" [ngStyle]="{ 'color': StyleService.style.header.text}"
+              (click)=toggleMobileMenu()>{{col.page.title}}</a>
+          </ng-template>
+
+
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+
+</div>

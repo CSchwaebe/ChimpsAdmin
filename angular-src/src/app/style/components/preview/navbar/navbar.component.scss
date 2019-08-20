@@ -1,0 +1,226 @@
+$color-dark-blue: hsl(239, 100%, 9%);
+$color-silver: hsl(0, 0%, 62%);
+$color-white-blue: hsl(239, 43%, 99%);
+
+$navbar-primary-background: hsl(239, 43%, 99%);
+$navbar-secondary-background: hsl(239, 43%, 98%);
+$navbar-tertiary-background: hsl(239, 100%, 9%);
+
+$navbar-primary-text: hsl(239, 100%, 9%);
+$navbar-secondary-text: hsl(239, 100%, 9%);
+$navbar-tertiary-text: hsl(239, 43%, 99%);
+
+button:focus {
+  outline: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+
+/* FOR MOBILE AND IPAD 
+@media only screen and (max-width: 1024px) {
+  */
+.navbar {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+  font-family: "Lato";
+  font-weight: 100;
+
+  //background: $navbar-primary-background;
+  z-index: 100000;
+
+  .spacer {
+    min-height: 66px;
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  /* The container for the Menu Button */
+  .mobile-dropdown-menu-container {
+    display: inline-block;
+    grid-area: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 66px;
+    width: 66px;
+    background-color: inherit;
+  }
+
+  /* The background for the mobile menu */
+  .mobile-dropdown-background {
+    display: block;
+   
+    width: 100%;
+    min-height: 90vh;
+    height: auto;
+    background: inherit;
+
+    .mobile-dropdown-content-container {
+      height: calc(100vh - 66px);
+      overflow-y: scroll;
+      background: inherit;
+
+      .button-container {
+        display: grid;
+
+        .mobile-collection-button {
+          position: relative;
+          display: block;
+          height: 66px;
+          line-height: 66px;
+          width: 100%;
+          border: none;
+          background: inherit;
+
+          text-align: center;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-family: "Montserrat";
+          font-size: 16px;
+          letter-spacing: 3px;
+          font-weight: 100;
+        }
+
+        .dropdown-content {
+          display: inline-block;
+          position: relative;
+          top: 1px;
+
+          opacity: 0.95;
+
+          width: 100%;
+
+          padding: 0;
+          margin: 0px;
+
+          justify-content: center;
+
+          max-height: 0px;
+          padding: 0;
+          font-size: 0px;
+          overflow: hidden;
+
+          transition-property: max-height font-size;
+          transition-duration: 0.6s;
+          transition-delay: 0s;
+
+          transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+          visibility: hidden;
+         
+
+          .collection-link {
+            border: none;
+            background: inherit;
+            visibility: inherit;
+            display: inherit;
+            width: 100%;
+            margin: 0px;
+
+            padding-top: 18px;
+            padding-bottom: 18px;
+
+            color: inherit;
+
+            text-decoration: none;
+            font-size: inherit;
+            font-family: "Montserrat";
+            font-weight: 100;
+
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-align: center;
+
+            font-size: inherit;
+          }
+
+          .category {
+            min-height: 0px;
+            font-weight: 100;
+            text-align: center;
+            display: inline-block;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            visibility: inherit;
+            display: inherit;
+
+            .mobile-category-button {
+              border: none;
+              background: inherit;
+              visibility: inherit;
+              /*display: block;*/
+              display: inherit;
+              width: 100%;
+              margin: 0px;
+
+              padding: 18px;
+
+              color: inherit;
+
+              text-decoration: none;
+              font-size: inherit;
+              font-family: "Montserrat";
+              font-weight: 100;
+
+              text-transform: uppercase;
+              letter-spacing: 3px;
+
+              font-size: inherit;
+            }
+
+            .subcategory-link {
+              display: block;
+
+              font-size: 10px;
+              
+              margin-top: 0px;
+
+              margin-bottom: 0px;
+
+              text-decoration: none;
+              font-weight: 100;
+              text-transform: uppercase;
+              font-family: "Montserrat";
+              letter-spacing: 2px;
+
+              max-height: 0;
+              padding: 0px;
+              font-size: 0;
+              overflow: hidden;
+
+              transition-property: max-height font-size padding;
+              transition-duration: 0.4s;
+
+              transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+
+            .display-subcategory-link {
+              padding: 15px;
+              max-height: 100px;
+
+              font-size: 10px;
+            }
+          }
+        }
+
+        .display-category-link {
+          font-size: 11px;
+          max-height: 2000px;
+
+          width: 100%;
+          text-align: left;
+
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

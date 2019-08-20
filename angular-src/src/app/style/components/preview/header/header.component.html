@@ -1,0 +1,92 @@
+<ng-template [ngIf]="model && logo">
+
+
+
+  <div class=logo-container [ngStyle]="{ 'background': StyleService.style.header.background }">
+
+    <ng-template [ngIf]="showDesktopNav">
+      <a class="logo">
+        <img class="mobile-logo" src='{{logo}}' alt="logo">
+      </a>
+    </ng-template>
+
+    <ng-template [ngIf]="!showDesktopNav">
+      <div class=logo-overlay></div>
+    </ng-template>
+
+  </div>
+
+
+  <div class=cart-container [ngStyle]="{ 'background': StyleService.style.header.background }">
+    <div class=cart>
+      <ng-template [ngIf]="true">
+        <mat-icon matBadge="4" inline=true matBadgeColor="warn"
+          class="material-icons-outlined">shopping_cart</mat-icon>
+
+      </ng-template>
+    </div>
+  </div>
+
+
+
+  <ng-template [ngIf]=desktop>
+
+    
+
+      <div class="dropdown-menu-container"
+        [ngStyle]="{'background': StyleService.style.header.background }">
+
+
+        <ng-template [ngIf]="showDesktopNav">
+
+          <div class="dropdown-item-container" *ngFor="let col of model.collections; index as i" (click)="toggle(i)">
+            <ng-template [ngIf]=col.collection>
+              <a class="drop-link" [ngStyle]="{ 'color': StyleService.style.header.text }">{{col.collection.name}}</a>
+            </ng-template>
+
+            <ng-template [ngIf]=col.page>
+              <a class="drop-link" [ngStyle]="{ 'color': StyleService.style.header.text }">{{col.page.title}}</a>
+            </ng-template>
+          </div>
+
+          <ng-template [ngIf]=selected>
+
+          <div class="dropdown-content" [style.display]="selected ? 'inline-block' : 'none'"
+          [ngStyle]="{ 'background': StyleService.style.dropdown_menu.background }">
+          <div class="category" *ngFor="let cat of selectedCollection.categories">
+            <ng-template [ngIf]=cat.page>
+              <a class="category-link" [ngStyle]="{ 'color': StyleService.style.dropdown_menu.category_text }">
+                {{ cat.page.title }}</a>
+            </ng-template>
+            <ng-template [ngIf]=cat.category>
+              <a class="category-link" [ngStyle]="{ 'color': StyleService.style.dropdown_menu.category_text }">
+                {{ cat.category.name }}</a>
+              <div class="subcategory" *ngFor="let sub of cat.subcategories">
+                <a class="subcategory-link" [ngStyle]="{ 'color': StyleService.style.dropdown_menu.subcategory_text }">
+                  {{ sub.name }}</a>
+              </div>
+              <ng-template [ngIf]=cat.subcategoryPages>
+                <div class="subcategory" *ngFor="let page of cat.subcategoryPages">
+                  <a class="subcategory-link" [ngStyle]="{ 'color': StyleService.style.dropdown_menu.subcategory_text }">
+                    {{ page.title }}</a>
+                </div>
+              </ng-template>
+
+            </ng-template>
+
+          </div>
+        </div>
+      </ng-template>
+
+
+
+
+
+
+        </ng-template>
+
+      </div>
+    
+  </ng-template>
+
+</ng-template>

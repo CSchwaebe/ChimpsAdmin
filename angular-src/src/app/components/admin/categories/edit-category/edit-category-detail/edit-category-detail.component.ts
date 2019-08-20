@@ -5,7 +5,7 @@ import { CloudinaryService } from 'src/app/services/cloudinary.service';
 import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { delay } from 'q';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { Collection } from 'src/app/models/admin/collection';
 import { Router } from '@angular/router';
 
@@ -33,7 +33,7 @@ export class EditCategoryDetailComponent implements OnInit, OnDestroy {
 
   model = undefined;
 
-  constructor(private CollectionService: NewCollectionService,
+  constructor(private CollectionService: CollectionService,
     private ProductService: ProductService,
     public CloudinaryService: CloudinaryService,
     private SnackbarService: SnackbarService,

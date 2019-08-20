@@ -251,14 +251,6 @@ div.main {
         outline: none;
         border: none;
         box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.1);
-
-        &:active {
-          /*
-          background-color: hsl(238, 16%, 44%);
-          background-size: 100%;
-          transition: background 0s;
-          */
-        }
       }
 
       button.inactive {
@@ -270,14 +262,6 @@ div.main {
         outline: none;
         border: none;
         box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.1);
-
-        &:active {
-          /*
-          background-color: hsl(239, 43%, 91%);
-          background-size: 100%;
-          transition: background 0s;
-          */
-        }
       }
     }
 

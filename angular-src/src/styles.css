@@ -28,7 +28,7 @@ body ul.cloudinary-thumbnails > li.cloudinary-thumbnail > img {
 }
  End of Category Page */
 
-/* Background */
+/* Background 
 .background {
   
   background-image: radial-gradient(
@@ -39,6 +39,7 @@ body ul.cloudinary-thumbnails > li.cloudinary-thumbnail > img {
   background-image: linear-gradient(rgba(255, 255, 255, 0.904) 100%, rgb(216, 216, 216) 100%);
 
 }
+*/
 
 
 /*

@@ -10,6 +10,7 @@ import * as Cloudinary from 'cloudinary-core';
 import { QuillModule } from 'ngx-quill';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { EmbedVideo } from 'ngx-embed-video';
+import { ColorChromeModule } from 'ngx-color/chrome'; // <color-chrome></color-chrome>
 
 import { AppComponent } from './app.component';
 import { CollectionService } from './services/collection.service';
@@ -61,10 +62,20 @@ import { AccountComponent } from './components/admin/account/account/account.com
 
 
 const appRoutes: Routes = [
+  ///////////////////////////////////////////////
+  //        Login
+  ///////////////////////////////////////////////
   {
     path: '',
     component: LoginComponent
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  ///////////////////////////////////////////////
+  //        Home
+  ///////////////////////////////////////////////
   {
     path: 'homepage/featured/collections',
     component: HomeCollectionsComponent,
@@ -80,6 +91,9 @@ const appRoutes: Routes = [
     component: HomeSlideshowComponent,
     canActivate: [AuthGuard]
   },
+  ///////////////////////////////////////////////
+  //        Categories
+  ///////////////////////////////////////////////
   {
     path: 'admin/categories/add',
     component: AddCategoryComponent,
@@ -100,6 +114,9 @@ const appRoutes: Routes = [
     component: RemoveCategoryComponent,
     canActivate: [AuthGuard]
   },
+  ///////////////////////////////////////////////
+  //        Products
+  ///////////////////////////////////////////////
   {
     path: 'admin/products/add',
     component: AddProductComponent,
@@ -120,6 +137,9 @@ const appRoutes: Routes = [
     component: RemoveProductComponent,
     canActivate: [AuthGuard]
   },
+  ///////////////////////////////////////////////
+  //        Orders
+  ///////////////////////////////////////////////
   {
     path: 'admin/orders/recent',
     component: RecentOrdersComponent,
@@ -145,6 +165,9 @@ const appRoutes: Routes = [
     component: RefundComponent,
     canActivate: [AuthGuard]
   },
+  ///////////////////////////////////////////////
+  //        Messages
+  ///////////////////////////////////////////////
   {
     path: 'admin/messages',
     component: MessageComponent,
@@ -160,27 +183,38 @@ const appRoutes: Routes = [
     component: MailingListComponent,
     canActivate: [AuthGuard]
   },
+   ///////////////////////////////////////////////
+  //        Styles
+  ///////////////////////////////////////////////
+  {
+    path: 'styles/theme',
+    loadChildren: './style/style.module#StyleModule',
+    canActivate: [AuthGuard]
+  },
+  ///////////////////////////////////////////////
+  //        Pages
+  ///////////////////////////////////////////////
   {
     path: 'admin/pages/:stub',
     component: PageComponent,
     canActivate: [AuthGuard]
   },
+  ///////////////////////////////////////////////
+  //        Analytics
+  ///////////////////////////////////////////////
   {
     path: 'admin/analytics',
     component: AnalyticsComponent,
     canActivate: [AuthGuard]
   },
+  ///////////////////////////////////////////////
+  //        Account
+  ///////////////////////////////////////////////
   {
     path: 'admin/account',
     component: AccountComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  
-  
 ]
 
 @NgModule({
@@ -217,10 +251,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     ImageComponent,
     SpacerComponent,
-    AccountComponent
-    
+    AccountComponent,
   ],
-  entryComponents: [ TextComponent, VideoComponent, ImageComponent, SpacerComponent ],
+  entryComponents: [TextComponent, VideoComponent, ImageComponent, SpacerComponent],
   imports: [
     MaterialModule,
     BrowserAnimationsModule,
@@ -232,9 +265,11 @@ const appRoutes: Routes = [
     NgxPayPalModule,
     QuillModule,
     NgxWebstorageModule.forRoot(),
-    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'bigkatoriginal'}),
+    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'bigkatoriginal' }),
     NgxChartsModule,
     EmbedVideo.forRoot(),
+    ColorChromeModule,
+    //StyleModule,
   ],
   providers: [
     CollectionService,

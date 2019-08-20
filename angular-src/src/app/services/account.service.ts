@@ -9,8 +9,11 @@ import { HttpClient } from '@angular/common/http';
 export class AccountService {
 
   url: string = environment.baseURL + 'api/account/';
+  public account: Account;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.getAcct();
+  }
 
 
   async get() {
@@ -19,6 +22,12 @@ export class AccountService {
         resolve(res.data);
       });
     })
+  }
+
+  async getAcct() {
+    if (!this.account)
+      this.account = await this.get();
+    return this.account;
   }
   
   async update(acct: Account) {

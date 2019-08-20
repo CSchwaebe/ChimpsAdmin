@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from "src/app/models/admin/product";
 //import { Sizes } from "../../../interfaces/product";
 import { ProductService } from 'src/app/services/product.service';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { Router } from '@angular/router';
 import { Collection } from 'src/app/models/admin/collection';
 
@@ -30,7 +30,7 @@ export class EditProductComponent implements OnInit {
   submit: boolean = true;
 
   constructor(private ProductService: ProductService,
-              private CollectionService: NewCollectionService,
+              private CollectionService: CollectionService,
               public Router: Router,
               ) { }
 

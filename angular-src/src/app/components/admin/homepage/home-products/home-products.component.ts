@@ -6,7 +6,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { Product } from 'src/app/models/admin/product';
 import { ProductService } from 'src/app/services/product.service';
 import { Collection } from 'src/app/models/admin/collection';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 
 @Component({
   selector: 'app-home-products',
@@ -39,7 +39,7 @@ export class HomeProductsComponent implements OnInit {
   constructor(private HomeService: HomeService,
     private SnackbarService: SnackbarService,
     private ProductService: ProductService,
-    private CollectionService: NewCollectionService,
+    private CollectionService: CollectionService,
   ) {
     this.none.name = '';    
   }

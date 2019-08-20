@@ -1,0 +1,47 @@
+<div class=main>
+  <div class=top-buttons-container>
+    <div class=top-level>
+      <div *ngFor="let grp of tempStyle | keyvalue:customOrder">
+        <div class=button-container>
+          <div class=icon-container>
+            <button class=inner-container (click)="changeGroup(grp.key)">
+              <ng-template [ngIf]="group === grp.key">
+                <mat-icon>expand_more</mat-icon>
+              </ng-template>
+              <ng-template [ngIf]="group !== grp.key">
+                <mat-icon>chevron_right</mat-icon>
+              </ng-template>
+            </button>
+          </div>
+          <button (click)="changeGroup(grp.key)" class="top-level-button">{{readable(grp.key)}}</button>
+        </div>
+        <ng-template [ngIf]="group === grp.key">
+          <div class=level-2>
+            <div *ngFor="let item of grp.value | keyvalue" class=button-container>
+              <div class=icon-container>
+                <button class=inner-container (click)="changeField(item.key)">
+                  <ng-template [ngIf]="field === item.key">
+                    <mat-icon class="material-icons-outlined">radio_button_checked</mat-icon>
+                  </ng-template>
+                  <ng-template [ngIf]="field !== item.key">
+                    <mat-icon class="material-icons-outlined">radio_button_unchecked</mat-icon>
+                  </ng-template>
+                </button>
+              </div>
+              <button (click)="changeField(item.key)" class="level-2-button">{{readable(item.key)}}</button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div class=color-container>
+    <div class=inner-container>
+      <ng-template [ngIf]=color>
+        <color-chrome disableAlpha=true color="{{color}}" (onChange)="onChangeComplete($event)"></color-chrome>
+      </ng-template>
+    </div>
+  </div>
+
+</div>

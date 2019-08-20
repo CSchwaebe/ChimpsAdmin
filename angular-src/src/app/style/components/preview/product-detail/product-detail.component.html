@@ -1,0 +1,70 @@
+<ng-template [ngIf]=model.product>
+<div class="background">
+
+  
+      <div class="container">
+          <div class="image-container">
+            <div class="big-image-container">
+              <img class="big-image" src="{{selectedImage}}">
+            </div>
+            <div class="small-image-container" *ngFor="let img of images; index as i">
+              <img class="small-image" src="{{img}}" (click)="changeImage(i)">
+            </div>
+          </div>
+      
+          <div class="product-box" [ngStyle]="{ 'color': StyleService.style.theme.text }">
+            <p class="product-name">{{model.product.name}}</p>
+            <p class="price">${{model.product.price}}</p>           
+            <p class="color">{{model.product.color}}</p>
+
+            <ng-template [ngIf]="model.selectedSize && availableQty[availableQty.length - 1] < 10">
+              <p class=limited-quantity>Only {{availableQty[availableQty.length - 1]}} left!</p>
+            </ng-template>
+            <form (ngSubmit)="onSubmit()" #addProductForm="ngForm" class="product-form" id="add-product-form">
+              <div class=selectors>
+                <mat-form-field class=size appearance=outline>
+                  <mat-label>Size</mat-label>
+                  <mat-select required [(ngModel)]="model.selectedSize" name="selected-size"
+                    (selectionChange)="getAvailableQty(model.selectedSize)">
+                    <mat-option *ngFor="let size of sizes" [value]="size">{{size}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+      
+                <mat-form-field class=qty appearance=outline>
+                  <mat-label>Qty</mat-label>
+                  <mat-select required [(ngModel)]="model.quantity" name="quantity"
+                    (selectionChange)="getAvailableQty(model.selectedSize)">
+                    <mat-option *ngFor="let qty of availableQty" [value]="qty">{{qty}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              
+              
+              <quill-editor class=description [(ngModel)]=model.product.description [ngModelOptions]="{standalone: true}" 
+              [modules]="{toolbar: false}" theme=bubble readOnly=true format=object placeholder=''></quill-editor>
+
+              <!--
+                <div class=submit-background>
+                  <button type="submit" class="add-to-cart purple-button">ADD TO CART</button>
+                </div>
+              -->
+              
+
+              <div class=submit-container>
+                <button mat-flat-button type="button" [ngStyle]="{'background': StyleService.style.buttons.background, 'color': StyleService.style.buttons.text}" class="buy-now" (click)=buyNow()>BUY NOW</button>
+                <button mat-stroked-button type="submit" [ngStyle]="{'background': StyleService.style.theme.background, 'color': StyleService.style.buttons.background}" class="add-to-cart">ADD TO CART</button>
+              </div>
+               
+            </form>
+          </div>
+      
+        </div>
+
+  
+  
+</div>
+
+<app-footer></app-footer>
+
+</ng-template>

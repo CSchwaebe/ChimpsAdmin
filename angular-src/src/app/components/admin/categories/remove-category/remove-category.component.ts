@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 import { Collection } from 'src/app/models/admin/collection';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -35,7 +35,7 @@ export class RemoveCategoryComponent implements OnInit {
   sortedGroups: col[] = [];
 
 
-  constructor(private CollectionService: NewCollectionService,
+  constructor(private CollectionService: CollectionService,
     private SnackbarService: SnackbarService,
     private ProductService: ProductService,
   ) { }

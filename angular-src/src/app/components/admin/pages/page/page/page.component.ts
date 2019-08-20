@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { Router } from '@angular/router';
 import { Collection } from 'src/app/models/admin/collection';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 
 @Component({
   selector: 'app-page',
@@ -62,7 +62,7 @@ export class PageComponent implements OnInit, AfterViewInit {
     public PageService: PageService,
     private SnackbarService: SnackbarService,
     private Router: Router,
-    private CollectionService: NewCollectionService
+    private CollectionService: CollectionService
   ) {
     this.subscription = this.PageService.isDirty().subscribe(status => {
       this.model.blocks = this.PageService.blocks;

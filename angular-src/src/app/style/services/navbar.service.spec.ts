@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NewCollectionService } from './new-collection.service';
+import { NavbarService } from './navbar.service';
 
-describe('NewCollectionService', () => {
+describe('NavbarService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: NewCollectionService = TestBed.get(NewCollectionService);
+    const service: NavbarService = TestBed.get(NavbarService);
     expect(service).toBeTruthy();
   });
 });

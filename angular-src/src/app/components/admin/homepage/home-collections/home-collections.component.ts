@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Home } from 'src/app/models/admin/home';
 import { HomeService } from 'src/app/services/home.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
-import { NewCollectionService } from 'src/app/services/new-collection.service';
+import { CollectionService } from 'src/app/services/collection.service';
 
 import { Collection } from 'src/app/models/admin/collection';
 
@@ -43,7 +43,7 @@ export class HomeCollectionsComponent implements OnInit {
 
   constructor(private HomeService: HomeService,
     private SnackbarService: SnackbarService,
-    private CollectionService: NewCollectionService,
+    private CollectionService: CollectionService,
   ) {
 
   }
