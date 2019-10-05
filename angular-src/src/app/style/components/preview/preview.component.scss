@@ -29,7 +29,6 @@ $color-white-blue: hsl(239, 43%, 99%);
     color: hsl(239, 100%, 9%);
     background: hsl(239, 43%, 99%) radial-gradient(circle, transparent 1%, hsl(239, 43%, 99%) 1%) center/15000%;
 
-
     &.active {
       color: hsl(239, 43%, 99%);
       background: hsl(239, 100%, 9%) radial-gradient(circle, transparent 1%, hsl(239, 100%, 9%) 1%) center/15000%;
@@ -56,3 +55,33 @@ $color-white-blue: hsl(239, 43%, 99%);
 /* FOR MOBILE AND IPAD */
 @media only screen and (max-width: 1024px) {
 }
+
+
+//How to change the color of the hamburger menu based on light or dark theme
+//Not fully set up yet
+.dark {
+  background-color: grey;
+
+  &:before {
+    background-color: grey;
+  }
+
+  &:after {
+    background-color: grey;
+  }
+}
+
+.light {
+  background-color: black;
+  &:before {
+    background-color: black;
+  }
+  &:after {
+    background-color: black;
+  }
+}
+
+.hamburger.is-active .hamburger-inner::after {
+    
+}
+

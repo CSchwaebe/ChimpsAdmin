@@ -11,7 +11,7 @@ export interface Theme {
 export interface Buttons {
   background: string;
   text: string;
-
+  dark_mode: boolean;
 }
 
 export interface Footer {

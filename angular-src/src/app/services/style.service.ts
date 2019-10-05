@@ -22,6 +22,7 @@ export class StyleService {
       buttons: {
         background: '#00012e',
         text: '#fbfbfe',
+        dark_mode: false,
       },
       footer: {
         background: '#00012e',

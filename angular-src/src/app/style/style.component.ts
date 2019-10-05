@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { StyleService } from '../services/style.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
+
 
 @Component({
   selector: 'app-style',
@@ -8,9 +10,26 @@ import { StyleService } from '../services/style.service';
 })
 export class StyleComponent implements OnInit {
 
-  constructor(public StyleService: StyleService) { }
+  @HostBinding('class') componentCssClass;
+
+  constructor(public StyleService: StyleService,
+    public overlayContainer: OverlayContainer) { }
 
   ngOnInit() {
+
   }
+
+
+ onSetTheme(theme) {
+   if (theme) {
+    this.overlayContainer.getContainerElement().classList.add('dark-theme');
+    this.componentCssClass = 'dark-theme';
+   } else {
+    this.overlayContainer.getContainerElement().classList.add('light-theme');
+    this.componentCssClass = 'light-theme';
+   }
+}
+
+
 
 }

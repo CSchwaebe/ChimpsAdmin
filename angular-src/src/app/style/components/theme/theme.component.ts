@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StyleService } from 'src/app/services/style.service';
 import { Style } from 'src/app/models/admin/style';
 import { KeyValuePipe, KeyValue } from '@angular/common';
@@ -10,7 +10,7 @@ import { KeyEventsPlugin } from '@angular/platform-browser/src/dom/events/key_ev
   styleUrls: ['./theme.component.scss']
 })
 export class ThemeComponent implements OnInit {
-
+  @Input() parent: any;
   style: Style;
   tempStyle;
   //the selecteed group in the menu
@@ -31,7 +31,6 @@ export class ThemeComponent implements OnInit {
     this.tempStyle.set('header', this.style['header']);
     this.tempStyle.set('dropdown_menu', this.style['dropdown_menu']);
     this.tempStyle.set('side_menu', this.style['side_menu']);
-
   }
 
 
@@ -132,6 +131,14 @@ export class ThemeComponent implements OnInit {
 
   reset() {
     this.field = undefined;
+  }
+
+  toggleMaterialTheme() {
+    this.parent.onSetTheme(this.style.buttons.dark_mode);
+  }
+
+  save() {
+    console.log(this.style)
   }
 
 }

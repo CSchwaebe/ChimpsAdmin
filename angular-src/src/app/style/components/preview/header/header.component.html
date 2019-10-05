@@ -21,7 +21,7 @@
     <div class=cart>
       <ng-template [ngIf]="true">
         <mat-icon matBadge="4" inline=true matBadgeColor="warn"
-          class="material-icons-outlined">shopping_cart</mat-icon>
+          class="material-icons-outlined" [ngStyle]="{ 'color': StyleService.style.buttons.dark_mode ? 'grey' : 'black' }">shopping_cart</mat-icon>
 
       </ng-template>
     </div>

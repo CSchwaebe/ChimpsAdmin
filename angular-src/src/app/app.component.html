@@ -1,8 +1,9 @@
 <app-header></app-header>
 
-<button class="hamburger hamburger--spring menu-button" type="button" (click)=sidenav.toggle() (click)=collapse()>
+<button class="hamburger hamburger--spring menu-button" [ngClass]="theme ? 'light' : 'dark'" type="button" (click)=sidenav.toggle() (click)=collapse()>
   <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
+    <span class="hamburger-inner" [ngClass]="theme ? 'light' : 'dark'"
+    ></span>
   </span>
 </button>
 
@@ -21,24 +22,3 @@
 
 </mat-sidenav-container>
 
-
-
-
-
-
-<!--
-<div>
-  <div class="background">
-   
-    <app-navbar></app-navbar>
-    
-    <router-outlet></router-outlet>
-
-    
-
-
-  </div>
-
-</div>
-<div id="shopping-cart">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Shopping cart">Shopping cart</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"     title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
--->

@@ -6,20 +6,34 @@
 
 <div class=container [ngStyle]="{ 'background': StyleService.style.theme.background }">
 
-
-  <button class="hamburger-helper hamburger--spring menu-button" type="button" (click)=toggleSideNav()
+<ng-template [ngIf]="StyleService.style.buttons.dark_mode">
+    <button class="hamburger-helper hamburger--spring menu-button" type="button" (click)=toggleSideNav()
     [ngStyle]="{ 'background': StyleService.style.header.background }">
     <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
+      <span class="hamburger-inner" [ngClass]="'dark'"
+      ></span>
     </span>
   </button>
+</ng-template>
+
+
+<ng-template [ngIf]="!StyleService.style.buttons.dark_mode">
+    <button class="hamburger-helper hamburger--spring menu-button" type="button" (click)=toggleSideNav()
+    [ngStyle]="{ 'background': StyleService.style.header.background }">
+    <span class="hamburger-box">
+      <span class="hamburger-inner" [ngClass]="'light'"
+      ></span>
+    </span>
+  </button>
+</ng-template>
+
+
+ 
 
   <ng-template [ngIf]="selected!=='side_menu'">
       <app-header [parent]=this></app-header>
   </ng-template>
       
-  
-
   <ng-template [ngIf]="selected==='home'">
     <app-home></app-home>
   </ng-template>

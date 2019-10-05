@@ -7,11 +7,16 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class AppComponent implements AfterViewInit {
   title = 'angular-src';
- open = false;
+  open = false;
+
+ theme = false;
+ 
 
  constructor() {
- 
+
  }
+
+
 
  ngAfterViewInit() {
     // Look for .hamburger

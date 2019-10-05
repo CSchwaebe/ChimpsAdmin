@@ -9,6 +9,7 @@ import { StyleService } from 'src/app/services/style.service';
 })
 export class PreviewComponent implements OnInit {
 
+theme;
 title = 'angular-src';
 open = false;
 desktop: boolean = true;
@@ -20,6 +21,8 @@ selected: string = 'home';
 
 constructor(private NavbarService: NavbarService, 
   public StyleService: StyleService) {
+    console.log(this.StyleService.style.buttons)
+    this.theme = this.StyleService.style.buttons.dark_mode;
 }
 
 async ngOnInit() {
@@ -48,17 +51,6 @@ select(component: string) {
 }
 
 toggleSideNav() {
-  return;
-  this.sidenav.toggle();
-  this.hamburger.classList.toggle("is-active");
-  this.open = !this.open;
-  console.log('Toggle Sidenav')
-  
-  if (this.open) {
-    this.NavbarService.hideDesktopNavbar();
-  } else {
-    this.NavbarService.showDesktopNavbar();
-  }
   
 }
 }

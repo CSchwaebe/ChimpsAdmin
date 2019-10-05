@@ -1,11 +1,28 @@
-
 button:focus {
     outline: 0;
 }
 
-#shopping-cart {
-    display: none;
-}
+.dark {
+    background-color: #fbfbfe;
+  
+    &:before {
+      background-color: #fbfbfe;
+    }
+  
+    &:after {
+      background-color: #fbfbfe;
+    }
+  }
+  
+  .light {
+    background-color: black;
+    &:before {
+      background-color: black;
+    }
+    &:after {
+      background-color: black;
+    }
+  }
 
 .menu-button {
     position: absolute;
@@ -34,5 +51,8 @@ mat-sidenav-container {
     }
 }
     
+
+
+
 
   

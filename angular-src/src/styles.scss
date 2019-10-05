@@ -1,0 +1,265 @@
+/* You can add global styles to this file, and also import other style files */
+//@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+@include mat-core;
+
+$md-darkblue: (
+    50 : #e0e1e6,
+    100 : #b3b3c0,
+    200 : #808097,
+    300 : #4d4d6d,
+    400 : #26274d,
+    500 : #00012e,
+    600 : #000129,
+    700 : #000123,
+    800 : #00011d,
+    900 : #000012,
+    A100 : #5353ff,
+    A200 : #2020ff,
+    A400 : #0000ec,
+    A700 : #0000d3,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-silver: (
+    50 : #f7f7f7,
+    100 : #ebebeb,
+    200 : #dedede,
+    300 : #d1d1d1,
+    400 : #c7c7c7,
+    500 : #bdbdbd,
+    600 : #b7b7b7,
+    700 : #aeaeae,
+    800 : #a6a6a6,
+    900 : #989898,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffd4d4,
+    A700 : #ffbbbb,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// mandatory stuff for theming
+//$palette-primary: mat-palette($md-darkblue);
+//$palette-accent:  mat-palette($md-silver);
+$palette-primary: mat-palette($mat-grey, 600, 400, 900);
+$palette-accent: mat-palette($mat-grey, 900, 900, 900);
+
+
+// include the custom theme components into a theme object
+$theme: mat-light-theme($palette-primary, $palette-accent);
+//$theme: mat-dark-theme($palette-primary, $palette-accent);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($theme);
+
+
+
+//DARK AND LIGHT THEMES FOR THE WEBSITE
+
+// Dark theme
+$dark-primary: mat-palette($mat-grey, 600, 400, 900);
+$dark-accent: mat-palette($mat-grey, 900, 900, 900);
+//$dark-warn:    mat-palette($mat-deep-orange);
+
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent);
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+// Light theme
+$light-primary: mat-palette($mat-grey, 600, 400, 900);
+$light-accent: mat-palette($mat-grey, 900, 900, 900);
+//$light-warn: mat-palette($mat-deep-orange, 200);
+
+$light-theme: mat-light-theme($light-primary, $light-accent);
+
+.light-theme {
+  @include angular-material-theme($light-theme)
+}
+
+//END DARK AND LIGHT THEMES FOR THE WEBSITE
+
+/*
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core;
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat-palette($mat-grey, 600, 400, 900);
+$accent: mat-palette($mat-grey, 900, 900, 900);
+$background-color: map_get($mat-grey, 50);
+
+// The warn palette is optional (defaults to red).
+$warn: mat-palette($mat-grey);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Insert custom background color
+$background: map-get($theme, background);
+$background: map_merge($background, (background: $background-color));
+$theme: map_merge($theme, (background: $background));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+//@include my-app-theme($theme);
+*/
+
+
+/*
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+*/
+
+
+$hamburger-layer-color: #fbfbfe;
+@import "../src/assets/hamburgers/hamburgers.css";
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+  $color-white-blue: hsl(239, 43%, 99%);
+$color-white-blue-active: hsl(239, 43%, 91%);
+
+//Start Ripple effect - White button
+*/
+/* BUTTONS */
+.white-button {
+  color: hsl(239, 100%, 9%);
+  font-family: "Montserrat";
+  background: hsl(239, 43%, 99%) radial-gradient(circle, transparent 1%, hsl(239, 43%, 99%) 1%) center/15000%;
+  background-position: center;
+  transition: background 0.8s;  
+  outline: none;
+  border: none;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);   
+
+}
+
+.white-button:active {
+  background-color: hsl(239, 43%, 91%);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+
+.dark-blue-button {
+  color:  hsl(239, 43%, 99%);
+  font-family: "Montserrat";
+  background: hsl(239, 100%, 9%) radial-gradient(circle, transparent 1%, hsl(239, 100%, 9%) 1%) center/15000%;
+  background-position: center;
+  transition: background 0.8s; 
+  outline: none;
+  border: none;
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);   
+
+}
+
+.dark-blue-button:active {
+  background-color: hsl(238, 16%, 44%);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+
+.red-button {
+  color:  hsl(0, 43%, 99%);
+  color: hsl(0, 73%, 46%);
+  font-family: "Montserrat";
+  background: hsl(0, 73%, 97%) radial-gradient(circle, transparent 1%, hsl(0, 73%, 97%) 1%) center/15000%;
+  background-position: center;
+  transition: background 0.8s; 
+  outline: none;
+  border: none;
+  cursor: pointer;
+  /*
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1), 2px -2px 10px rgba(0, 0, 0, 0.1);   
+  */
+}
+
+.red-button:active {
+  background-color: hsl(0, 50%, 65%);
+  background-size: 100%;
+  transition: background 0s;
+}
+/*End ripple effect - white button*/
+
+
+
+/* SnackBar Notifications */
+
+.snackbar-success {
+  /*
+  background-color: hsl(239, 100%, 9%);
+  color: white;
+  */
+  background-color: rgb(223, 239, 217);
+  color: rgb(20, 151, 23);
+  letter-spacing: .75px;
+  font-family: 'Montserrat';
+  z-index: 1000;
+}
+
+.snackbar-error {
+  background-color: red;
+  color: white;
+  z-index: 1000;
+  letter-spacing: .75px;
+  font-family: 'Montserrat';
+}
+
+/* Quill Editor */
+
+.ql-editor {
+  z-index: 1000000000000;
+  font-family: "Montserrat";
+}
+.ql-editor > * {
+  cursor: text;
+}
+
+
+.mat-drawer-inner-container {
+  background: #fbfbfe;
+}

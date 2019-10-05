@@ -160,6 +160,11 @@ button:focus {
 }
 
 
+//For Hamburger Menu
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+   //background-color: red; /*fbfbfe*/
+}
+
 /* FOR MOBILE AND IPAD */
 @media only screen and (max-width: 1024px) {
   /*

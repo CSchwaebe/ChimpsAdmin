@@ -18,17 +18,28 @@
         <ng-template [ngIf]="group === grp.key">
           <div class=level-2>
             <div *ngFor="let item of grp.value | keyvalue" class=button-container>
-              <div class=icon-container>
-                <button class=inner-container (click)="changeField(item.key)">
-                  <ng-template [ngIf]="field === item.key">
-                    <mat-icon class="material-icons-outlined">radio_button_checked</mat-icon>
-                  </ng-template>
-                  <ng-template [ngIf]="field !== item.key">
-                    <mat-icon class="material-icons-outlined">radio_button_unchecked</mat-icon>
-                  </ng-template>
-                </button>
+            <!-- THE SLIDE TOGGLE FOR CHANGING MATIERIAL THEME BTWN LIGHT AND DARK-->
+              <div *ngIf="(grp.key === 'buttons') && (item.key === 'dark_mode'); else elseBlock">
+                <div class=icon-container>
+                  <mat-slide-toggle [(ngModel)]=style.buttons.dark_mode (change)=toggleMaterialTheme()></mat-slide-toggle>
+                </div>
+                <button class="level-2-button">{{readable(item.key)}}</button>
               </div>
-              <button (click)="changeField(item.key)" class="level-2-button">{{readable(item.key)}}</button>
+
+              <ng-template #elseBlock>
+                <div class=icon-container>
+                  <button class=inner-container (click)="changeField(item.key)">
+                    <ng-template [ngIf]="field === item.key">
+                      <mat-icon class="material-icons-outlined">radio_button_checked</mat-icon>
+                    </ng-template>
+                    <ng-template [ngIf]="field !== item.key">
+                      <mat-icon class="material-icons-outlined">radio_button_unchecked</mat-icon>
+                    </ng-template>
+                  </button>
+                </div>
+                <button (click)="changeField(item.key)" class="level-2-button">{{readable(item.key)}}</button>
+              </ng-template>
+              
             </div>
           </div>
         </ng-template>
@@ -45,3 +56,5 @@
   </div>
 
 </div>
+
+<button class="save-button" (click)=save()>Save</button>

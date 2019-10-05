@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/preview/header/header.component';
 import { ProductDetailComponent } from './components/preview/product-detail/product-detail.component';
 import { QuillModule } from 'ngx-quill';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { OverlayModule} from '@angular/cdk/overlay';
+import { StyleService } from '../services/style.service';
 
  
 //import { HomeComponent } from './components/preview/home/home.component';
@@ -43,12 +45,13 @@ const routes: Routes = [
     QuillModule,
     FormsModule,
     ReactiveFormsModule,
+    OverlayModule
   ],
   exports: [
     PreviewComponent
   ],
   providers: [
-    
+    StyleService,
   ]
 })
 export class StyleModule { }
